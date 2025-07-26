@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【专题】初等数论学习笔记 | FrankWkd</title><meta name="author" content="FrankWkd"><meta name="copyright" content="FrankWkd"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="【持续更新】【专题】初等数论$&gt;&gt;$本文遵守GNU GPL2.0开源协议。$&lt;&lt;$Designed By：FrankWkdUpdated at 2025.01.26前言： 主要从线性筛开始速通初等数论 尽可能的多证明结论而不是阐述结论。如果你只是想回顾结论，请看其他人的 $Blog$ .  一、基础概念 整除：对于两个正整数 $a,b$, 存在一个数 $k$ ,使得 $a&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【专题】初等数论学习笔记">
+<meta property="og:url" content="https://frankwkd.pages.dev/2025/02/18/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E5%88%9D%E7%AD%89%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="FrankWkd">
+<meta property="og:description" content="【持续更新】【专题】初等数论$&gt;&gt;$本文遵守GNU GPL2.0开源协议。$&lt;&lt;$Designed By：FrankWkdUpdated at 2025.01.26前言： 主要从线性筛开始速通初等数论 尽可能的多证明结论而不是阐述结论。如果你只是想回顾结论，请看其他人的 $Blog$ .  一、基础概念 整除：对于两个正整数 $a,b$, 存在一个数 $k$ ,使得 $a&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png">
+<meta property="article:published_time" content="2025-02-18T12:22:16.000Z">
+<meta property="article:modified_time" content="2025-07-26T12:27:53.409Z">
+<meta property="article:author" content="FrankWkd">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="学习笔记">
+<meta property="article:tag" content="数论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【专题】初等数论学习笔记",
+  "url": "https://frankwkd.pages.dev/2025/02/18/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E5%88%9D%E7%AD%89%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/",
+  "image": "https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png",
+  "datePublished": "2025-02-18T12:22:16.000Z",
+  "dateModified": "2025-07-26T12:27:53.409Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "FrankWkd",
+      "url": "https://frankwkd.pages.dev"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png"><link rel="canonical" href="https://frankwkd.pages.dev/2025/02/18/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E5%88%9D%E7%AD%89%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":1,"languages":{"author":"作者: FrankWkd","link":"链接: ","source":"来源: FrankWkd","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【专题】初等数论学习笔记',
+  isHighlightShrink: undefined,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/xxx.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/puw9og8g.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" alt="Logo"><span class="site-name">FrankWkd</span></a><a class="nav-page-title" href="/"><span class="site-name">【专题】初等数论学习笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【专题】初等数论学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-18T12:22:16.000Z" title="发表于 2025-02-18 20:22:16">2025-02-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-26T12:27:53.409Z" title="更新于 2025-07-26 20:27:53">2025-07-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="【持续更新】【专题】初等数论"><a href="#【持续更新】【专题】初等数论" class="headerlink" title="【持续更新】【专题】初等数论"></a>【持续更新】【专题】初等数论</h1><h2 id="本文遵守GNU-GPL2-0开源协议。"><a href="#本文遵守GNU-GPL2-0开源协议。" class="headerlink" title="$&gt;&gt;$本文遵守GNU GPL2.0开源协议。$&lt;&lt;$"></a><strong>$&gt;&gt;$本文遵守GNU GPL2.0开源协议。$&lt;&lt;$</strong></h2><h5 id="Designed-By：FrankWkd"><a href="#Designed-By：FrankWkd" class="headerlink" title="Designed By：FrankWkd"></a>Designed By：FrankWkd</h5><h5 id="Updated-at-2025-01-26"><a href="#Updated-at-2025-01-26" class="headerlink" title="Updated at 2025.01.26"></a>Updated at 2025.01.26</h5><h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><ul>
+<li>主要从线性筛开始速通初等数论</li>
+<li>尽可能的多证明结论而不是阐述结论。如果你只是想回顾结论，请看其他人的 $Blog$ .</li>
+</ul>
+<h2 id="一、基础概念"><a href="#一、基础概念" class="headerlink" title="一、基础概念"></a>一、基础概念</h2><ul>
+<li>整除：对于两个正整数 $a,b$, 存在一个数 $k$ ,使得 $a&#x3D;bk$，则称 $b$ 整除 $a$.<strong>记作 $b\ |\ a$</strong>.</li>
+<li>带余除法：对于两个正整数 $a,b$, 存在两个数 $k,r$ ,使得 $a&#x3D;bk+r$，则称 $b$ 除 $a$ 商 $k$ 余 $r$.($b\div a&#x3D;k\dots r$)</li>
+<li>因数：能整除一个数的数被称为这个数的因数.</li>
+<li>公因数：两个数共同具有的因数被称为这两个数的公因数。</li>
+<li>质数：只有 $1$ 喝和它本身的数被称为质数。$2$ 是质数。</li>
+<li>质因子：一个数的质因数（既是它的因数也是质数的数）被称为质因子。</li>
+<li>算术基本定理：一个数能表示成其若干个质因数的乘积（类似于分解质因数的逆运算）。</li>
+</ul>
+<h2 id="二、基础算法"><a href="#二、基础算法" class="headerlink" title="二、基础算法"></a>二、基础算法</h2><ul>
+<li>因数分解：分解出正整数 $x$ 的所有因子。<ul>
+<li>复杂度：$O(\sqrt n)$</li>
+</ul>
+</li>
+<li>埃氏筛：快速筛出 $1-n$ 中所有的素数。<ul>
+<li>复杂度：$O(nloglogn)$</li>
+</ul>
+</li>
+<li>质因数分解：快速分解出 $n$ 的所有质因子。<ul>
+<li>复杂度：$O(\sqrt{n})$</li>
+</ul>
+</li>
+<li>欧几里得算法：快速求出两个数 $a,b$ 的最小公约数( $gcd$ ).<ul>
+<li>核心公式：$gcd(a,b)&#x3D;gcd(b,a\ mod\ b)$.</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、Euler欧拉筛-线性筛"><a href="#三、Euler欧拉筛-线性筛" class="headerlink" title="三、Euler欧拉筛(线性筛)"></a>三、Euler欧拉筛(线性筛)</h2><h3 id="关于线性筛"><a href="#关于线性筛" class="headerlink" title="关于线性筛"></a>关于线性筛</h3><ul>
+<li>一种基于埃氏筛的高效筛法。</li>
+<li>**时间复杂度 $O(n)$**。</li>
+<li><strong>保证每一个素数只被其最小质因子筛除。</strong></li>
+<li><strong>每个素数只是被筛除一次。</strong><br>让我们一个一个地证明这些结论：</li>
+</ul>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>注：请结合代码理解。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">getprime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i]) p[++k] = i;<span class="comment">//k为素数个数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= k <span class="keyword">and</span> i * p[j] &lt;= n; j++) &#123;</span><br><span class="line">            vis[i * p[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % p[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><ol>
+<li>为什么这样写呢？怎么保证每个合数都被无遗漏地筛除呢？</li>
+</ol>
+<ul>
+<li>设一合数为 $x$ ，因为它是合数，所以它一定能表示为 $x&#x3D;pi$ 的形式（一个合数可以分解成两个数的乘积）。</li>
+<li>我们令 $p$ 为 $x$ 的最小质因子。</li>
+<li>现在请看代码，可知：当 $i\ mod\ p&#x3D;0$ 时循环立即中断。通俗的理解就是：当 $i$ 是 $p$ 的倍数时，循环直接 $break$.</li>
+<li>那么，让我们回归到程序，第二层循环遍历的是所有已经筛出来的质数，由程序可得：只要有一个数符合循环 $break$ 的标准，循环就中断了。</li>
+<li>符合循环 $break$ 标准的质数肯定是一个小于 $p$ 且<strong>是 $i$ 因数的质数</strong>，对吧？</li>
+<li>既然这个数是 $i$ ,的质因子，$i$ 又是 $x$ 的因子，这个数就是 $x$ 的质因子。</li>
+<li>因为 $p$ 是 $x$ 的最小质因子，没有比它更小的质因子了，所以第二层循环中不可能再出现比 $p$ 小而且是 $x$ 的质因子的数了。</li>
+<li>所以 $x$ 一定能被筛到。</li>
+<li>得证（反证法，不是特别严谨，有问题或疑问请评论或私信）。</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>那又如何保证每一个数只被其最小质因子筛一次呢？</li>
+</ol>
+<ul>
+<li>我们设将要被筛除的合数为 $x$ ，将其分解为 $x&#x3D;py&#x3D;qz$ 的形式。</li>
+<li>其中，$p$ 是 $x$ 的最小质因子，$q$ 是 $x$ 的另一个质因子（比 $p$ 大）</li>
+<li>接下来让我们再次分解: $x&#x3D;pqk$，$p,q$ 就是上面的 $p,q$ ，$k$ 为使得上面式子成立的数.</li>
+<li>那么现在有：</li>
+</ul>
+<p>$$<br>&#x3D;p(qk)<br>$$</p>
+<p>$$<br>&#x3D;q(pk)<br>$$</p>
+<ul>
+<li>我们设 $y&#x3D;qk$, $z&#x3D;pk$, 我们不难得到：$z$ 中一定含有质因子 $p$ 。而且 $p&lt;q$ 。</li>
+<li>当 $i$ 枚举到 $z$ 、$j$ 枚举到 $p$ 时，$i\ mod\ j&#x3D;0$ 会先一步成立，所以 $j$ 不会再往下面枚举到 $q$ ，从而避免了枚举到 $py&#x3D;x$ 之后又枚举到 $qz&#x3D;x$ ,造成重复计算.而且每个合数仅仅被其最小质因子（也就是 $p$）筛除.</li>
+<li>让我们举个栗子：<ul>
+<li><ol>
+<li>要筛除的合数 $x$ 是 $35$</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>最小质因子 $p$ 是 $5$</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>质因子 $q$ 是 $7$</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>$35$ 可以写成 $35&#x3D;5<em>7&#x3D;7</em>5(x&#x3D;py&#x3D;qz)$ 的形式。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>$35$ 还可以写成 $35&#x3D;5<em>7</em>1(x&#x3D;pqk)$ 的形式。</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>由第五步中的式子转化为：$35&#x3D;5*(7<em>1)&#x3D;7</em>(5*1)(x&#x3D;py&#x3D;qz)$ 的形式。</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>由第四步可知：$y&#x3D;7,z&#x3D;5$.</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>由第六步可知：$y&#x3D;7<em>1,z&#x3D;5</em>1$.</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>那么，$z$ 中含有 $p$ 的时候就会 $break$,刚好是在筛出 $35$ 这个合数之后，以保证不会再往下筛，从而避免一个数被筛多次的情况。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ol start="3">
+<li>为什么复杂度是线性( $O(n)$ )的？</li>
+</ol>
+<ul>
+<li>因为每个质数只会被记录一次，每个合数只是会被筛除一次，但是埃氏筛会将每个合数筛 $loglogn$ 次（ $O(nloglogn)$ ），这就是欧拉筛（线性筛）为什么复杂度是 $O(n)$ 的原因。</li>
+</ul>
+</li>
+</ul>
+<h3 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> <code>洛谷</code> <code>B3716</code> 质因子分解3<ul>
+<li>题面描述：$T$ 组数据。每次给定一个整数 $n$，求 $n$ 所有质因子的按位异或和.</li>
+<li>数据范围：$1\le T\le 10^5,2\le N\le 10^8$</li>
+<li>思路：如果每次把 n 都除以自己的最小质因子，那么可以 $O(log n)$ 完成一次质因子分解。<br>如何求出最小质因子?<br>在线性筛的时候，每个数都被自己的最小质因子筛掉。所以我们只要在当一个数被筛的时候记录筛掉它的数即可。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e8</span> + <span class="number">5</span>;</span><br><span class="line">bitset &lt;N&gt; vis;</span><br><span class="line"><span class="type">int</span> mn[N];</span><br><span class="line"><span class="type">int</span> p[N / <span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getprime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i])</span><br><span class="line">            p[++k] = i, mn[i] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= k &amp;&amp; i * p[j] &lt;= n; j++) &#123;</span><br><span class="line">            vis[i * p[j]] = <span class="number">1</span>;</span><br><span class="line">            mn[i * p[j]] = p[j];</span><br><span class="line">            <span class="keyword">if</span> (i % p[j] == <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> T, n;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) ans ^= nm[n], n /= nm[n];</span><br><span class="line">        cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、欧几里得定理及其扩展-裴蜀定理"><a href="#四、欧几里得定理及其扩展-裴蜀定理" class="headerlink" title="四、欧几里得定理及其扩展&amp;裴蜀定理"></a>四、欧几里得定理及其扩展&amp;裴蜀定理</h2><h3 id="欧几里得定理（-gcd-）"><a href="#欧几里得定理（-gcd-）" class="headerlink" title="欧几里得定理（$gcd$）"></a>欧几里得定理（$gcd$）</h3><h4 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h4><ul>
+<li>先放定理：设 $a,b$ 是两个整数，且 $b \neq 0$，则 $gcd(a,b)&#x3D;gcd(b,a\ mod\ b)$。</li>
+<li>时间复杂度：$O(log\ min(a,b))$</li>
+</ul>
+<h4 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h4><ul>
+<li><strong>模运算( $%$ )</strong>: 相信你学习到这里已经掌握了几乎所有模运算性质，这里我们只需使用到一个，即：<ul>
+<li>$$<br>a\ mod\ b&#x3D;a-\left \lfloor \frac{a}{b} \right \rfloor \times b<br>$$</li>
+<li>$$<br>a&#x3D;a\ mod\ b+\left \lfloor \frac{a}{b} \right \rfloor \times b<br>$$</li>
+<li>为什么是这样呢？</li>
+<li>这里的 $\left \lfloor \frac{a}{b} \right \rfloor$ 就是 $a\div b$ 所得的整数商。将 $a$ 减去这个值所得的就是 $a\div b$ 所得的余数。也就是 $a\ mod\ b$ 。</li>
+<li>我们举例说明：<ul>
+<li>$$<br>10%3&#x3D;10-\left \lfloor \frac{10}{3} \right \rfloor \times 3<br>$$</li>
+<li>$$<br>10&#x3D;10%3(余数部分)+\left \lfloor \frac{10}{3} \right \rfloor \times 3(整数商)<br>$$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h4><p>下面开始证明（汗流浃背</p>
+<ul>
+<li>设 $d&#x3D;gcd(a,b)$ ,则 $d$ 能整除 $a,b$, 即：<ul>
+<li>$$<br>d|a\ \ d|b<br>$$</li>
+</ul>
+</li>
+<li>可以写成：<ul>
+<li>$$<br>a&#x3D;k_1d,b&#x3D;k_2d\ (k_1,k_2\in \mathbb {Z(整数)})<br>$$</li>
+</ul>
+</li>
+<li>根据前置知识，$a%b$ 可以写成：<ul>
+<li>$$<br>a%b&#x3D;a-\left \lfloor \frac{a}{b} \right \rfloor \times b<br>$$</li>
+</ul>
+</li>
+<li>将 $a&#x3D;k_1d,b&#x3D;k_2d$ 带入得：<ul>
+<li>$$<br>a%b&#x3D;k_1d-\left \lfloor \frac{k_1d}{k_2d} \right \rfloor \times k_2d<br>$$</li>
+</ul>
+</li>
+<li>根据分数线的性质消元得：<ul>
+<li>$$<br>a%b&#x3D;k_1d-\left \lfloor \frac{k_1}{k_2} \right \rfloor \times k_2d<br>$$</li>
+</ul>
+</li>
+<li>设 $q&#x3D;\left \lfloor \frac{k_1}{k_2} \right \rfloor$ ，并将其带入得：<ul>
+<li>$$<br>a%b&#x3D;k_1d-qk_2d<br>$$</li>
+</ul>
+</li>
+<li>提出公因数 $d$ 可得：<ul>
+<li>$$<br>a%b&#x3D;(k_1-qk_2)d<br>$$</li>
+</ul>
+</li>
+<li>因为 $k_1,k_2$ 被定义为整数，且 $q$ 已经经过了向下取整，所以 $q$ 也是整数，故 $k_1+qk_2$ 也是整数。</li>
+<li>立得： $d$ 整除 $a\ mod\ b$ .</li>
+<li><strong>所以 $d$ 既是 $a,b$ 的最大公约数，也是 $b,a\ mod\ b$ 的公约数。</strong></li>
+<li>反过来，设 $d’&#x3D;gcd(b,a\ mod\ b)$, 则 $d’$ 整除 $b,a\ mod\ b$ .</li>
+<li>由前置知识得： $a&#x3D;a\ mod\ b+\left \lfloor \frac{a}{b} \right \rfloor \times b$<ul>
+<li>因为： $d’$ 整除 $a\ mod\ b,b$，</li>
+<li>所以： $d’$ 整除 $a\ mod\ b,\left \lfloor \frac{a}{b} \right \rfloor \times b$，</li>
+<li>所以 $d’|a$. ($d’$ 整除 $a$).</li>
+</ul>
+</li>
+<li>所以：$d’$ 整除 $a,b$ .</li>
+<li><strong>整合</strong><ul>
+<li>因为 $d$ 是 $a,b$ 的<strong>最大</strong>公因数，而 $d’$ 只是 $a,b$ 的公因数，不难得到：$d’\le d$；</li>
+<li>因为 $d’$ 是 $b,a\ mod\ b$ 的<strong>最大</strong>公因数，而 $d$ 只是 $b,a\ mod\ b$ 的公因数，不难得到：$d\le d’$；</li>
+</ul>
+</li>
+<li>综上所述：<ul>
+<li>$$<br>\left{\begin{matrix}d\le d’\d’\le d\end{matrix}\right.<br>$$</li>
+<li>该方程的解为：$d&#x3D;d’$</li>
+</ul>
+</li>
+<li>即：<ul>
+<li>$$<br>gcd(a,b)&#x3D;gcd(b,a\ mod\ b)<br>$$</li>
+<li>当 $b&#x3D;0$ 时，$gcd(a,b)&#x3D;a$ ,因为 $b$ 除以任何数都是 $0$ ，那这个时候的最大公约数就理所应当的成为了 $a$, 满足：$a|a,b(0)|a$。</li>
+</ul>
+</li>
+<li>我们只需要逐渐递归求解 $gcd$ 即可，递归的终止条件为 $b&#x3D;0$ ，那时只需 $return\ a$ 即可。</li>
+</ul>
+<h3 id="裴蜀定理"><a href="#裴蜀定理" class="headerlink" title="裴蜀定理"></a>裴蜀定理</h3><h4 id="定理-1"><a href="#定理-1" class="headerlink" title="定理"></a>定理</h4><p>先放定理：设 $a,b$ 是不全为零的整数，则存在整数 $x,y$，使得 $ax + by&#x3D;gcd(a,b)$。</p>
+<h4 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h4><p><strong>请确保您已经理解 $gcd$ 及其前置知识&amp;证明。</strong></p>
+<ul>
+<li>当 $b&#x3D;0$ 时，由上面的证明可得：<ul>
+<li>$$<br>gcd(a,b)&#x3D;a<br>$$</li>
+</ul>
+</li>
+<li>这时，$x&#x3D;1,y&#x3D;0$ 显然满足 $ax + by&#x3D;gcd(a,b)$。</li>
+</ul>
+<hr>
+<ul>
+<li>我们假设对于 $b,a\ mod\ b$，裴蜀定理成立，即存在整数 $x_1,y_1$，满足<ul>
+<li>$$<br>bx_1+(a\ mod\ b)y_1&#x3D;gcd(b,a\ mod\ b)<br>$$</li>
+</ul>
+</li>
+<li>由模运算的性质（ $gcd$ 的前置知识）可得：<ul>
+<li>$$<br>a\ mod\ b&#x3D;a-\left \lfloor \frac{a}{b} \right \rfloor b<br>$$</li>
+</ul>
+</li>
+<li>将其带入得：<ul>
+<li>$$<br>bx_1+(a-\left \lfloor \frac{a}{b} \right \rfloor b)y_1&#x3D;gcd(b,a\ mod\ b)<br>$$</li>
+</ul>
+</li>
+<li>拆括号得：<ul>
+<li>$$<br>bx_1+ay_1-\left \lfloor \frac{a}{b} \right \rfloor by_1&#x3D;gcd(b,a\ mod\ b)<br>$$</li>
+</ul>
+</li>
+<li>移项得：<ul>
+<li>$$<br>ay_1+bx_1-\left \lfloor \frac{a}{b} \right \rfloor by_1&#x3D;gcd(b,a\ mod\ b)<br>$$</li>
+</ul>
+</li>
+<li>合并同类项可得：<ul>
+<li>$$<br>ay_1+(x_1-\left \lfloor \frac{a}{b} \right \rfloor y_1)b&#x3D;gcd(b,a\ mod\ b)<br>$$</li>
+</ul>
+</li>
+<li>由 $gcd$ 的证明可得: $gcd(a,b)&#x3D;gcd(b,a\ mod\ b)$.</li>
+<li>带入得：<ul>
+<li>$$<br>ay_1+(x_1-\left \lfloor \frac{a}{b} \right \rfloor y_1)b&#x3D;gcd(a,b)<br>$$</li>
+</ul>
+</li>
+<li>令：<ul>
+<li>$$<br>x&#x3D;y_1,y&#x3D;x_1-\left \lfloor \frac{a}{b} \right \rfloor y_1<br>$$</li>
+</ul>
+</li>
+<li>就找到了满足条件的 $x,y$ 。</li>
+<li>由数学归纳法可知，裴蜀定理对于任意不全为零的整数 $a,b$ 都成立。</li>
+<li>证毕。</li>
+</ul>
+<h3 id="扩展欧几里得算法（-exgcd-）"><a href="#扩展欧几里得算法（-exgcd-）" class="headerlink" title="扩展欧几里得算法（$exgcd$）"></a>扩展欧几里得算法（$exgcd$）</h3><p><strong>提示</strong>：扩展欧几里得算法是一种使用程序求解问题的算法，不是定理！</p>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><p>目标：由 $gcd$ 和裴蜀定理求 $ax+by&#x3D;gcd(a,b)$ 的一组整数解。</p>
+<h4 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h4><ul>
+<li>请确保您已经理解裴蜀定理的证明！</li>
+<li>现在有方程 $ax+by&#x3D;gcd(a,b)$ ，求该方程的一组解。</li>
+<li>由裴蜀定理可知，当 $b&#x3D;0$ 时，该方程的解为 $x&#x3D;1,y&#x3D;0$</li>
+<li>根据裴蜀定理的结论可知：<ul>
+<li>$$<br>x &#x3D; y_1,y &#x3D; x_1 - \lfloor\frac{a}{b}\rfloor y_1<br>$$</li>
+</ul>
+</li>
+<li>这样就得到了满足 $ax + by &#x3D; gcd(a, b)$ 的整数 $x$ 和 $y$。</li>
+<li>由裴蜀定理可知，$x_1,y_1$ 是 $bx_1+(a\ mod\ b)y_1&#x3D;gcd(b,a\ mod, b)$ 的解。只要再次递归求解该方程即可。</li>
+<li>详情见程序流程图：(绘图工具：draw.io)</li>
+</ul>
+<p><img src="https://img2023.cnblogs.com/blog/3594125/202501/3594125-20250128120610222-2102389682.png" alt="img"></p>
+<h2 id="五、同余"><a href="#五、同余" class="headerlink" title="五、同余"></a>五、同余</h2><ul>
+<li>符号为 $【\equiv】$.</li>
+<li>定义：$a\equiv b(mod\ p)$ 表示： $(a-b)\ mod\ p&#x3D;0$，即 $a-b&#x3D;km$（$k$ 为整数）。</li>
+<li>举个栗子：$a&#x3D;13,b&#x3D;3,p&#x3D;5$，计算 $(13-3)\ mod\ 5$ 正好是 $0$,所以 $5$ 能够整除 $10$.我们这时称： $13\equiv 3(mod\ 5)$</li>
+<li><strong>性质：</strong> 若 $a&#x3D;b$：$a\equiv  b(mod\ m)$</li>
+<li><strong>证明：</strong></li>
+<li>等式两边同时 $mod\ p$ 得：<ul>
+<li>$$<br>a\ mod\ x&#x3D;b\ mod\ x<br>$$</li>
+</ul>
+</li>
+<li>设 $a&#x3D;k_1x+r,b&#x3D;k_2x+r$, 其中 $k_1$ 是整数, $r$ 就是 $a$ 除以 $x$ 后的余数，也就是 $a\ mod\ x &#x3D; r$。</li>
+<li>因为已知 $a% x &#x3D; b% x$，所以它们除以 $x$ 后的余数相同，都为 $r$，其中 $k_2$ 是整数。</li>
+<li>那么：<ul>
+<li>$$<br>a-b&#x3D;(k_1x+r)-(k_2x+r)&#x3D;(k_1-k_2)x<br>$$</li>
+</ul>
+</li>
+<li>因为 $k_1,k_2$ 都是整数，所以说：$a-b$ 是能被 $m$ 整除的。</li>
+<li>所以：<ul>
+<li>$$<br>(a-b)\ mod\ x&#x3D;0<br>$$</li>
+</ul>
+</li>
+<li>根据同余的定义得：<ul>
+<li>$$<br>a\equiv b(mod\ x)<br>$$</li>
+</ul>
+</li>
+<li>所以得出结论：等式两边同时模上一个数，等式依然成立。</li>
+</ul>
+<h2 id="六、逆元"><a href="#六、逆元" class="headerlink" title="六、逆元"></a>六、逆元</h2><h3 id="前置知识-1"><a href="#前置知识-1" class="headerlink" title="前置知识"></a>前置知识</h3><p><strong>请保证你已经足够熟悉同余相关知识！</strong></p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li><strong>先放定义：</strong> 给定正整数 $a,m$，若存在整数 $x$ 使得 $a\times x\equiv 1(mod\ m)$，则称：$x$ 是 $a$ 在模 $m$ 意义下的逆元，记作：$a^{-1}$ .(注意这个写法是在模运算的情境下的一种表示，不是常规的倒数那种意思哦)</li>
+</ul>
+<h3 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h3><h4 id="存在性：若-gcd-x-p-1-，则-x-在模-p-意义下存在逆元。"><a href="#存在性：若-gcd-x-p-1-，则-x-在模-p-意义下存在逆元。" class="headerlink" title="存在性：若 $gcd(x,p)&#x3D;1$ ，则 $x$ 在模 $p$ 意义下存在逆元。"></a>存在性：若 $gcd(x,p)&#x3D;1$ ，则 $x$ 在模 $p$ 意义下存在逆元。</h4><ul>
+<li>根据裴蜀定理，若 $gcd(x,p)&#x3D;1$ ，则存在整数 $s,t$ ，使得 $xs+pt&#x3D;1$</li>
+<li>现在我们考虑其在模 $p$ 的意义下， $1\ mod\ p&#x3D;1$，根据同余的性质，$(xs+pt)\bmod p&#x3D;1\bmod p$</li>
+<li>因为 $pt\equiv 0(mod\ p)$，所以 $pt$ 对 $(sx+pt)\bmod p$ 并没有贡献，可以省略。</li>
+<li>那么舍去 $pt$ 后的式子为：$sx\bmod p&#x3D;1\bmod p$。</li>
+<li>此时，$s$ 就是 $x$ 在模 $p$ 意义下的逆元，即：$x\ ·\ s\equiv1\pmod p$ .</li>
+<li>得证：若 $gcd(x,p)&#x3D;1$ ，$x$ 在模 $p$ 意义下存在逆元。</li>
+</ul>
+<hr>
+<h4 id="必要性：若-x-在模-p-意义下存在逆元，则-gcd-x-p-1-。"><a href="#必要性：若-x-在模-p-意义下存在逆元，则-gcd-x-p-1-。" class="headerlink" title="必要性：若 $x$ 在模 $p$ 意义下存在逆元，则 $gcd(x,p)&#x3D;1$。"></a>必要性：若 $x$ 在模 $p$ 意义下存在逆元，则 $gcd(x,p)&#x3D;1$。</h4><ul>
+<li>当 $x$ 在模 $p$ 意义下存在逆元时，我们把这个逆元记作 $y$，那么存在：<ul>
+<li>$$<br>xy\equiv 1\pmod p<br>$$</li>
+</ul>
+</li>
+<li>根据模运算的定义的逆运算得：<ul>
+<li>$$<br>(xy-1)\bmod p&#x3D;0<br>$$</li>
+</ul>
+</li>
+<li>我们将模运算写成这样的形式（$k$ 为整数）：<ul>
+<li>$$<br>xy-1&#x3D;kp<br>$$</li>
+</ul>
+</li>
+<li>移项得：<ul>
+<li>$$<br>xy-kp&#x3D;1<br>$$</li>
+</ul>
+</li>
+<li>我们设 $d&#x3D;gcd(x,p)$，根据最大公约数的性质，$d$ 整除 $x,p$，即：<ul>
+<li>$$<br>d\ |\ x,\ \ d\ |\ p<br>$$</li>
+</ul>
+</li>
+<li>因为 $d$ 整除 $x$，所以 $d$ 整除 $xy$；</li>
+<li>因为 $d$ 整除 $p$，所以 $d$ 整除 $kp$；</li>
+<li>所以 $d$ 整除 $xy-kp$</li>
+<li>因为 $xy-kp&#x3D;1$ ，所以 $d$ 整除 $1$，又因为 $d$ 是正整数，所以 $d&#x3D;1$，即：$gcd(x,p)&#x3D;1$</li>
+</ul>
+<hr>
+<ul>
+<li>综上，充分性和必要性均得证，所以 $x$ 在模 $p$ 同余下存在逆元当且仅当 $gcd(x,p)&#x3D;1$。</li>
+</ul>
+<h3 id="Exgcd求逆元"><a href="#Exgcd求逆元" class="headerlink" title="Exgcd求逆元"></a>Exgcd求逆元</h3><p>我们暂且放一放逆元的各种稀奇古怪的性质，毕竟笔者脑子比你们还烂。。。</p>
+<h4 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h4><p>目标：对于数 $x,p$, 对于同余方程 $x\times x^{-1}\equiv 1\pmod p$ ，求 $x^{-1}$ 的值。</p>
+<h4 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h4><ul>
+<li>由同余定义得：原式可以分解为：$x\times x^{-1}&#x3D;1+kp$ ，其中 $k$ 为整数。</li>
+<li>移项得：$x\times x^{-1}-kp&#x3D;1$</li>
+<li>由逆元性质得：$x$ 在模 $p$ 同余下存在逆元当且仅当 $gcd(x,p)&#x3D;1$。</li>
+<li>则原式可转化为: $x\times x^{-1}-kp&#x3D;gcd(x,p)$</li>
+<li>因为 $k$ 为符合条件的整数，所以可以将原式抽象为：<ul>
+<li>$$x\times x^{-1}-kp&#x3D;gcd(x,p)$$</li>
+</ul>
+</li>
+<li>其中，$k$ 转化为原来的 $k$ 的相反数。</li>
+<li>发现该式为不定方程。</li>
+<li><strong>直接用 $Exgcd$ 食用即可～</strong></li>
+</ul>
+<hr>
+<p>以下 By Copilot 准确性待证明。</p>
+<h3 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h3><ul>
+<li>对素数 $p$ 以及任意自然数 $a_p$ ，有 $a^p\equiv 1\pmod p$</li>
+<li>证明：<ul>
+<li>由 $gcd(a,p)&#x3D;1$ 可知 $a$ 在模 $p$ 意义下存在逆元 $a^{-1}$。</li>
+<li>则有 $a\times a^{-1}\equiv 1\pmod p$。</li>
+<li>由同余的性质可得：$a^p\times a^{-1}\equiv 1\pmod p$。</li>
+<li>由此可得：$a^p\equiv 1\pmod p$。</li>
+</ul>
+</li>
+</ul>
+<h3 id="扩展费马小定理"><a href="#扩展费马小定理" class="headerlink" title="扩展费马小定理"></a>扩展费马小定理</h3><ul>
+<li>对素数 $p$ 以及任意自然数 $a_p$，有 $a^{p-1}\equiv 1\pmod p$。</li>
+<li>证明：<ul>
+<li>由费马小定理可得：$a^p\equiv 1\pmod p$。</li>
+<li>则有 $a^p&#x3D;a^{p-1}\times a\equiv 1\pmod p$。</li>
+<li>由同余的性质可得：$a^{p-1}\equiv 1\pmod p$。</li>
+</ul>
+</li>
+<li>该定理的应用：可以用来求逆元。</li>
+</ul>
+<h3 id="逆元性质"><a href="#逆元性质" class="headerlink" title="逆元性质"></a>逆元性质</h3><ul>
+<li>逆元的性质：$a^{-1}\equiv a^{p-2}\pmod p$。</li>
+<li>证明：<ul>
+<li>由扩展费马小定理可得：$a^{p-1}\equiv 1\pmod p$。</li>
+<li>则有 $a^{p-1}\times a\equiv 1\pmod p$。</li>
+<li>由同余的性质可得：$a^{p-1}\equiv a^{-1}\pmod p$。</li>
+<li>则有 $a^{-1}\equiv a    ^{p-2}\pmod p$。</li>
+<li>该性质的应用：可以用来求逆元。</li>
+</ul>
+</li>
+<li><strong>注意：</strong> 该性质仅适用于素数模下的逆元求解。</li>
+</ul>
+<h3 id="逆元的应用"><a href="#逆元的应用" class="headerlink" title="逆元的应用"></a>逆元的应用</h3><ul>
+<li>逆元的应用：可以用来求解同余方程。</li>
+<li>例如：求解同余方程 $ax\equiv b\pmod p$。</li>
+<li>由逆元性质可得：$x\equiv b\times a^{-1}\pmod p$。</li>
+<li>其中，$a^{-1}$ 为 $a$ 在模 $p$ 意义下的逆元。</li>
+<li>该方法可以用来求解同余方程的解。</li>
+<li>例如：求解同余方程 $3x\equiv 6\pmod 7$。</li>
+<li>由逆元性质可得：$x\equiv 6\times 3^{-1}\pmod 7$。</li>
+<li>其中，$3^{-1}$ 为 $3$ 在模 $7$ 意义下的逆元</li>
+<li>由扩展费马小定理可得：$3^{7-2}\equiv 3^5\equiv 5\pmod 7$。</li>
+<li>则有 $x\equiv 6\times 5\pmod 7$。</li>
+<li>由同余的性质可得：$x\equiv 30\pmod 7$。</li>
+<li>则有 $x\equiv 2\pmod 7$。</li>
+<li>该方程的解为 $x\equiv 2\pmod 7$。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://frankwkd.pages.dev">FrankWkd</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://frankwkd.pages.dev/2025/02/18/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E5%88%9D%E7%AD%89%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://frankwkd.pages.dev/2025/02/18/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E5%88%9D%E7%AD%89%E6%95%B0%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://www.gnu.org/licenses/gpl-3.0.zh-cn.html" target="_blank">GNU GPL 3.0</a> 许可协议。转载请注明来源 <a href="https://frankwkd.pages.dev" target="_blank">FrankWkd</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E8%AE%BA/">数论</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/02/23/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="字符串哈希学习笔记"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">字符串哈希学习笔记</div></div><div class="info-2"><div class="info-item-1">字符串哈希学习笔记OP：哇 好难懂 谁发明了这恶心的算法。。。 字符串哈希 1.字符串哈希作用 将字符串计算为一个整数。 要求： 不同的字符串映射为不同的值，同一个字符串映射为相同的值。   2.如何计算字符串的哈希值 将字符串视为P进制的数字，经验上 $P&#x3D;131、13331$ . 如果字符串仅包含大写、小写、数字字符其中之一，比如：$a…z$，将其映射为 $1..26$。 一定不能将字符映射为 $0$ 。   3.计算出来的结果太大，将结果 $%h。(h&#x3D;2^{64})$ $%h$ 的方法：将计算结果直接赋值给 $unsigned\ long\ long$ .   4.如何计算区间哈希值：利用滚动(前缀)哈希值，计算区间哈希值。 前缀哈希值：$h[i]&#x3D;h[i-1]*P+(s[i]-‘a’+1)$   区间哈希值：$h[L，R]&#x3D;h[R]-h[L-1]*P^(R-L+1)$    习题额。。。（汗流浃背 01 	子串判重解法：套模版，求区间哈希值直接使用前缀和（官方叫做滚动哈希值）1234567891011121314151617181...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/03/11/2025dsfz-KMP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="2025dsfz-KMP学习笔记"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-11</div><div class="info-item-2">2025dsfz-KMP学习笔记</div></div><div class="info-2"><div class="info-item-1">KMP前言：这把高端局 关于KMP 时间复杂度为 $O(n+m)$ 的优秀字符串查找算法。 适用于在句子&#x2F;文章中查找一段文字（词语）。  KMP实现关于共同前后缀数组（PMT） 说人话就是 $next$ 数组。  是什么？  $next_i$ 表示下标从 $1$ 到 $i$ 的子串（后文中叫做 $Orgin$ 串）中既是 $Orgin$ 的前缀串又是 $Orgin$ 的后缀串的字符串的最长长度。 举例说明：开始时候的串为：abcab 那 $next_5&#x3D;2$ ，因为存在串 $ab$ 既是 $Orgin$ 的前缀又是 $Orgin$ 的后缀，而且在所有满足条件的串中，它是最长的。所以把 $next_5$ 设为它的长度—— $2$.     构建 $PMT$ 的详细步骤  初始化：设模式串为 $P$，长度为 $m$，创建一个长度为 $m$ 的数组 $pmt$ 来存储部分匹配表(相当于 $next$ 数组)的值。初始化 $pmt[0] &#x3D; 0$，因为模式串的第一个字符的前缀子串只有一个字符，不存在相等的前后缀。 遍历模式串：从模式串的第二个字符开始遍历，即...</div></div></div></a><a class="pagination-related" href="/2025/05/14/Bellman-Ford%E7%AE%97%E6%B3%95%E5%92%8CSPFA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Bellman-Ford算法和SPFA学习笔记"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-14</div><div class="info-item-2">Bellman-Ford算法和SPFA学习笔记</div></div><div class="info-2"><div class="info-item-1">Bellman-Ford前置知识 首先你需要知道图论最核心的一个思路——松弛。 他是啥呢？笔者当时学的时候也花了亿堆时间理解它，就是假如我们现在有一些边，如图：简单来说，松弛就是不断的更新两个点的距离使得它比之前的答案更优。在这张图片里，我们将要松弛的 $2$ 个节点为 $(A,B)$ ，$A$ 为源点  那么它的原始距离是 $10$ ，那么如果我更新了他的一条路径（松弛成功），这个路径的边权和一定是要比 $10$ 小的。好，那我们先来遍历和 $B$ 点有直接连边的节点。  先看 $C_1$ 那我们知道现在点 $C_1$ 到点 $A$ 的距离是 $2$ ，那因为 $C_1$ 到点 $B$ 的距离是 $9$ ，所以 $A$ 到 $B$ 经过点 $C_1$ 的距离就是 $2+9&#x3D;11$ ，很显然，这个答案是比当前已知答案要差的。所以这次松弛并没有成功，我们选择放弃当前绕路的边权和。  再看 $C_2$ 那我们知道现在点 $C_2$ 到点 $A$ 的距离是 $3$ ，那因为 $C_2$ 到点 $B$ 的距离是 $1$ ，所以 $A$ 到 $B$ 经过点 $C_2$ 的距离就是...</div></div></div></a><a class="pagination-related" href="/2025/07/11/Luogu-%E9%A2%98%E8%A7%A3%EF%BC%9AB4290-%E8%93%9D%E6%A1%A5%E6%9D%AF%E9%9D%92%E5%B0%91%E5%B9%B4%E7%BB%84%E7%9C%81%E8%B5%9B-2022-%E7%BB%84%E5%90%88/" title="Luogu-题解：B4290 [蓝桥杯青少年组省赛 2022] 组合"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-11</div><div class="info-item-2">Luogu-题解：B4290 [蓝桥杯青少年组省赛 2022] 组合</div></div><div class="info-2"><div class="info-item-1">传送门关于无解的情况我们先计算一下这些数的最大公约数，如果他们的最大公约数不等于 $1$，因为这组数据下我们只能买到 $sum$ 及其倍数个的汤圆。所以遇到这种情况直接输出 $-1$。 DP与其说是动态规划，不如说是递推，我们设置 $f_{a_i}$ 为 $1$，代表能够凑出（$a_i$ 为所给出的规格），然后如果 $f_{i-a_j}$ 是 $1$，那么 $f_i$ 也应该是 $1$，因为可以转化为 $f_{i-a_j}$ 再加上一个 $i$ 号规格的汤圆。对于每一个数，我们判断它是否可以凑出来，最后没有被赋值为 $1$ 的就是答案。 1234567891011121314151617181920212223242526272829303132333435363738394041424344#include &lt;bits/stdc++.h&gt;const int N = 1e6 + 10;typedef long long ll;using namespace std;int num[30], n;int counter = 0, tp = 0, maxcounter =...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">FrankWkd</div><div class="author-info-description">那时我们有梦，关于文学，关于爱情，关于穿越世界的旅行。如今我们深夜饮酒，杯子碰到一起，都是梦破碎的声音。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/FrankWkd-Pro"><i class="fab fa-github"></i><span>Follow Me on Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.luogu.com.cn/user/845400" target="_blank" title="洛谷@lwj54joy"><i class="icon"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Some feelings, only fit to be treasured in the heart.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E3%80%91%E3%80%90%E4%B8%93%E9%A2%98%E3%80%91%E5%88%9D%E7%AD%89%E6%95%B0%E8%AE%BA"><span class="toc-number">1.</span> <span class="toc-text">【持续更新】【专题】初等数论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E9%81%B5%E5%AE%88GNU-GPL2-0%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE%E3%80%82"><span class="toc-number">1.1.</span> <span class="toc-text">$&gt;&gt;$本文遵守GNU GPL2.0开源协议。$&lt;&lt;$</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Designed-By%EF%BC%9AFrankWkd"><span class="toc-number">1.1.0.0.1.</span> <span class="toc-text">Designed By：FrankWkd</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Updated-at-2025-01-26"><span class="toc-number">1.1.0.0.2.</span> <span class="toc-text">Updated at 2025.01.26</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">前言：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.</span> <span class="toc-text">一、基础概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">二、基础算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Euler%E6%AC%A7%E6%8B%89%E7%AD%9B-%E7%BA%BF%E6%80%A7%E7%AD%9B"><span class="toc-number">1.4.</span> <span class="toc-text">三、Euler欧拉筛(线性筛)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%BA%BF%E6%80%A7%E7%AD%9B"><span class="toc-number">1.4.1.</span> <span class="toc-text">关于线性筛</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E"><span class="toc-number">1.4.2.</span> <span class="toc-text">证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%EF%BC%9A"><span class="toc-number">1.4.3.</span> <span class="toc-text">例题：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E5%AE%9A%E7%90%86%E5%8F%8A%E5%85%B6%E6%89%A9%E5%B1%95-%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">四、欧几里得定理及其扩展&amp;裴蜀定理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E5%AE%9A%E7%90%86%EF%BC%88-gcd-%EF%BC%89"><span class="toc-number">1.5.1.</span> <span class="toc-text">欧几里得定理（$gcd$）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E7%90%86"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">前置知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-1"><span class="toc-number">1.5.1.3.</span> <span class="toc-text">证明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%B4%E8%9C%80%E5%AE%9A%E7%90%86"><span class="toc-number">1.5.2.</span> <span class="toc-text">裴蜀定理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E7%90%86-1"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">定理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%81%E6%98%8E-2"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">证明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95%EF%BC%88-exgcd-%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">扩展欧几里得算法（$exgcd$）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%9A%E6%B3%95"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">做法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%90%8C%E4%BD%99"><span class="toc-number">1.6.</span> <span class="toc-text">五、同余</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%80%86%E5%85%83"><span class="toc-number">1.7.</span> <span class="toc-text">六、逆元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-1"><span class="toc-number">1.7.1.</span> <span class="toc-text">前置知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.7.2.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%81%E6%98%8E%EF%BC%9A"><span class="toc-number">1.7.3.</span> <span class="toc-text">证明：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%9C%A8%E6%80%A7%EF%BC%9A%E8%8B%A5-gcd-x-p-1-%EF%BC%8C%E5%88%99-x-%E5%9C%A8%E6%A8%A1-p-%E6%84%8F%E4%B9%89%E4%B8%8B%E5%AD%98%E5%9C%A8%E9%80%86%E5%85%83%E3%80%82"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">存在性：若 $gcd(x,p)&#x3D;1$ ，则 $x$ 在模 $p$ 意义下存在逆元。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E6%80%A7%EF%BC%9A%E8%8B%A5-x-%E5%9C%A8%E6%A8%A1-p-%E6%84%8F%E4%B9%89%E4%B8%8B%E5%AD%98%E5%9C%A8%E9%80%86%E5%85%83%EF%BC%8C%E5%88%99-gcd-x-p-1-%E3%80%82"><span class="toc-number">1.7.3.2.</span> <span class="toc-text">必要性：若 $x$ 在模 $p$ 意义下存在逆元，则 $gcd(x,p)&#x3D;1$。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exgcd%E6%B1%82%E9%80%86%E5%85%83"><span class="toc-number">1.7.4.</span> <span class="toc-text">Exgcd求逆元</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87-1"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%B3%95"><span class="toc-number">1.7.4.2.</span> <span class="toc-text">解法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86"><span class="toc-number">1.7.5.</span> <span class="toc-text">费马小定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86"><span class="toc-number">1.7.6.</span> <span class="toc-text">扩展费马小定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E5%85%83%E6%80%A7%E8%B4%A8"><span class="toc-number">1.7.7.</span> <span class="toc-text">逆元性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%86%E5%85%83%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.7.8.</span> <span class="toc-text">逆元的应用</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/" title="[转自洛谷]洛谷KateX公式大全【LateX】"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="[转自洛谷]洛谷KateX公式大全【LateX】"/></a><div class="content"><a class="title" href="/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/" title="[转自洛谷]洛谷KateX公式大全【LateX】">[转自洛谷]洛谷KateX公式大全【LateX】</a><time datetime="2025-07-26T12:17:26.000Z" title="发表于 2025-07-26 20:17:26">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/26/How-to-look-forward/" title="How to look forward?"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="How to look forward?"/></a><div class="content"><a class="title" href="/2025/07/26/How-to-look-forward/" title="How to look forward?">How to look forward?</a><time datetime="2025-07-26T02:45:39.000Z" title="发表于 2025-07-26 10:45:39">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/26/%E4%B9%98%E9%A3%8E-%E5%B0%98%E5%B0%81/" title="乘风.尘封."><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="乘风.尘封."/></a><div class="content"><a class="title" href="/2025/07/26/%E4%B9%98%E9%A3%8E-%E5%B0%98%E5%B0%81/" title="乘风.尘封.">乘风.尘封.</a><time datetime="2025-07-26T02:10:35.000Z" title="发表于 2025-07-26 10:10:35">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/About-ME/" title="About ME"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="About ME"/></a><div class="content"><a class="title" href="/2025/07/25/About-ME/" title="About ME">About ME</a><time datetime="2025-07-25T12:56:02.000Z" title="发表于 2025-07-25 20:56:02">2025-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/Codeforces-%E9%A2%98%E8%A7%A3%EF%BC%9ACF2060D-Subtract-Min-Sort/" title="Codeforces-题解：CF2060D Subtract Min Sort"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Codeforces-题解：CF2060D Subtract Min Sort"/></a><div class="content"><a class="title" href="/2025/07/25/Codeforces-%E9%A2%98%E8%A7%A3%EF%BC%9ACF2060D-Subtract-Min-Sort/" title="Codeforces-题解：CF2060D Subtract Min Sort">Codeforces-题解：CF2060D Subtract Min Sort</a><time datetime="2025-07-25T09:34:36.000Z" title="发表于 2025-07-25 17:34:36">2025-07-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/vfj185ab.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2019 - 2025 By FrankWkd</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = '/pluginsSrc/mathjax/es5/tex-mml-chtml.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="/pluginsSrc/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/pluginsSrc/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="/pluginsSrc/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/aplayer/dist/APlayer.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/metingjs/dist/Meting.min.js"></script></div></body></html>

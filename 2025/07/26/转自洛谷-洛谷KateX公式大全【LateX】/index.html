@@ -1,0 +1,1964 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>[转自洛谷]洛谷KateX公式大全【LateX】 | FrankWkd</title><meta name="author" content="FrankWkd"><meta name="copyright" content="FrankWkd"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言由于在洛谷，有很多人对于$\KaTeX$和$\LaTeX$之间的关系并不清楚，导致很多人去搜$\LaTeX$的资料，然后发现有许多指令无法在洛谷运行。  但是事实上，$\KaTeX$才是洛谷上的$\LaTeX$的渲染机制。因此只有$\KaTeX$支持的指令才能正常使用。在$\KaTeX$官网，其实有两张支持表，这里搬运过来以便于大家能够正确使用指令。 这张表应该涵盖了纯$\KaTeX$所有的功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转自洛谷]洛谷KateX公式大全【LateX】">
+<meta property="og:url" content="https://frankwkd.pages.dev/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/index.html">
+<meta property="og:site_name" content="FrankWkd">
+<meta property="og:description" content="前言由于在洛谷，有很多人对于$\KaTeX$和$\LaTeX$之间的关系并不清楚，导致很多人去搜$\LaTeX$的资料，然后发现有许多指令无法在洛谷运行。  但是事实上，$\KaTeX$才是洛谷上的$\LaTeX$的渲染机制。因此只有$\KaTeX$支持的指令才能正常使用。在$\KaTeX$官网，其实有两张支持表，这里搬运过来以便于大家能够正确使用指令。 这张表应该涵盖了纯$\KaTeX$所有的功">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png">
+<meta property="article:published_time" content="2025-07-26T12:17:26.000Z">
+<meta property="article:modified_time" content="2025-07-26T12:19:16.582Z">
+<meta property="article:author" content="FrankWkd">
+<meta property="article:tag" content="Luogu">
+<meta property="article:tag" content="Latex">
+<meta property="article:tag" content="编辑">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[转自洛谷]洛谷KateX公式大全【LateX】",
+  "url": "https://frankwkd.pages.dev/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/",
+  "image": "https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png",
+  "datePublished": "2025-07-26T12:17:26.000Z",
+  "dateModified": "2025-07-26T12:19:16.582Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "FrankWkd",
+      "url": "https://frankwkd.pages.dev"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png"><link rel="canonical" href="https://frankwkd.pages.dev/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/index.html"><link rel="preconnect"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":1,"languages":{"author":"作者: FrankWkd","link":"链接: ","source":"来源: FrankWkd","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '[转自洛谷]洛谷KateX公式大全【LateX】',
+  isHighlightShrink: undefined,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/xxx.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/puw9og8g.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" alt="Logo"><span class="site-name">FrankWkd</span></a><a class="nav-page-title" href="/"><span class="site-name">[转自洛谷]洛谷KateX公式大全【LateX】</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">[转自洛谷]洛谷KateX公式大全【LateX】</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-07-26T12:17:26.000Z" title="发表于 2025-07-26 20:17:26">2025-07-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-26T12:19:16.582Z" title="更新于 2025-07-26 20:19:16">2025-07-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">6.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>32分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于在洛谷，有很多人对于$\KaTeX$和$\LaTeX$之间的关系并不清楚，导致很多人去搜$\LaTeX$的资料，然后发现有许多指令无法在洛谷运行。 </p>
+<p>但是事实上，$\KaTeX$才是洛谷上的$\LaTeX$的渲染机制。因此只有$\KaTeX$支持的指令才能正常使用。在$\KaTeX$官网，其实有两张支持表，这里搬运过来以便于大家能够正确使用指令。</p>
+<p>这张表应该涵盖了纯$\KaTeX$<strong>所有</strong>的功能。当然，$\LaTeX$公式大全亦可作为部分参考。下面是搬运部分。</p>
+<hr>
+<h2 id="受支持的功能"><a href="#受支持的功能" class="headerlink" title="受支持的功能"></a>受支持的功能</h2><p>这是一张由$\KaTeX$支持的$\TeX$公式清单。他按照逻辑顺序分类。</p>
+<p>这有一个相似的按照字典序排列的<a target="_blank" rel="noopener" href="https://katex.org/docs/support_table.html">支持表</a>。那张表格同样写出了不受支持的公式。</p>
+<h2 id="声调记号"><a href="#声调记号" class="headerlink" title="声调记号"></a>声调记号</h2><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$a’$ <code>a&#39;</code></td>
+<td align="left">$\tilde{a}$ <code>\tilde&#123;a&#125;</code></td>
+<td align="left">$\mathring{g}$ <code>\mathring&#123;g&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$a’’$ <code>a&#39;&#39; </code></td>
+<td align="left">$\widetilde{ac}$ <code>\widetilde&#123;ac&#125;</code></td>
+<td align="left">$\overgroup{AB}$<code>\overgroup&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$a^{\prime}$ <code>a^&#123;\prime&#125;</code></td>
+<td align="left">$\utilde{AB}$ <code>\utilde&#123;AB&#125;</code></td>
+<td align="left">$\undergroup{AB}$ <code>\undergroup&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\acute{a}$ <code>\acute&#123;a&#125;</code></td>
+<td align="left">$\vec{F}$ <code>\vec&#123;F&#125;</code></td>
+<td align="left">$\Overrightarrow{AB}$ <code>\Overrightarrow&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\bar{y}$ <code>\bar&#123;y&#125;</code></td>
+<td align="left">$\overleftarrow{AB}$ <code>\overleftarrow&#123;AB&#125;</code></td>
+<td align="left">$\overrightarrow{AB}$ <code>\overrightarrow&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\breve{a}$ <code>\breve&#123;a&#125;</code></td>
+<td align="left">$\underleftarrow{AB}$ <code>\underleftarrow&#123;AB&#125;</code></td>
+<td align="left">$\underrightarrow{AB}$ <code>\underrightarrow&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\check{a}$ <code>\check&#123;a&#125;</code></td>
+<td align="left">$\overleftharpoon{ac}$ <code>\overleftharpoon&#123;ac&#125;</code></td>
+<td align="left">$\overrightharpoon{ac}$ <code>\overrightharpoon&#123;ac&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\dot{a}$ <code>\dot&#123;a&#125;</code></td>
+<td align="left">$\overleftrightarrow{AB}$ <code>\overleftrightarrow&#123;AB&#125;</code></td>
+<td align="left">$\overbrace{AB}$ <code>\overbrace&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\ddot{a}$ <code>\ddot&#123;a&#125;</code></td>
+<td align="left">$\underleftrightarrow{AB}$ <code>\underleftrightarrow&#123;AB&#125;</code></td>
+<td align="left">$\underbrace{AB}$  <code>\underbrace&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\grave{a}$ <code>\grave&#123;a&#125;</code></td>
+<td align="left">$\overline{AB}$ <code>\overline&#123;AB&#125;</code></td>
+<td align="left">$\overlinesegment{AB}$ <code>\overlinesegment&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\hat{\theta}$ <code>\hat&#123;\theta&#125;</code></td>
+<td align="left">$\underline{AB}$ <code>\underline&#123;AB&#125;</code></td>
+<td align="left">$\underlinesegment{AB}$ <code>\underlinesegment&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\widehat{ac}$ <code>\widehat&#123;ac&#125;</code></td>
+<td align="left">$\widecheck{ac}$ <code>\widecheck&#123;ac&#125;</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>另外，还有一些上下音标适合用在<code>\text&#123;&#125;</code>环境下。$^{[1]}$</p>
+<table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\text{&#39;{a} }$ <code>\&#39;&#123;a&#125;</code></td>
+<td align="left">$\text{~{a} }$ <code>\~&#123;a&#125;</code></td>
+<td align="left">$\text{.{a} }$ <code>\.&#123;a&#125;</code></td>
+<td align="left">$\text{\H{a} }$ <code>\H&#123;a&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\text{`{a} }$ $^{[2]}$</td>
+<td align="left">$\text{={a} }$ <code>\=&#123;a&#125;</code></td>
+<td align="left">$\text{&quot;{a} }$ <code>\&quot;&#123;a&#125;</code></td>
+<td align="left">$\text{\v{a} } $ <code>\v&#123;a&#125; </code></td>
+</tr>
+<tr>
+<td align="left">$\text{^{a} }$ <code>\^&#123;a&#125;</code></td>
+<td align="left">$\text{\u{a} }$ <code>\u&#123;a&#125;</code></td>
+<td align="left">$\text{\r{a} }$ <code>\r&#123;a&#125;</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>$[1]:$ 这类特殊的音标需要用在文字环境下，即<code>\text&#123;&#125;</code>里面。比如<code>$\text&#123;\&#39;&#123;a&#125; &#125;$</code></p>
+<p>$[2]:$ 由于会和$\rm Markdown$的代码块冲突，这里说明一下，这个音标的代码其实是<code>\+波浪线对应按键+&#123;&#125;</code>。</p>
+<p>另请参阅 字母 章节。</p>
+<h2 id="定界符（括号之类）"><a href="#定界符（括号之类）" class="headerlink" title="定界符（括号之类）"></a>定界符（括号之类）</h2><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+<th align="left">第五列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$()$ <code>()</code></td>
+<td align="left">$\lparen\rparen$ <code>\lparen\rparen</code></td>
+<td align="left">$⌈ ⌉$ <code>⌈ ⌉</code></td>
+<td align="left">$\lceil \rceil$ <code>\lceil rceil</code></td>
+<td align="left">$\uparrow$ <code>\uparrow</code></td>
+</tr>
+<tr>
+<td align="left">$[ ]$ <code>[ ]</code></td>
+<td align="left">$\lbrack\rbrack$<code>\lbrack\rbrack</code></td>
+<td align="left">$⌊ ⌋$ <code>⌊ ⌋</code></td>
+<td align="left">$\lfloor\rfloor$ <code>\lfloor\rfloor</code></td>
+<td align="left">$\downarrow$ <code>\downarrow</code></td>
+</tr>
+<tr>
+<td align="left">${ }$ <code>\&#123; \&#125;</code></td>
+<td align="left">$\lbrace\rbrace$ <code>\lbrace\rbrace</code></td>
+<td align="left">$⎰⎱$ <code>⎰⎱</code></td>
+<td align="left">$\lmoustache\rmoustache$ <code>\lmoustache\rmoustache</code></td>
+<td align="left">$\updownarrow$ <code>\updownarrow</code></td>
+</tr>
+<tr>
+<td align="left">$⟨ ⟩$ <code>⟨ ⟩</code></td>
+<td align="left">$\langle\rangle$<code>\langle\rangle</code></td>
+<td align="left">$⟮ ⟯$ <code>⟮ ⟯</code></td>
+<td align="left">$\lgroup\rgroup$ <code>\lgroup\rgroup</code></td>
+<td align="left">$\Uparrow$ <code>\Uparrow</code></td>
+</tr>
+<tr>
+<td align="left">$^{[3]}$ &#96;</td>
+<td align="left">&#96;</td>
+<td align="left">$\vert$ <code>\vert</code></td>
+<td align="left">$┌ ┐$ <code>┌ ┐</code></td>
+<td align="left">$\ulcorner\urcorner$ <code>\ulcorner\urcorner</code></td>
+</tr>
+<tr>
+<td align="left">$|$ <code>|</code></td>
+<td align="left">$\Vert$ <code>\Vert</code></td>
+<td align="left">$└ ┘$ <code>└ ┘</code></td>
+<td align="left">$\llcorner\lrcorner$ <code>\llcorner\lrcorner</code></td>
+<td align="left">$\Updownarrow$ <code>\Updownarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\lvert\rvert$<code>\lvert\rvert</code></td>
+<td align="left">$\lVert\rVert$ <code>\lVert\rVert</code></td>
+<td align="left"><code>\left.</code>$^{[4]}$</td>
+<td align="left"><code>\right.</code></td>
+<td align="left">$\backslash$ <code>\backslash</code></td>
+</tr>
+<tr>
+<td align="left">$\lang\rang$ <code>\lang\rang</code></td>
+<td align="left">$\lt \gt$<code>\lt \gt</code></td>
+<td align="left">$⟦ ⟧$<code>⟦ ⟧</code></td>
+<td align="left">$\llbracket\rrbracket$ <code>\llbracket\rrbracket</code></td>
+<td align="left">$\lBrace \rBrace$ <code>\lBrace \rBrace</code></td>
+</tr>
+</tbody></table>
+<p>$[3]:$ 由于$\rm Markdown$的制表与<code>|</code>有冲突，因此无法在表格中显示 $|$。</p>
+<p>$[4]:$ <code>\left</code>和<code>\right</code>后面直接加括号，能显示括号。（人类迷惑行为）</p>
+<h3 id="定界符大小-5"><a href="#定界符大小-5" class="headerlink" title="定界符大小$^{[5]}$"></a>定界符大小$^{[5]}$</h3><p>$\left(\LARGE{AB}\right)$ <code>\left(\LARGE&#123;AB&#125;\right)</code></p>
+<p>$( \big( \Big( \bigg( \Bigg($ <code>( \big( \Big( \bigg( \Bigg(</code></p>
+<p>$[5]:$ 这里定界符主要指括号。$\KaTeX$提供了一些指令来调整括号的大小。另外，这里<code>\left,\right</code>指令是自动调整括号大小。</p>
+<table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+<th align="left">第五列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>\left</code></td>
+<td align="left"><code>\big</code></td>
+<td align="left"><code>\bigl</code></td>
+<td align="left"><code>\bigm</code></td>
+<td align="left"><code>\bigr</code></td>
+</tr>
+<tr>
+<td align="left"><code>\middle</code></td>
+<td align="left"><code>\Big</code></td>
+<td align="left"><code>\Bigl</code></td>
+<td align="left"><code>\Bigm</code></td>
+<td align="left"><code>\Bigr</code></td>
+</tr>
+<tr>
+<td align="left"><code>\right</code></td>
+<td align="left"><code>\bigg</code></td>
+<td align="left"><code>\biggl</code></td>
+<td align="left"><code>\biggm</code></td>
+<td align="left"><code>\biggr</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><code>\Bigg</code></td>
+<td align="left"><code>\Biggl</code></td>
+<td align="left"><code>\Biggm</code></td>
+<td align="left"><code>\Biggr</code></td>
+</tr>
+</tbody></table>
+<h2 id="环境-6"><a href="#环境-6" class="headerlink" title="环境$^{[6]}$"></a>环境$^{[6]}$</h2><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\begin{matrix}a &amp; b \c &amp; d\end{matrix}$</td>
+<td align="left">$\begin{aligned}&amp;\tt \backslash begin{matrix} \&amp;\tt\quad  a &amp; b \backslash \backslash \ &amp;\tt\quad  c &amp; d \&amp;\tt \backslash end{matrix} \\end{aligned}$</td>
+<td align="left">$\begin{array}{cc}a &amp; b \c &amp; d\end{array}$</td>
+<td align="left">$\begin{aligned}&amp;\tt \backslash begin{array}{cc}\&amp;\tt\quad a &amp; b \backslash \backslash\&amp;\tt\quad c &amp; d\&amp;\tt \backslash end{array}\\end{aligned}$</td>
+</tr>
+<tr>
+<td align="left">$\begin{pmatrix}a &amp; b \c &amp; d\end{pmatrix}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash begin{pmatrix}\&amp;\tt\quad a &amp; b \backslash \backslash \&amp;\tt\quad c &amp; d\&amp;\tt\backslash end{pmatrix}\\end{aligned}$</td>
+<td align="left">$\begin{bmatrix}a &amp; b \c &amp; d\end{bmatrix}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash begin{bmatrix} \&amp;\tt\quad a &amp; b \backslash \backslash  \&amp;\tt\quad c &amp; d \&amp;\tt\backslash end{bmatrix} \\end{aligned}$</td>
+</tr>
+<tr>
+<td align="left">$\begin{vmatrix}a &amp; b \c &amp; d\end{vmatrix}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash begin{vmatrix}\&amp;\tt\quad a &amp; b \backslash \backslash \&amp;\tt\quad c \ d\&amp;\tt\backslash end{vmatrix}\\end{aligned}$</td>
+<td align="left">$\begin{Vmatrix}a &amp; b \c &amp; d\end{Vmatrix}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash begin{Vmatrix}\&amp;\tt\quad a &amp; b \backslash \backslash \&amp;\tt\quad c \ d\&amp;\tt\backslash end{Vmatrix}\\end{aligned}$</td>
+</tr>
+<tr>
+<td align="left">$\begin{Bmatrix}a &amp; b \c &amp; d\end{Bmatrix}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash begin{Bmatrix}\&amp;\tt\quad a &amp; b \backslash \backslash \&amp;\tt\quad c \ d\&amp;\tt\backslash end{Bmatrix}\\end{aligned}$</td>
+<td align="left">$\def\arraystretch{1.5} \begin{array}{c:c:c} a &amp; b &amp; c \ \hline d &amp; e &amp; f \\hdashline g &amp; h &amp; i\end{array}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash def\backslash arraystretch{1.5}\&amp;\tt\quad \backslash begin{array}{c:c:c}\&amp;\tt\quad a &amp; b &amp; c \backslash\backslash \backslash hline\&amp;\tt\quad d &amp; e &amp; f \backslash \backslash\&amp;\tt\quad \backslash hdashline\&amp;\tt\quad g &amp; h &amp; i\&amp;\tt\backslash end{array}\end{aligned}$</td>
+</tr>
+<tr>
+<td align="left">$\begin{aligned}a&amp;&#x3D;b+c \d+e&amp;&#x3D;f\end{aligned}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash {aligned}\&amp;\tt\quad a&amp;&#x3D;b+c \backslash \backslash \&amp;\tt\quad d+e&amp;&#x3D;f\&amp;\tt\backslash end{aligned}\\end{aligned}$</td>
+<td align="left">$\begin{alignedat}{2}10&amp;x+ &amp;3&amp;y &#x3D; 2 \3&amp;x+&amp;13&amp;y &#x3D; 4\end{alignedat}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash begin{alignedat}{2}\&amp;\tt\quad 10&amp;x+ &amp;3&amp;y &#x3D; 2 \backslash \backslash \&amp;\tt\quad 3&amp;x+&amp;13&amp;y &#x3D; 4\&amp;\tt\backslash end{alignedat}\\end{aligned}$</td>
+</tr>
+<tr>
+<td align="left">$\begin{gathered}a&#x3D;b \e&#x3D;b+c\end{gathered}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash begin{gathered}\&amp;\tt\quad a&#x3D;b \backslash\backslash\&amp;\tt\quad e&#x3D;b+c\&amp;\tt\backslash end{gathered}\\end{aligned}$</td>
+<td align="left">$x &#x3D; \begin{cases}a &amp;\text{if } b \c &amp;\text{if } d\end{cases}$</td>
+<td align="left">$\begin{aligned}&amp;\tt x &#x3D; \backslash begin{cases} \&amp;\tt\quad a &amp;\text{if } b \backslash\backslash \&amp;\tt\quad c &amp;\text{if } d\&amp;\tt\backslash end{cases}\\end{aligned}$</td>
+</tr>
+<tr>
+<td align="left">$\begin{smallmatrix}a &amp; b \c &amp; d\end{smallmatrix}$</td>
+<td align="left">$\begin{aligned}&amp;\tt\backslash begin{smallmatrix}\&amp;\tt\quad a &amp; b \backslash \backslash \&amp;\tt\quad c \ d\&amp;\tt\backslash end{smallmatrix}\\end{aligned}$</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>$[6]:$ 因为相关原因，在表格里换行不是很方便，因此这里直接嵌入的是$\KaTeX$。</p>
+<h3 id="text-Unicode-7-数学字母、符号"><a href="#text-Unicode-7-数学字母、符号" class="headerlink" title="$\text{Unicode}$$^{[7]}$数学字母、符号"></a>$\text{Unicode}$$^{[7]}$数学字母、符号</h3><table>
+<thead>
+<tr>
+<th align="left">字段</th>
+<th align="left">支持的字符</th>
+<th align="left">字段</th>
+<th align="left">支持的字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">粗体</td>
+<td align="left">$\textbf{A-Z,a-z,0-9}$</td>
+<td align="left">双线体</td>
+<td align="left">$\Bbb{A-Z,k}$</td>
+</tr>
+<tr>
+<td align="left">意大利斜体</td>
+<td align="left">$\textit{A-Z,a-z}$</td>
+<td align="left">无衬线字体</td>
+<td align="left">$\textsf{A-Z,a-z,0-9}$</td>
+</tr>
+<tr>
+<td align="left">粗意大利斜体</td>
+<td align="left">$\textbf{\textit{A-Z,a-z} }$</td>
+<td align="left">粗体无衬线</td>
+<td align="left">$\textsf{\textbf{A-Z,a-z,0-9} }$</td>
+</tr>
+<tr>
+<td align="left">手写体</td>
+<td align="left">$\mathscr{A-Z}$</td>
+<td align="left">斜体无衬线</td>
+<td align="left">$\textsf{\textit{A-Z,a-z } }$</td>
+</tr>
+<tr>
+<td align="left">花体</td>
+<td align="left">$\frak{A-Z,a-z}$</td>
+<td align="left">打字机字体</td>
+<td align="left">$\texttt{A-Z,a-z,0-9}$</td>
+</tr>
+</tbody></table>
+<p>$[7]:$ 这里$\rm Unicode$就是万国码。这里是指$\rm Unicode$里支持的字体样式。关于它们的指令，请参考下面的“字体”一段。</p>
+<h3 id="text-Unicode"><a href="#text-Unicode" class="headerlink" title="$\text{Unicode}$"></a>$\text{Unicode}$</h3><p>上面列出的字母可以在任何$\KaTeX$模式下正确渲染。</p>
+<p>此外，文本模式始终接受$\text{Brahmic}$，$\text{Georgian}$，中文，日文和韩文的字形。但是，这些字形将从系统字体（而不是$\KaTeX$提供的字体）中呈现，因此它们的版式可能会发生冲突。您可以为$\text{CSS}$类$^{[8]}$<code>.latin-fallback</code>，<code>.cyrillic-fallback</code>，<code>.brahmic-fallback</code>，<code>.georgian-fallback</code>，<code>.cjk-fallback</code>和<code>.hangul-fallback</code>中提供规则，以为这些语言提供后备字体。这些字形的使用可能会引起小的垂直对齐问题：$\KaTeX$列出了符号、大多数拉丁字母、希腊和西里尔字母的详细大小度量值，但其他接受的字形则被视为与当前$\KaTeX$字体中的字母$\text{M}$一样高。（因此很多时候$\KaTeX$用字母$M$作为参考大小——编者注）</p>
+<p>如果$\KaTeX$呈现模式的设置中，$\text{strict}$设置为了$\text{false}$或$\text{warn}$（默认），则$\KaTeX$将在文本和数学模式下接受所有$\text{Unicode}$字母。所有无法识别的字符将被视为它们以文本模式显示。这样可能会遇到使用系统字体以及使用不正确的垂直对齐方式的问题。</p>
+<p>对于波斯语中的复合字符，我们正在开发为用户提供的插件。（虽然你可能不会使用它——编者注）</p>
+<p>$[8]:$ 因为没怎么写过$\rm CSS$，所以可能说明上有一些问题。 </p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><h3 id="注解-标记"><a href="#注解-标记" class="headerlink" title="注解&#x2F;标记"></a>注解&#x2F;标记</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\cancel{5}$ <code>\cancel&#123;5&#125;</code></td>
+<td align="left">$\overbrace{a+b+c}^{\text{note} }$ <code>\overbrace&#123;a+b+c&#125;^&#123;\text&#123;note&#125; &#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\bcancel{5}$ <code>\bcancel&#123;5&#125;</code></td>
+<td align="left">$\underbrace{a+b+c}_{\text{note} }$ <code>\underbrace&#123;a+b+c&#125;_&#123;\text&#123;note&#125; &#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xcancel{ABC}$ <code>\xcancel&#123;ABC&#125;</code></td>
+<td align="left">$\not &#x3D;$ <code>\not =</code></td>
+</tr>
+<tr>
+<td align="left">$\sout{abc}$ <code>\sout&#123;abc&#125;</code></td>
+<td align="left">$\boxed{\pi&#x3D;\frac c d}$ <code>\boxed&#123;\pi=\frac c d&#125;</code></td>
+</tr>
+</tbody></table>
+<p><code>\tag&#123;hi&#125; x+y^&#123;2x&#125;</code></p>
+<p>$$\tag{hi} x+y^{2x}$$</p>
+<p><code>\tag*&#123;hi&#125; x+y^&#123;2x&#125;</code></p>
+<p>$$\tag*{hi} x+y^{2x}$$</p>
+<h3 id="换行指令"><a href="#换行指令" class="headerlink" title="换行指令"></a>换行指令</h3><p>$\KaTeX$ $0.10.0$版本之后将在关系或二元运算符（例如“ $&#x3D;$”或“ $+$”）之后的内联数学中自动插入换行符。你可以通过<code>\nobreak</code>或将公式放在一对大括号中来阻止自动换行，例如<code>&#123;F = ma&#125;</code>。<code>\allowbreak</code>将允许在关系或运算符以外的其他位置自动换行。</p>
+<p>硬换行符是<code>\\</code>和<code>\newline</code>。$^{[9]}$</p>
+<p>在数学模式中，$\KaTeX$不会自动插入换行符。但是当渲染选项$\text{strict}$设置为$\text{true}$时，它将忽略显示数学模式并且插入硬换行。</p>
+<p>$[9]:$ 软换行换行不换段，硬换行换行也换段。简单来说，$\KaTeX$有时会自动换行，但换行之后仍在同一段，也就是软换行。而硬换行之后，两部分内容就分离了。 </p>
+<h3 id="垂直布局"><a href="#垂直布局" class="headerlink" title="垂直布局"></a>垂直布局</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$x_n$ <code>x_n</code></td>
+<td align="left">$\stackrel{!}{&#x3D;}$ <code>\stackrel&#123;!&#125;&#123;=&#125;</code></td>
+<td align="left">$a \atop b$ <code>a \atop b</code></td>
+</tr>
+<tr>
+<td align="left">$e^x$ <code>e^x</code></td>
+<td align="left">$\overset{!}{&#x3D;}$ <code>\overset&#123;!&#125;&#123;=&#125;</code></td>
+<td align="left">$a\raisebox{0.25em}{b}c$ <code>a\raisebox&#123;0.25em&#125;&#123;b&#125;c</code></td>
+</tr>
+<tr>
+<td align="left">$_u^o$ <code>_u^o</code></td>
+<td align="left">$\underset{!}{&#x3D;}$ <code>\underset&#123;!&#125;&#123;=&#125;</code></td>
+<td align="left">$\sum\limits_{\substack{0&lt;i&lt;m\0&lt;j&lt;n} }$ <code>\sum_&#123;\substack&#123;0&lt;i&lt;m\\0&lt;j&lt;n&#125; &#125;</code></td>
+</tr>
+</tbody></table>
+<p>如果<code>\raisebox</code>的第二个参数嵌套在<code>$...$</code>分隔符内，则可以包含数学运算符，当然前提是整个公式包括在<code>$$ $$</code>当中。例如<code>$$a\raisebox&#123;0.25em&#125;&#123;$\frac a b$&#125;c$$</code>的显示效果为</p>
+<p>$$a\raisebox{0.25em}{$\frac a b$}c$$</p>
+<h2 id="重叠和间距"><a href="#重叠和间距" class="headerlink" title="重叠和间距"></a>重叠和间距</h2><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">${&#x3D;}\mathllap{&#x2F;,}$ <code>&#123;=&#125;\mathllap&#123;/\,&#125;</code></td>
+<td align="left">$\left(x^{\smash{2} }\right)$ <code>\left(x^&#123;\smash&#123;2&#125; &#125;\right)</code></td>
+</tr>
+<tr>
+<td align="left">$\mathrlap{,&#x2F;}{&#x3D;}$ <code>\mathrlap&#123;\,/&#125;&#123;=&#125;</code></td>
+<td align="left">$\sqrt{\smash[b]{y} }$ <code>\sqrt&#123;\smash[b]&#123;y&#125; &#125;</code></td>
+</tr>
+</tbody></table>
+<p>$\sum\limits_{\mathclap{1\le i\le j\le n} } x_{ij}$ <code>\sum_&#123;\mathclap&#123;1\le i\le j\le n&#125; &#125; x_&#123;ij&#125;</code></p>
+<p>$\KaTeX$同样支持<code>\llap</code>$^{[10]}$，<code>\rlap</code>和<code>\clap</code>，但是它们仅能在文本模式中使用，而不是数学模式。</p>
+<p>$[10]:$ 这里解释一下这个命令的用处：当我们使用巨运算符时，它的上标&#x2F;下标可能过长，比如$\sum\limits_{1\le i\le j \le k \le n}i\times j \times k$，这样<code>i*j*k</code>离运算符较远。但是当我们用了这些指令，就可以自动缩小这个距离。</p>
+<p>$$\sum\limits_{\mathclap{1\le i\le j \le k \le n} }i\times j \times k$$</p>
+<h3 id="间隔"><a href="#间隔" class="headerlink" title="间隔"></a>间隔</h3><table>
+<thead>
+<tr>
+<th align="left">指令</th>
+<th align="left">备注</th>
+<th align="left">指令</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>\,</code></td>
+<td align="left">$\frac{3}{18}$ $\rm em$$^{[11]}$ 的间距</td>
+<td align="left"><code>\kern&#123;distance&#125;</code></td>
+<td align="left">宽度为<code>distance</code>的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\thinspace</code></td>
+<td align="left">$\frac{3}{18}$ $\rm em$  的间距</td>
+<td align="left"><code>\mkern&#123;distance&#125;</code></td>
+<td align="left">宽度为<code>distance</code>的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\&gt;</code></td>
+<td align="left">$\frac{4}{18}$ $\rm em$  的间距</td>
+<td align="left"><code>\mskip&#123;distance&#125;</code></td>
+<td align="left">宽度为<code>distance</code>的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\:</code></td>
+<td align="left">$\frac{4}{18}$ $\rm em$  的间距</td>
+<td align="left"><code>\hskip&#123;distance&#125;</code></td>
+<td align="left">宽度为<code>distance</code>的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\medspace</code></td>
+<td align="left">$\frac{4}{18}$ $\rm em$  的间距</td>
+<td align="left"><code>\hspace&#123;distance&#125;</code></td>
+<td align="left">宽度为<code>distance</code>的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\;</code></td>
+<td align="left">$\frac{5}{18}$ $\rm em$  间距</td>
+<td align="left"><code>\hspace*&#123;distance&#125;</code></td>
+<td align="left">宽度为<code>distance</code>的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\thickspace</code></td>
+<td align="left">$\frac{5}{18}$ $\rm em$  间距</td>
+<td align="left"><code>\phantom&#123;content&#125;</code></td>
+<td align="left">长与高等于参数的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\enspace</code></td>
+<td align="left">$\frac{1}{2}$ $\rm em$  间距</td>
+<td align="left"><code>\hphantom&#123;content&#125;</code></td>
+<td align="left">高度等于参数的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\quad</code></td>
+<td align="left">$1$ $\rm em$  间距</td>
+<td align="left"><code>\vphantom&#123;content&#125;</code></td>
+<td align="left">高度等于参数的间距</td>
+</tr>
+<tr>
+<td align="left"><code>\qquad</code></td>
+<td align="left">$2$ $\rm em$  间距</td>
+<td align="left"><code>\!</code></td>
+<td align="left">– $\frac{3}{18}$ $\rm em$  间距</td>
+</tr>
+<tr>
+<td align="left"><code>~</code></td>
+<td align="left">不换行间距</td>
+<td align="left"><code>\negthinspace</code></td>
+<td align="left">– $\frac{3}{18}$ $\rm em$  间距</td>
+</tr>
+<tr>
+<td align="left"><code>\&lt;space&gt;</code></td>
+<td align="left">间距</td>
+<td align="left"><code>\negmedspace</code></td>
+<td align="left">– $\frac{4}{18}$ $\rm em$  间距</td>
+</tr>
+<tr>
+<td align="left"><code>\nobreakspace</code></td>
+<td align="left">不换行间距</td>
+<td align="left"><code>\negthickspace</code></td>
+<td align="left">– $\frac{5}{18}$ $\rm em$  间距</td>
+</tr>
+<tr>
+<td align="left"><code>\space</code></td>
+<td align="left">普通的空格</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>$[11]:$ 有关单位，请参考下方的“单位”一段。</p>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p><code>distance</code>参数可以接受任何$\KaTeX$的单位。</p>
+<p><code>\kern</code>，<code>\mkern</code>，<code>\mskip</code>和<code>\hspace</code>都可以直接加上距离参数，例如，<code>\kern1em</code>可以生成一个宽度为$\rm 1em$的空格。</p>
+<p><code>\mkern</code>和<code>\mskip</code>在文本模式下不起作用，并且两者都将为<code>mu</code>以外的任何单位显示警告。</p>
+<h2 id="逻辑与集合符号"><a href="#逻辑与集合符号" class="headerlink" title="逻辑与集合符号"></a>逻辑与集合符号</h2><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\forall$ <code>\forall</code></td>
+<td align="left">$\complement$ <code>\complement</code></td>
+<td align="left">$\therefore$ <code>\therefore</code></td>
+<td align="left">$\emptyset$ <code>\emptyset</code></td>
+</tr>
+<tr>
+<td align="left">$\exists$ <code>\exists</code></td>
+<td align="left">$\subset$ <code>\subset</code></td>
+<td align="left">$\because$ <code>\because</code></td>
+<td align="left">$\empty$ <code>\empty</code></td>
+</tr>
+<tr>
+<td align="left">$\exist$ <code>\exist</code></td>
+<td align="left">$\supset$ <code>\supset</code></td>
+<td align="left">$\mapsto$ <code>\mapsto</code></td>
+<td align="left">$\varnothing$ <code>\varnothing</code></td>
+</tr>
+<tr>
+<td align="left">$\nexists$ <code>\nexists</code></td>
+<td align="left">$\mid$ <code>\mid</code></td>
+<td align="left">$\to$ <code>\to</code></td>
+<td align="left">$\implies$ <code>\implies</code></td>
+</tr>
+<tr>
+<td align="left">$\in$ <code>\in</code></td>
+<td align="left">$\land$ <code>\land</code></td>
+<td align="left">$\gets$ <code>\gets</code></td>
+<td align="left">$\impliedby$ <code>\impliedby</code></td>
+</tr>
+<tr>
+<td align="left">$\isin$ <code>\isin</code></td>
+<td align="left">$\lor$ <code>\lor</code></td>
+<td align="left">$\leftrightarrow$ <code>\leftrightarrow</code></td>
+<td align="left">$\iff$ <code>\iff</code></td>
+</tr>
+<tr>
+<td align="left">$\notin$ <code>\notin</code></td>
+<td align="left">$\ni$ <code>\ni</code></td>
+<td align="left">$\notni$ <code>\notni</code></td>
+<td align="left">$\neg$ <code>\neg</code> 或者 <code>\lnot</code></td>
+</tr>
+</tbody></table>
+<p>你也可以直接输入这些：$∀∴∁∵∃∣∈∋⊂⊃∧∨↦→←↔¬ ℂ ℍ ℕ ℙ ℚ ℝ$</p>
+<h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><table>
+<thead>
+<tr>
+<th align="left">显示效果</th>
+<th align="left">代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$x^2+x^2$</td>
+<td align="left"><code>\def\foo&#123;x^2&#125; \foo + \foo</code></td>
+</tr>
+<tr>
+<td align="left">$y^2+y^2$</td>
+<td align="left"><code>\gdef\bar#1&#123;#1^2&#125; \bar&#123;y&#125; + \bar&#123;y&#125;</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><code>\global\def\名称#1#2…&#123;定义&#125;</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><code>\newcommand\名称[参数数量]&#123;定义&#125;</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><code>\renewcommand\名称[参数数量]&#123;定义&#125;</code></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left"><code>\providecommand\名称[参数数量]&#123;定义&#125;</code></td>
+</tr>
+</tbody></table>
+<p>你同样可以在$\KaTeX$的渲染选项中定义宏。$^{[12]}$</p>
+<p>宏最多接受九个参数：<code>#1</code>，<code>#2</code>等。</p>
+<p>\ gdef和\ global \ def宏将在数学表达式之间保留。</p>
+<p>这些都是合法的指令名称：</p>
+<p><code>\char</code> <code>\mathchoice</code> <code>\TextOrMath</code> <code>\@ifstar</code> <code>\@ifnextchar</code> <code>\@firstoftwo</code> <code>\@secondoftwo</code> <code>\relax</code></p>
+<p>@是命令的有效字符，就像你使用了<code>\makeatletter</code>指令。$^{[13]}$</p>
+<p>$[12]:$ 宏定义类似于$\rm C++$中的<code>\define</code>，可以简化代码，也可以嵌套。</p>
+<p>可能有人不怎么清楚宏定义的具体用法，这里举个栗子：</p>
+<p>假设我们有一段代码：</p>
+<p>$$<br>\color{red}{\text{Hello world!!} }\<br>\color{red}{\text{Hello world!!} }\<br>\color{red}{\text{Hello world!!} }\<br>$$</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line"><span class="keyword">\color</span>&#123;red&#125;&#123;<span class="keyword">\text</span>&#123;Hello world!!&#125; &#125;<span class="keyword">\\</span></span><br><span class="line"><span class="keyword">\color</span>&#123;red&#125;&#123;<span class="keyword">\text</span>&#123;Hello world!!&#125; &#125;<span class="keyword">\\</span></span><br><span class="line"><span class="keyword">\color</span>&#123;red&#125;&#123;<span class="keyword">\text</span>&#123;Hello world!!&#125; &#125;<span class="keyword">\\</span></span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p>但是这样非常麻烦，所以我们可以用宏定义简化一下。</p>
+<p>$$<br>\def{\HelloWorld}{\color{red}{\text{Hello world!!} }\}<br>\HelloWorld\HelloWorld\HelloWorld<br>$$</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line"><span class="keyword">\def</span>&#123;<span class="keyword">\HelloWorld</span>&#125;&#123;<span class="keyword">\color</span>&#123;red&#125;&#123;<span class="keyword">\text</span>&#123;Hello world!!&#125; &#125;<span class="keyword">\\</span>&#125;</span><br><span class="line"><span class="keyword">\HelloWorld</span><span class="keyword">\HelloWorld</span><span class="keyword">\HelloWorld</span></span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+
+<p>顺带解释一下一些细节。 </p>
+<ul>
+<li><p><code>\def,\newcommand</code>之类都可以直接加自定义指令的名称，而不需要加括号。比如<code>\def\kkksc03&#123;AK IOI!&#125;</code>。</p>
+</li>
+<li><p><code>\gdef,\global\def</code>用处比较诡异，一般用不到。和<code>\def</code>的区别是，<code>\def</code>如果在一定嵌套中定义，只能用在有限的定义域内。而<code>\gdef</code>一类相当于直接在全局定义。可能有点模糊，这里举个栗子：<code>&#123;\def\t&#123;2333&#125; \t&#125; </code>这句话定义后的<code>\t</code>只能在括号中使用，比如<code>&#123;\def\t&#123;2333&#125; \t&#125; </code>。而括号外会失效。<code>&#123;\def\t&#123;2333&#125; &#125; \t</code>会渲染失败。而如果使用<code>\gdef</code>一类，就会作用于“全局”。<code>&#123;\gdef\t&#123;2333&#125; &#125; \t</code>成功渲染。</p>
+</li>
+<li><p>关于下面三个<code>command</code>的关系：<code>\newcommand</code>是定义一个新的指令，如果已经有同名指令，就会渲染失败。<code>\renewcommand</code>是重新定义指令。但是如果原来没有这个指令，也会渲染失败（迷惑行为）。<code>\providecommand</code>综合了上面两个指令的缺点，满足<strong>如果原来没有这个指令，就会定义一个；否则重新定义</strong>。（更迷惑了好不好）。</p>
+</li>
+<li><p>关于覆写的问题：正如上面提到的，<code>\def</code>与<code>\command</code>系列一样，只能作用于一定范围内，因此覆写的效果仅支持于这个范围。但是，如果将这些指令放在代码开头，就相当于全局定义了。<code>\gdef</code>范围更广。<code>\newcommand</code>不支持覆写；<code>\renewcommand</code>只支持覆写；<code>\providecommand</code>和<code>\def</code>都支持覆写。</p>
+</li>
+<li><p>关于多参数：首先，$\KaTeX$不支持不定参。然后，<code>\def</code>系列的参数可以这样定义：<code>\def&#123;\qwq&#125;#1#2#3&#123;#1+#2+#3=?&#125;</code>要强调的是，参数只能从<code>#1</code>开始排列，并且递增。比如，你要⑨个参数，<strong>只能</strong>这样写：<code>\def&#123;\名称&#125;#1#2#3#4#5#6#7#8#9&#123;定义&#125;</code>（非常迷惑）。而<code>command</code>系列相对方便，<code>\newcommand&#123;\名称&#125;[参数数量]&#123;定义&#125;</code>就可以了。</p>
+</li>
+<li><p>(总结：遇事不决用<code>\def</code>，全局定义用<code>\def</code>，多参数还能用<code>\def</code>，<del><code>\def</code>天下第一</del>)</p>
+</li>
+</ul>
+<p>$[13]:$ 解释一下<code>\makeatletter</code>指令：因为部分原因，我们在$\TeX$中无法使用<code>@</code>作为指令名称，除非使用这个指令。而$\KaTeX$中的<code>@</code>则不需要，所以说“就像你使用了<code>\makeatletter</code>指令”。</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="巨型运算符-14"><a href="#巨型运算符-14" class="headerlink" title="巨型运算符$^{[14]}$"></a>巨型运算符$^{[14]}$</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\sum$ <code>\sum</code></td>
+<td align="left">$\prod$ <code>\prod</code></td>
+<td align="left">$\bigotimes$ <code>\bigotimes</code></td>
+<td align="left">$\bigvee$ <code>\bigvee</code></td>
+</tr>
+<tr>
+<td align="left">$\int$ <code>\int</code></td>
+<td align="left">$\coprod$ <code>\coprod</code></td>
+<td align="left">$\bigoplus$ <code>\bigoplus</code></td>
+<td align="left">$\bigwedge$ <code>\bigwedge</code></td>
+</tr>
+<tr>
+<td align="left">$\iint$ <code>\iint</code></td>
+<td align="left">$\intop$ <code>\intop</code></td>
+<td align="left">$\bigodot$ <code>\bigodot</code></td>
+<td align="left">$\bigcap$ <code>\bigcap</code></td>
+</tr>
+<tr>
+<td align="left">$\iiint$ <code>\iiint</code></td>
+<td align="left">$\smallint$ <code>\smallint</code></td>
+<td align="left">$\biguplus$ <code>\biguplus</code></td>
+<td align="left">$\bigcup$ <code>\bigcup</code></td>
+</tr>
+<tr>
+<td align="left">$\oint$ <code>\oint</code></td>
+<td align="left">$\oiint$ <code>\oiint</code></td>
+<td align="left">$\oiiint$ <code>\oiiint</code></td>
+<td align="left">$\bigsqcup$ <code>\bigsqcup</code></td>
+</tr>
+</tbody></table>
+<p>当然，你也可以直接输入这些： $∫∬∭∮∏∐∑⋀⋁⋂⋃⨀⨁⨂⨄⨆$</p>
+<p>$[14]:$ 这里的巨型运算符在居中情况下自动变大，都支持上下标摆放在上下两侧。</p>
+<h3 id="二元运算符"><a href="#二元运算符" class="headerlink" title="二元运算符"></a>二元运算符</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$+$ <code>+</code></td>
+<td align="left">$\cdot$ <code>\cdot</code></td>
+<td align="left">$\gtrdot$ <code>\gtrdot</code></td>
+<td align="left">$x \pmod a$ <code>x \pmod a</code></td>
+</tr>
+<tr>
+<td align="left">$-$ <code>-</code></td>
+<td align="left">$\cdotp$ <code>\cdotp</code></td>
+<td align="left">$\intercal$ <code>\intercal</code></td>
+<td align="left">$x \pod a$ <code>x \pod a</code></td>
+</tr>
+<tr>
+<td align="left">$&#x2F;$ <code>/</code></td>
+<td align="left">$\centerdot$ <code>\centerdot</code></td>
+<td align="left">$\land$ <code>\land</code></td>
+<td align="left">$\rhd$ <code>\rhd</code></td>
+</tr>
+<tr>
+<td align="left">$*$ <code>*</code></td>
+<td align="left">$\circ$ <code>\circ</code></td>
+<td align="left">$\leftthreetimes$ <code>\leftthreetimes</code></td>
+<td align="left">$\rightthreetimes$ <code>\rightthreetimes</code></td>
+</tr>
+<tr>
+<td align="left">$\amalg$ <code>\amalg</code></td>
+<td align="left">$\circledast$ <code>\circledast</code></td>
+<td align="left">$\ldotp$ <code>\ldotp</code></td>
+<td align="left">$\rtimes$ <code>\rtimes</code></td>
+</tr>
+<tr>
+<td align="left">$\And$ <code>\And</code></td>
+<td align="left">$\circledcirc$ <code>\circledcirc</code></td>
+<td align="left">$\lor$ <code>\lor</code></td>
+<td align="left">$\setminus$ <code>\setminus</code></td>
+</tr>
+<tr>
+<td align="left">$\ast$ <code>\ast</code></td>
+<td align="left">$\circleddash$ <code>\circleddash</code></td>
+<td align="left">$\lessdot$ <code>\lessdot</code></td>
+<td align="left">$\smallsetminus$ <code>\smallsetminus</code></td>
+</tr>
+<tr>
+<td align="left">$\barwedge$ <code>\barwedge</code></td>
+<td align="left">$\Cup$ <code>\Cup</code></td>
+<td align="left">$\lhd$ <code>\lhd</code></td>
+<td align="left">$\sqcap$ <code>\sqcap</code></td>
+</tr>
+<tr>
+<td align="left">$\bigcirc$ <code>\bigcirc</code></td>
+<td align="left">$\cup$ <code>\cup</code></td>
+<td align="left">$\ltimes$ <code>\ltimes</code></td>
+<td align="left">$\sqcup$ <code>\sqcup</code></td>
+</tr>
+<tr>
+<td align="left">$\bmod$ <code>\bmod</code></td>
+<td align="left">$\curlyvee$ <code>\curlyvee</code></td>
+<td align="left">$x \mod a$ <code>x\mod a</code></td>
+<td align="left">$\times$ <code>\times</code></td>
+</tr>
+<tr>
+<td align="left">$\boxdot$ <code>\boxdot</code></td>
+<td align="left">$\curlywedge$ <code>\curlywedge</code></td>
+<td align="left">$\mp$ <code>\mp</code></td>
+<td align="left">$\unlhd$ <code>\unlhd</code></td>
+</tr>
+<tr>
+<td align="left">$\boxminus$ <code>\boxminus</code></td>
+<td align="left">$\div$ <code>\div</code></td>
+<td align="left">$\odot$ <code>\odot</code></td>
+<td align="left">$\unrhd$ <code>\unrhd</code></td>
+</tr>
+<tr>
+<td align="left">$\boxplus$ <code>\boxplus</code></td>
+<td align="left">$\divideontimes$ <code>\divideontimes</code></td>
+<td align="left">$\ominus$ <code>\ominus</code></td>
+<td align="left">$\uplus$ <code>\uplus</code></td>
+</tr>
+<tr>
+<td align="left">$\boxtimes$ <code>\boxtimes</code></td>
+<td align="left">$\dotplus$ <code>\dotplus</code></td>
+<td align="left">$\oplus$ <code>\oplus </code></td>
+<td align="left">$\vee$ <code>\vee</code></td>
+</tr>
+<tr>
+<td align="left">$\bullet$ <code>\bullet</code></td>
+<td align="left">$\doublebarwedge$ <code>\doublebarwedge</code></td>
+<td align="left">$\otimes$ <code>\otimes</code></td>
+<td align="left">$\veebar$ <code>\veebar</code></td>
+</tr>
+<tr>
+<td align="left">$\Cap$ <code>\Cap</code></td>
+<td align="left">$\doublecap$ <code>\doublecap</code></td>
+<td align="left">$\oslash$ <code>\oslash</code></td>
+<td align="left">$\wedge$ <code>\wedge</code></td>
+</tr>
+<tr>
+<td align="left">$\cap$ <code>\cap</code></td>
+<td align="left">$\doublecup$ <code>\doublecup</code></td>
+<td align="left">$\pm$ <code>\pm</code> 或者<code>\plusmn</code></td>
+<td align="left">$\wr$ <code>\wr</code></td>
+</tr>
+</tbody></table>
+<p>当然，你也可以直接输入这些：$+−&#x2F;∗⋅±×÷∓∔∧∨∩∪≀⊎⊓⊔⊕⊖⊗⊘⊙⊚⊛⊝$</p>
+<h3 id="分数和二项式"><a href="#分数和二项式" class="headerlink" title="分数和二项式"></a>分数和二项式</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\frac{a}{b}$ <code>\frac&#123;a&#125;&#123;b&#125;</code></td>
+<td align="left">$\tfrac{a}{b}$ <code>\tfrac&#123;a&#125;&#123;b&#125;</code>$^{[15]}$</td>
+<td align="left">$\genfrac(]{2pt}{1}a{a+1}$ <code>\genfrac (]&#123;2pt&#125;&#123;1&#125;a&#123;a+1&#125;</code></td>
+</tr>
+<tr>
+<td align="left">${a \over b}$ <code>&#123;a \over b&#125;</code></td>
+<td align="left">$\dfrac{a}{b}$ <code>\dfrac&#123;a&#125;&#123;b&#125;</code></td>
+<td align="left">${a\above{2pt}b+1}$ <code>&#123;a \above&#123;2pt&#125; b+1&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\cfrac{a}{1+\cfrac{1}{b} }$ <code>\cfrac&#123;a&#125;&#123;1 +\cfrac&#123;1&#125;&#123;b&#125; &#125;</code></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">$\binom{n}{k}$ <code>\binom&#123;n&#125;&#123;k&#125;</code></td>
+<td align="left">$\dbinom{n}{k}$ <code>\dbinom&#123;n&#125;&#123;k&#125;</code></td>
+<td align="left">${n\brace k}$ <code>&#123;n\brace k&#125;</code></td>
+</tr>
+<tr>
+<td align="left">${n \choose k}$ <code>&#123;n \choose k&#125;</code></td>
+<td align="left">$\tbinom{n}{k}$ <code>\tbinom&#123;n&#125;&#123;k&#125;</code></td>
+<td align="left">${n\brack k}$ <code>&#123;n\brack k&#125;</code></td>
+</tr>
+</tbody></table>
+<p>$[15]:$ 在洛谷讨论区的$\KaTeX$版本中，有个$\rm Bug$：嵌套使用<code>\tfrac&#123;&#125;&#123;&#125;</code>会导致字体膨胀。</p>
+<h3 id="数学运算符"><a href="#数学运算符" class="headerlink" title="数学运算符"></a>数学运算符</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\arcsin$ <code>\arcsin</code></td>
+<td align="left">$\cotg$ <code>\cotg</code></td>
+<td align="left">$\ln$ <code>\ln</code></td>
+<td align="left">$\det$ <code>\det</code></td>
+</tr>
+<tr>
+<td align="left">$\arccos$ <code>\arccos</code></td>
+<td align="left">$\coth$ <code>\coth</code></td>
+<td align="left">$\log$ <code>\log</code></td>
+<td align="left">$\gcd$ <code>\gcd</code></td>
+</tr>
+<tr>
+<td align="left">$\arctan$ <code>\arctan</code></td>
+<td align="left">$\csc$ <code>\csc</code></td>
+<td align="left">$\sec$ <code>\sec</code></td>
+<td align="left">$\inf$ <code>\inf</code></td>
+</tr>
+<tr>
+<td align="left">$\arctg$ <code>\arctg</code></td>
+<td align="left">$\ctg$ <code>\ctg</code></td>
+<td align="left">$\sin$ <code>\sin</code></td>
+<td align="left">$\lim$ <code>\lim</code></td>
+</tr>
+<tr>
+<td align="left">$\arcctg$ <code>\arcctg</code></td>
+<td align="left">$\cth$ <code>\cth</code></td>
+<td align="left">$\sinh$ <code>\sinh</code></td>
+<td align="left">$\liminf$ <code>\liminf</code></td>
+</tr>
+<tr>
+<td align="left">$\arg$ <code>\arg</code></td>
+<td align="left">$\deg$ <code>\deg</code></td>
+<td align="left">$\sh$ <code>\sh</code></td>
+<td align="left">$\limsup$ <code>\limsup</code></td>
+</tr>
+<tr>
+<td align="left">$\ch$ <code>\ch</code></td>
+<td align="left">$\dim$ <code>\dim</code></td>
+<td align="left">$\tan$ <code>\tan</code></td>
+<td align="left">$\max$ <code>\max</code></td>
+</tr>
+<tr>
+<td align="left">$\cos$ <code>\cos</code></td>
+<td align="left">$\exp$ <code>\exp</code></td>
+<td align="left">$\tanh$ <code>\tanh</code></td>
+<td align="left">$\min$ <code>\min</code></td>
+</tr>
+<tr>
+<td align="left">$\cosec$ <code>\cosec</code></td>
+<td align="left">$\hom$ <code>\hom</code></td>
+<td align="left">$\tg$ <code>\tg</code></td>
+<td align="left">$\Pr$ <code>\Pr</code></td>
+</tr>
+<tr>
+<td align="left">$\cosh$ <code>\cosh</code></td>
+<td align="left">$\ker$ <code>\ker</code></td>
+<td align="left">$\th$ <code>\th</code></td>
+<td align="left">$\sup$ <code>\sup</code></td>
+</tr>
+<tr>
+<td align="left">$\cot$ <code>\cot</code></td>
+<td align="left">$\lg$ <code>\lg</code></td>
+<td align="left">$\argmax$ <code>\argmax</code></td>
+<td align="left">$\argmin$ <code>\argmin</code></td>
+</tr>
+<tr>
+<td align="left">$\plim$ <code>\plim</code></td>
+<td align="left">$\operatorname{f}$ <code>\operatorname&#123;f&#125;</code></td>
+<td align="left">$\operatorname*{f}$ <code>\operatorname*&#123;f&#125;</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>参数显示在右侧的公式，如$\sum_{i&#x3D;1}^{n}$可以使用<code>\limits</code>强行显示在上下侧，$\sum\limits_{i&#x3D;1}^{n}$，<code>\sum\limits_&#123;i=1&#125;^&#123;n&#125;</code></p>
+<h3 id="开根"><a href="#开根" class="headerlink" title="开根"></a>开根</h3><p>$\sqrt{x}$ <code>\sqrt&#123;x&#125;</code></p>
+<p>$\sqrt[3]{x}$ <code>\sqrt[3]&#123;x&#125;</code></p>
+<h3 id="关系指令"><a href="#关系指令" class="headerlink" title="关系指令"></a>关系指令</h3><p>$\stackrel{!}{&#x3D;}$ <code>\stackrel&#123;!&#125;&#123;=&#125;</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+<th align="left">第四列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$&#x3D;$ <code>=</code></td>
+<td align="left">$\eqcirc$ <code>\eqcirc</code></td>
+<td align="left">$\lesseqgtr$ <code>\lesseqgtr</code></td>
+<td align="left">$\sqsupset$ <code>\sqsupset</code></td>
+</tr>
+<tr>
+<td align="left">$&lt;$ <code>&lt;</code></td>
+<td align="left">$\eqcolon$ <code>\eqcolon</code></td>
+<td align="left">$\lesseqqgtr$ <code>\lesseqqgtr</code></td>
+<td align="left">$\sqsupseteq$ <code>\sqsupseteq</code></td>
+</tr>
+<tr>
+<td align="left">$&gt;$ <code>&gt;</code></td>
+<td align="left">$\Eqcolon$ <code>\Eqcolon</code></td>
+<td align="left">$\lessgtr$ <code>\lessgtr</code></td>
+<td align="left">$\Subset$ <code>\Subset</code></td>
+</tr>
+<tr>
+<td align="left">$:$ <code>:</code></td>
+<td align="left">$\eqqcolon$ <code>\eqqcolon</code></td>
+<td align="left">$\lesssim$ <code>\lesssim</code></td>
+<td align="left">$\subset$ <code>\subset</code> 或者 <code>\sub</code></td>
+</tr>
+<tr>
+<td align="left">$\approx$ <code>\approx</code></td>
+<td align="left">$\Eqqcolon$ <code>\Eqqcolon</code></td>
+<td align="left">$\ll$ <code>\ll</code></td>
+<td align="left">$\subseteq$ <code>\subseteq</code> 或者 <code>\sube</code></td>
+</tr>
+<tr>
+<td align="left">$\approxeq$ <code>\approxeq</code></td>
+<td align="left">$\eqsim$ <code>\eqsim</code></td>
+<td align="left">$\lll$ <code>\lll</code></td>
+<td align="left">$\subseteqq$ <code>\subseteqq</code></td>
+</tr>
+<tr>
+<td align="left">$\asymp$ <code>\asymp</code></td>
+<td align="left">$\eqslantgtr$ <code>\eqslantgtr</code></td>
+<td align="left">$\llless$ <code>\llless</code></td>
+<td align="left">$\succ$ <code>\succ</code></td>
+</tr>
+<tr>
+<td align="left">$\backepsilon$ <code>\backepsilon</code></td>
+<td align="left">$\eqslantless$ <code>\eqslantless</code></td>
+<td align="left">$\lt$ <code>\lt</code></td>
+<td align="left">$\succapprox$ <code>\succapprox</code></td>
+</tr>
+<tr>
+<td align="left">$\backsim$ <code>\backsim</code></td>
+<td align="left">$\equiv$ <code>\equiv</code></td>
+<td align="left">$\mid$ <code>\mid</code></td>
+<td align="left">$\succcurlyeq$ <code>\succcurlyeq</code></td>
+</tr>
+<tr>
+<td align="left">$\backsimeq$ <code>\backsimeq</code></td>
+<td align="left">$\fallingdotseq$ <code>\fallingdotseq</code></td>
+<td align="left">$\models$ <code>\models</code></td>
+<td align="left">$\succeq$ <code>\succeq</code></td>
+</tr>
+<tr>
+<td align="left">$\between$ <code>\between</code></td>
+<td align="left">$\frown$ <code>\frown</code></td>
+<td align="left">$\multimap$ <code>\multimap</code></td>
+<td align="left">$\succsim$ <code>\succsim</code></td>
+</tr>
+<tr>
+<td align="left">$\bowtie$ <code>\bowtie</code></td>
+<td align="left">$\ge$ <code>\ge</code></td>
+<td align="left">$\owns$ <code>\owns</code></td>
+<td align="left">$\Supset$ <code>\Supset</code></td>
+</tr>
+<tr>
+<td align="left">$\bumpeq$ <code>\bumpeq</code></td>
+<td align="left">$\geq$ <code>\geq</code></td>
+<td align="left">$\parallel$ <code>\parallel</code></td>
+<td align="left">$\supset$ <code>\supset</code></td>
+</tr>
+<tr>
+<td align="left">$\Bumpeq$ <code>\Bumpeq</code></td>
+<td align="left">$\geqq$ <code>\geqq</code></td>
+<td align="left">$\perp$ <code>\perp</code></td>
+<td align="left">$\supseteq$ <code>\supseteq</code> 或者 <code>\supe</code></td>
+</tr>
+<tr>
+<td align="left">$\circeq$ <code>\circeq</code></td>
+<td align="left">$\geqslant$ <code>\geqslant</code></td>
+<td align="left">$\pitchfork⋔$ <code>\pitchfork</code></td>
+<td align="left">$\supseteqq$ <code>\supseteqq</code></td>
+</tr>
+<tr>
+<td align="left">$\colonapprox$ <code>\colonapprox</code></td>
+<td align="left">$\gg$ <code>\gg</code></td>
+<td align="left">$\prec$ <code>\prec</code></td>
+<td align="left">$\thickapprox$ <code>\thickapprox</code></td>
+</tr>
+<tr>
+<td align="left">$\Colonapprox$ <code>\Colonapprox</code></td>
+<td align="left">$\ggg$ <code>\ggg</code></td>
+<td align="left">$\precapprox$ <code>\precapprox</code></td>
+<td align="left">$\thicksim$ <code>\thicksim</code></td>
+</tr>
+<tr>
+<td align="left">$\coloneq$ <code>\coloneq</code></td>
+<td align="left">$\gggtr$ <code>\gggtr</code></td>
+<td align="left">$\preccurlyeq$ <code>\preccurlyeq</code></td>
+<td align="left">$\trianglelefteq$ <code>\trianglelefteq</code></td>
+</tr>
+<tr>
+<td align="left">$\Coloneq$ <code>\Coloneq</code></td>
+<td align="left">$\gt$ <code>\gt</code></td>
+<td align="left">$\preceq$ <code>\preceq</code></td>
+<td align="left">$\triangleq$ <code>\triangleq</code></td>
+</tr>
+<tr>
+<td align="left">$\coloneqq$ <code>\coloneqq</code></td>
+<td align="left">$\gtrapprox$ <code>\gtrapprox</code></td>
+<td align="left">$\precsim$ <code>\precsim</code></td>
+<td align="left">$\trianglerighteq$ <code>\trianglerighteq</code></td>
+</tr>
+<tr>
+<td align="left">$\Coloneqq$ <code>\Coloneqq</code></td>
+<td align="left">$\gtreqless$ <code>\gtreqless</code></td>
+<td align="left">$\propto$ <code>\propto</code></td>
+<td align="left">$\varpropto$ <code>\varpropto</code></td>
+</tr>
+<tr>
+<td align="left">$\colonsim$ <code>\colonsim</code></td>
+<td align="left">$\gtreqqless$ <code>\gtreqqless</code></td>
+<td align="left">$\risingdotseq$ <code>\risingdotseq</code></td>
+<td align="left">$\vartriangle$ <code>\vartriangle</code></td>
+</tr>
+<tr>
+<td align="left">$\Colonsim$ <code>\Colonsim</code></td>
+<td align="left">$\gtrless$ <code>\gtrless</code></td>
+<td align="left">$\shortmid$ <code>\shortmid</code></td>
+<td align="left">$\vartriangleleft$ <code>\vartriangleleft</code></td>
+</tr>
+<tr>
+<td align="left">$\cong$ <code>\cong</code></td>
+<td align="left">$\gtrsim$ <code>\gtrsim</code></td>
+<td align="left">$\shortparallel$ <code>\shortparallel</code></td>
+<td align="left">$\vartriangleright$ <code>\vartriangleright</code></td>
+</tr>
+<tr>
+<td align="left">$\curlyeqprec$ <code>\curlyeqprec</code></td>
+<td align="left">$\in$ <code>\in</code> 或者 <code>\isin</code></td>
+<td align="left">$\sim$ <code>\sim</code></td>
+<td align="left">$\vcentcolon$ <code>\vcentcolon</code></td>
+</tr>
+<tr>
+<td align="left">$\curlyeqsucc$ <code>\curlyeqsucc</code></td>
+<td align="left">$\Join$ <code>\Join</code></td>
+<td align="left">$\simeq$ <code>\simeq</code></td>
+<td align="left">$\vdash$ <code>\vdash</code></td>
+</tr>
+<tr>
+<td align="left">$\dashv$ <code>\dashv</code></td>
+<td align="left">$\le$ <code>\le</code></td>
+<td align="left">$\smallfrown$ <code>\smallfrown</code></td>
+<td align="left">$\vDash$ <code>\vDash</code></td>
+</tr>
+<tr>
+<td align="left">$\dblcolon$ <code>\dblcolon</code></td>
+<td align="left">$\leq$ <code>\leq</code></td>
+<td align="left">$\smallsmile$ <code>\smallsmile</code></td>
+<td align="left">$\Vdash$ <code>\Vdash</code></td>
+</tr>
+<tr>
+<td align="left">$\doteq$ <code>\doteq</code></td>
+<td align="left">$\leqq$ <code>\leqq</code></td>
+<td align="left">$\smile$ <code>\smile</code></td>
+<td align="left">$\Vvdash$ <code>\Vvdash</code></td>
+</tr>
+<tr>
+<td align="left">$\Doteq$ <code>\Doteq</code></td>
+<td align="left">$\leqslant$ <code>\leqslant</code></td>
+<td align="left">$\sqsubset$ <code>\sqsubset</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">$\doteqdot$ <code>\doteqdot</code></td>
+<td align="left">$\lessapprox$ <code>\lessapprox</code></td>
+<td align="left">$\sqsubseteq$ <code>\sqsubseteq</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>当然，你也可以直接输入这些：</p>
+<p>$ ∉ ∌ ∤ ∦ ≁ ≆ ≠ ≨ ≩ ≮ ≯ ≰ ≱ ⊀ ⊁ ⊈ ⊉ ⊊ ⊋ ⊬ ⊭ ⊮ ⊯ ⋠ ⋡ ⋦ ⋧ ⋨ ⋩ ⋬ ⋭ ⪇ ⪈ ⪉ ⪊ ⪵ ⪶ ⪹ ⪺ ⫋ ⫌∈$</p>
+<h3 id="箭头"><a href="#箭头" class="headerlink" title="箭头"></a>箭头</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\circlearrowleft$ <code>\circlearrowleft</code></td>
+<td align="left">$\leftharpoonup$ <code>\leftharpoonup</code></td>
+<td align="left">$\rArr$ <code>\rArr</code></td>
+</tr>
+<tr>
+<td align="left">$\circlearrowright$ <code>\circlearrowright</code></td>
+<td align="left">$\leftleftarrows$ <code>\leftleftarrows</code></td>
+<td align="left">$\rarr$ <code>\rarr</code></td>
+</tr>
+<tr>
+<td align="left">$\curvearrowleft$ <code>\curvearrowleft</code></td>
+<td align="left">$\leftrightarrow$ <code>\leftrightarrow</code></td>
+<td align="left">$\restriction$ <code>\restriction</code></td>
+</tr>
+<tr>
+<td align="left">$\curvearrowright$ <code>\curvearrowright</code></td>
+<td align="left">$\Leftrightarrow$ <code>\Leftrightarrow</code></td>
+<td align="left">$\rightarrow$ <code>\rightarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\Darr$ <code>\Darr</code></td>
+<td align="left">$\leftrightarrows$ <code>\leftrightarrows</code></td>
+<td align="left">$\Rightarrow$ <code>\Rightarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\dArr$ <code>\dArr</code></td>
+<td align="left">$\leftrightharpoons$ <code>\leftrightharpoons</code></td>
+<td align="left">$\rightarrowtail$ <code>\rightarrowtail</code></td>
+</tr>
+<tr>
+<td align="left">$\darr$ <code>\darr</code></td>
+<td align="left">$\leftrightsquigarrow$ <code>\leftrightsquigarrow</code></td>
+<td align="left">$\rightharpoondown$ <code>\rightharpoondown</code></td>
+</tr>
+<tr>
+<td align="left">$\dashleftarrow$ <code>\dashleftarrow</code></td>
+<td align="left">$\Lleftarrow$ <code>\Lleftarrow</code></td>
+<td align="left">$\rightharpoonup$ <code>\rightharpoonup</code></td>
+</tr>
+<tr>
+<td align="left">$\dashrightarrow$ <code>\dashrightarrow</code></td>
+<td align="left">$\longleftarrow$ <code>\longleftarrow</code></td>
+<td align="left">$\rightleftarrows$ <code>\rightleftarrows</code></td>
+</tr>
+<tr>
+<td align="left">$\downarrow$ <code>\downarrow</code></td>
+<td align="left">$\Longleftarrow$ <code>\Longleftarrow</code></td>
+<td align="left">$\rightleftharpoons$ <code>\rightleftharpoons</code></td>
+</tr>
+<tr>
+<td align="left">$\Downarrow$ <code>\Downarrow</code></td>
+<td align="left">$\longleftrightarrow$ <code>\longleftrightarrow</code></td>
+<td align="left">$\rightrightarrows$ <code>\rightrightarrows</code></td>
+</tr>
+<tr>
+<td align="left">$\downdownarrows$ <code>\downdownarrows</code></td>
+<td align="left">$\Longleftrightarrow$ <code>\Longleftrightarrow</code></td>
+<td align="left">$\rightsquigarrow$ <code>\rightsquigarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\downharpoonleft$ <code>\downharpoonleft</code></td>
+<td align="left">$\longmapsto$ <code>\longmapsto</code></td>
+<td align="left">$\Rrightarrow$ <code>\Rrightarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\downharpoonright$ <code>\downharpoonright</code></td>
+<td align="left">$\longrightarrow$ <code>\longrightarrow</code></td>
+<td align="left">$\Rsh$ <code>\Rsh</code></td>
+</tr>
+<tr>
+<td align="left">$\gets$ <code>\gets</code></td>
+<td align="left">$\Longrightarrow$ <code>\Longrightarrow</code></td>
+<td align="left">$\searrow$ <code>\searrow</code></td>
+</tr>
+<tr>
+<td align="left">$\Harr$ <code>\Harr</code></td>
+<td align="left">$\looparrowleft$ <code>\looparrowleft</code></td>
+<td align="left">$\swarrow$ <code>\swarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\hArr$ <code>\hArr</code></td>
+<td align="left">$\looparrowright$ <code>\looparrowright</code></td>
+<td align="left">$\to$ <code>\to</code></td>
+</tr>
+<tr>
+<td align="left">$\harr$ <code>\harr</code></td>
+<td align="left">$\Lrarr$ <code>\Lrarr</code></td>
+<td align="left">$\twoheadleftarrow$ <code>\twoheadleftarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\hookleftarrow$ <code>\hookleftarrow</code></td>
+<td align="left">$\lrArr$ <code>\lrArr</code></td>
+<td align="left">$\twoheadrightarrow$ <code>\twoheadrightarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\hookrightarrow$ <code>\hookrightarrow</code></td>
+<td align="left">$\lrarr$ <code>\lrarr</code></td>
+<td align="left">$\Uarr$ <code>\Uarr</code></td>
+</tr>
+<tr>
+<td align="left">$\iff$ <code>\iff</code></td>
+<td align="left">$\Lsh$ <code>\Lsh</code></td>
+<td align="left">$\uArr$ <code>\uArr</code></td>
+</tr>
+<tr>
+<td align="left">$\impliedby$ <code>\impliedby</code></td>
+<td align="left">$\mapsto$ <code>\mapsto</code></td>
+<td align="left">$\uarr$ <code>\uarr</code></td>
+</tr>
+<tr>
+<td align="left">$\implies$ <code>\implies</code></td>
+<td align="left">$\nearrow$ <code>\nearrow</code></td>
+<td align="left">$\uparrow$ <code>\uparrow</code></td>
+</tr>
+<tr>
+<td align="left">$\Larr$ <code>\Larr</code></td>
+<td align="left">$\nleftarrow$ <code>\nleftarrow</code></td>
+<td align="left">$\Uparrow$ <code>\Uparrow</code></td>
+</tr>
+<tr>
+<td align="left">$\lArr$ <code>\lArr</code></td>
+<td align="left">$\nLeftarrow$ <code>\nLeftarrow</code></td>
+<td align="left">$\updownarrow$ <code>\updownarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\larr$ <code>\larr</code></td>
+<td align="left">$\nleftrightarrow$ <code>\nleftrightarrow</code></td>
+<td align="left">$\Updownarrow$ <code>\Updownarrow</code></td>
+</tr>
+<tr>
+<td align="left">$\leadsto$ <code>\leadsto</code></td>
+<td align="left">$\nLeftrightarrow$ <code>\nLeftrightarrow</code></td>
+<td align="left">$\upharpoonleft$ <code>\upharpoonleft</code></td>
+</tr>
+<tr>
+<td align="left">$\leftarrow$ <code>\leftarrow</code></td>
+<td align="left">$\nrightarrow$ <code>\nrightarrow</code></td>
+<td align="left">$\upharpoonright$ <code>\upharpoonright</code></td>
+</tr>
+<tr>
+<td align="left">$\Leftarrow$ <code>\Leftarrow</code></td>
+<td align="left">$\nRightarrow$ <code>\nRightarrow</code></td>
+<td align="left">$\upuparrows$ <code>\upuparrows</code></td>
+</tr>
+<tr>
+<td align="left">$\leftarrowtail$ <code>\leftarrowtail</code></td>
+<td align="left">$\nwarrow$ <code>\nwarrow</code></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">$\leftharpoondown$ <code>\leftharpoondown</code></td>
+<td align="left">$\Rarr$ <code>\Rarr</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>你也可以直接输入这些：$ ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ↚ ↛ ↞ ↠ ↢ ↣ ↦ ↩ ↪ ↫ ↬ ↭ ↮ ↰ ↱↶ ↷ ↺ ↻ ↼ ↽ ↾ ↾ ↿ ⇀ ⇁ ⇂ ⇃ ⇄ ⇆ ⇇ ⇈ ⇉ ⇊ ⇋ ⇌⇍ ⇎ ⇏ ⇐ ⇑ ⇒ ⇓ ⇔ ⇕ ⇚ ⇛ ⇝ ⇠ ⇢ $</p>
+<h3 id="箭头扩展-16"><a href="#箭头扩展-16" class="headerlink" title="箭头扩展$^{[16]}$"></a>箭头扩展$^{[16]}$</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\xleftarrow{abc}$ <code>\xleftarrow&#123;abc&#125;</code></td>
+<td align="left">$\xrightarrow[under]{over}$ <code>\xrightarrow[under]&#123;over&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xLeftarrow{abc}$ <code>\xLeftarrow&#123;abc&#125;</code></td>
+<td align="left">$\xRightarrow{abc}$ <code>\xRightarrow&#123;abc&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xleftrightarrow{abc}$ <code>\xleftrightarrow&#123;abc&#125;</code></td>
+<td align="left">$\xLeftrightarrow{abc}$ <code>\xLeftrightarrow&#123;abc&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xhookleftarrow{abc}$ <code>\xhookleftarrow&#123;abc&#125;</code></td>
+<td align="left">$\xhookrightarrow{abc}$ <code>\xhookrightarrow&#123;abc&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xtwoheadleftarrow{abc}$ <code>\xtwoheadleftarrow&#123;abc&#125;</code></td>
+<td align="left">$\xtwoheadrightarrow{abc}$ <code>\xtwoheadrightarrow&#123;abc&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xleftharpoonup{abc}$ <code>\xleftharpoonup&#123;abc&#125;</code></td>
+<td align="left">$\xrightharpoonup{abc}$ <code>\xrightharpoonup&#123;abc&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xleftharpoondown{abc}$ <code>\xleftharpoondown&#123;abc&#125;</code></td>
+<td align="left">$\xrightharpoondown{abc}$ <code>\xrightharpoondown&#123;abc&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xleftrightharpoons{abc}$ <code>\xleftrightharpoons&#123;abc&#125;</code></td>
+<td align="left">$\xrightleftharpoons{abc}$ <code>\xrightleftharpoons&#123;abc&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xtofrom{abc}$ <code>\xtofrom&#123;abc&#125;</code></td>
+<td align="left">$\xmapsto{abc}$ <code>\xmapsto&#123;abc&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\xlongequal{abc}$ <code>\xlongequal&#123;abc&#125;</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>可扩展的箭头都可以用相同的方式接受可选参数，比如说，<code>\xrightarrow[under]&#123;over&#125;</code>显示出来就是$\xrightarrow[under]{over}$。</p>
+<p>$[16]:$ 这里扩展箭头指箭头上下方可以放置文字，且箭头长度随文字长度的增加而增加。</p>
+<h2 id="样式，颜色，大小和字体"><a href="#样式，颜色，大小和字体" class="headerlink" title="样式，颜色，大小和字体"></a>样式，颜色，大小和字体</h2><h3 id="类的分配-17"><a href="#类的分配-17" class="headerlink" title="类的分配$^{[17]}$"></a>类的分配$^{[17]}$</h3><p><code>\mathbin</code> <code>\mathclose</code> <code>\mathinner</code> <code>\mathop</code></p>
+<p><code>\mathopen</code> <code>\mathord</code> <code>\mathpunct</code> <code>\mathrel</code></p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>$\color{blue} F&#x3D;ma$ <code>\color&#123;blue&#125; F=ma</code></p>
+<p>请注意，$\KaTeX$ 中的<code>\color</code>的作用类似于开关，使用后一定范围内所有的字体都会改变颜色。这与$\LaTeX$一致，但是与$\rm MathJax$不同。而$\KaTeX$得其他颜色指令中，它的颜色和内容都是参数；</p>
+<p>$\textcolor{blue}{F&#x3D;ma}$<code>\textcolor&#123;#228B22&#125;&#123;F=ma&#125;</code></p>
+<p>$\colorbox{aqua}{A}$<code>\colorbox&#123;aqua&#125;&#123;A&#125;</code>$^{[18]}$</p>
+<p>$\fcolorbox{red}{aqua}{A}$ <code>\fcolorbox&#123;red&#125;&#123;aqua&#125;&#123;A&#125;</code></p>
+<p>对于颜色的名称，$\KaTeX$颜色函数将接受标准的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords">$\rm HTML$预定义颜色名称</a>。他们还将接受$\rm CSS$十六进制样式的$\rm RGB$参数，比如<code>#ff0000</code>表示红色，而其中的<code>#</code>是可选的。（不过洛谷讨论区版本较旧，因此在那里必须加<code>#</code>）。</p>
+<p>$[18]:$ <code>\colorbox</code>和<code>\fcolorbox</code> 里面不能嵌套环境，但是<code>\box</code>能。</p>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\mathrm{Ab0}$ <code>\mathrm&#123;Ab0&#125;</code></td>
+<td align="left">$\mathbf{Ab0}$ <code>\mathbf&#123;Ab0&#125;</code></td>
+<td align="left">$\mathit{Ab0}$ <code>\mathit&#123;Ab0&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\mathnormal{Ab0}$ <code>\mathnormal&#123;Ab0&#125;</code></td>
+<td align="left">$\textbf{Ab0}$ <code>\textbf&#123;Ab0&#125;</code></td>
+<td align="left">$\textit{Ab0}$ <code>\textit&#123;Ab0&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\textrm{Ab0}$ <code>\textrm&#123;Ab0&#125;</code></td>
+<td align="left">$\bf{Ab0}$ <code>\bf&#123;Ab0&#125;</code></td>
+<td align="left">$\it{Ab0}$ <code>\it Ab0</code></td>
+</tr>
+<tr>
+<td align="left">$\rm{Ab0}$ <code>\rm&#123;Ab0&#125;</code></td>
+<td align="left">$\bold{Ab0}$ <code>\bold&#123;Ab0&#125;</code></td>
+<td align="left">$\textup{Ab0}$ <code>\textup&#123;Ab0&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\textnormal{Ab0}$ <code>\textnormal&#123;Ab0&#125;</code></td>
+<td align="left">$\boldsymbol{Ab0}$ <code>\boldsymbol&#123;Ab&#125;</code></td>
+<td align="left">$\Bbb{AB}$ <code>\Bbb&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\text{Ab0}$ <code>\text&#123;Ab0&#125;</code></td>
+<td align="left">$\bm{Ab0}$ <code>\bm&#123;Ab0&#125;</code></td>
+<td align="left">$\mathbb{AB}$ <code>\mathbb&#123;AB&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\mathsf{Ab0}$ <code>\mathsf&#123;Ab0&#125;</code></td>
+<td align="left">$\textmd{Ab0}$ <code>\textmd&#123;Ab0&#125;</code></td>
+<td align="left">$\frak{Ab0}$ <code>\frak&#123;Ab0&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\textsf{Ab0}$ <code>\textsf&#123;Ab0&#125;</code></td>
+<td align="left">$\mathtt{Ab0}$ <code>\mathtt&#123;Ab0&#125;</code></td>
+<td align="left">$\mathfrak{Ab0}$ <code>\mathfrak&#123;Ab0&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\sf{Ab0}$ <code>\sf Ab0</code></td>
+<td align="left">$\texttt{Ab0}$ <code>\texttt&#123;Ab0&#125;</code></td>
+<td align="left">$\mathcal{AB0}$ <code>\mathcal&#123;AB0&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\tt{Ab0}$ <code>\tt Ab0</code></td>
+<td align="left">$\mathscr{AB}$ <code>\mathscr&#123;AB&#125;</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>通过使用<code>\textXX</code>类型的字体指令，可以堆叠字体样式、粗细和形状。 因此<code>\textsf&#123;\textbf&#123;H&#125; &#125;</code>将渲染出$\textsf{\textbf{H} }$。其他字体指令不会堆叠，例如<code>\mathsf&#123;\mathbf&#123;H&#125; &#125;</code>将渲染出$\mathsf{\mathbf {H} }$。</p>
+<p>如果KaTeX字体没有粗体字形，你可以使用<code>\pmb</code>指令可以模拟一个。例如，<code>\pmb&#123;\ mu&#125;</code>呈现为：$\pmb{\mu}$。（所以莫反一类文章的大量希腊字母粗体都可以用这种方法生成——编者注）。</p>
+<h3 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h3><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\Huge AB$ <code>\Huge AB</code></td>
+<td align="left">$\normalsize AB$ <code>\normalsize AB</code></td>
+</tr>
+<tr>
+<td align="left">$\huge AB$ <code>\huge AB</code></td>
+<td align="left">$\small AB$ <code>\small AB</code></td>
+</tr>
+<tr>
+<td align="left">$\LARGE AB$ <code>\LARGE AB</code></td>
+<td align="left">$\footnotesize AB$ <code>\footnotesize AB</code></td>
+</tr>
+<tr>
+<td align="left">$\Large AB$ <code>\Large AB</code></td>
+<td align="left">$\scriptsize AB$ <code>\scriptsize AB</code></td>
+</tr>
+<tr>
+<td align="left">$\large AB$ <code>\large AB</code></td>
+<td align="left">$\tiny AB$ <code>\tiny AB</code></td>
+</tr>
+</tbody></table>
+<h3 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h3><table>
+<thead>
+<tr>
+<th align="left">显示效果</th>
+<th align="left">代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\displaystyle\sum_{i&#x3D;1}^n$</td>
+<td align="left"><code>\displaystyle\sum_&#123;i=1&#125;^n</code></td>
+</tr>
+<tr>
+<td align="left">$\textstyle\sum_{i&#x3D;1}^n$</td>
+<td align="left"><code>\textstyle\sum_&#123;i=1&#125;^n</code></td>
+</tr>
+<tr>
+<td align="left">$\scriptstyle x$</td>
+<td align="left"><code>\scriptstyle x  (The size of a first sub/superscript)</code></td>
+</tr>
+<tr>
+<td align="left">$\scriptscriptstyle x$</td>
+<td align="left"><code>\scriptscriptstyle x (The size of subsequent sub/superscripts)</code></td>
+</tr>
+<tr>
+<td align="left">$\lim\limits_x$</td>
+<td align="left"><code>\lim\limits_x</code></td>
+</tr>
+<tr>
+<td align="left">$\lim\nolimits_x$</td>
+<td align="left"><code>\lim\nolimits_x</code></td>
+</tr>
+<tr>
+<td align="left">$\verb!x^2!$</td>
+<td align="left"><code>\verb!x^2!</code>$^{[19]}$</td>
+</tr>
+</tbody></table>
+<p>在居中的环境下（即在<code>$$ $$</code>当中），在<code>\text&#123;&#125;</code>里面可以放置<code>$...$</code>用来显示数学模式。</p>
+<p>$[19]:$ <code>\verb</code>以两个感叹号作为括号，里面可以填充任意文字。使用等宽字体（打字机字体）。</p>
+<h2 id="符号和标点"><a href="#符号和标点" class="headerlink" title="符号和标点"></a>符号和标点</h2><table>
+<thead>
+<tr>
+<th align="left">第一列</th>
+<th align="left">第二列</th>
+<th align="left">第三列</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$% 注释$ <code>% 注释</code></td>
+<td align="left">$\dots$ <code>\dots</code></td>
+<td align="left">$\KaTeX$ <code>\KaTeX</code></td>
+</tr>
+<tr>
+<td align="left">$%$ <code>\%</code></td>
+<td align="left">$\cdots$ <code>\cdots</code></td>
+<td align="left">$\LaTeX$ <code>\LaTeX</code></td>
+</tr>
+<tr>
+<td align="left">$#$ <code>\#</code></td>
+<td align="left">$\ddots$ <code>\ddots</code></td>
+<td align="left">$\TeX$ <code>\TeX</code></td>
+</tr>
+<tr>
+<td align="left">$&amp;$ <code>\&amp;</code></td>
+<td align="left">$\ldots$ <code>\ldots</code></td>
+<td align="left">$\nabla$ <code>\nabla</code></td>
+</tr>
+<tr>
+<td align="left">$__$ <code>\_</code></td>
+<td align="left">$\vdots$ <code>\vdots</code></td>
+<td align="left">$\infty$ <code>\infty</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textunderscore}$ <code>\text&#123;\textunderscore&#125;</code></td>
+<td align="left">$\dotsb$ <code>\dotsb</code></td>
+<td align="left">$\infin$ <code>\infin</code></td>
+</tr>
+<tr>
+<td align="left">$\text{–}$ <code>\text&#123;--&#125;</code></td>
+<td align="left">$\dotsc$ <code>\dotsc</code></td>
+<td align="left">$\checkmark$ <code>\checkmark</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textendash}$ <code>\text&#123;\textendash&#125;</code></td>
+<td align="left">$\dotsi$ <code>\dotsi</code></td>
+<td align="left">$\dag$ <code>\dag</code></td>
+</tr>
+<tr>
+<td align="left">$\text{—}$ <code>\text&#123;---&#125;</code></td>
+<td align="left">$\dotsm$ <code>\dotsm</code></td>
+<td align="left">$\dagger$ <code>\dagger</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textemdash}$ <code>\text&#123;\textemdash&#125;</code></td>
+<td align="left">$\dotso$ <code>\dotso</code></td>
+<td align="left">$\text{\textdagger}$ <code>\text&#123;\textdagger&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textasciitilde}$ <code>\text&#123;\textasciitilde&#125;</code></td>
+<td align="left">$\sdot⋅$ <code>\sdot</code></td>
+<td align="left">$\ddag$ <code>\ddag</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textasciicircum}$ <code>\text&#123;\textasciicircum&#125;</code></td>
+<td align="left">$\mathellipsis$ <code>\mathellipsis</code></td>
+<td align="left">$\ddagger$ <code>\ddagger</code></td>
+</tr>
+<tr>
+<td align="left">$^{[20]}$</td>
+<td align="left">$\text{\textellipsis}$ <code>\text&#123;\textellipsis&#125;</code></td>
+<td align="left">$\text{\textdaggerdbl}$ <code>\text&#123;\textdaggerdbl&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textquoteleft}$  <code>text&#123;\textquoteleft&#125;</code></td>
+<td align="left">$\Box$ <code>\Box</code></td>
+<td align="left">$\Dagger$ <code>\Dagger</code></td>
+</tr>
+<tr>
+<td align="left">$\lq$ <code>\lq</code></td>
+<td align="left">$\square$ <code>\square</code></td>
+<td align="left">$\angle$ <code>\angle</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textquoteright}$ <code>\text&#123;\textquoteright&#125;</code></td>
+<td align="left">$\blacksquare$ <code>\blacksquare</code></td>
+<td align="left">$\measuredangle$ <code>\measuredangle</code></td>
+</tr>
+<tr>
+<td align="left">$\rq$ <code>\rq</code></td>
+<td align="left">$\triangle$ <code>\triangle</code></td>
+<td align="left">$\sphericalangle$ <code>\sphericalangle</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textquotedblleft}$ <code>\text&#123;\textquotedblleft&#125;</code></td>
+<td align="left">$\triangledown$ <code>\triangledown</code></td>
+<td align="left">$\top$ <code>\top</code></td>
+</tr>
+<tr>
+<td align="left">$”$ <code>&quot;</code></td>
+<td align="left">$\triangleleft$ <code>\triangleleft</code></td>
+<td align="left">$\bot$ <code>\bot</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textquotedblright}$ <code>\text&#123;\textquotedblright&#125;</code></td>
+<td align="left">$\triangleright$ <code>\triangleright</code></td>
+<td align="left">$$$ <code>\$</code></td>
+</tr>
+<tr>
+<td align="left">$\colon$ <code>\colon</code></td>
+<td align="left">$\bigtriangledown$ <code>\bigtriangledown</code></td>
+<td align="left">$\text{\textdollar}$ <code>\text&#123;\textdollar&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\backprime$ <code>\backprime</code></td>
+<td align="left">$\bigtriangleup$ <code>\bigtriangleup</code></td>
+<td align="left">$\pounds$ <code>\pounds</code></td>
+</tr>
+<tr>
+<td align="left">$\prime$ <code>\prime</code></td>
+<td align="left">$\blacktriangle$ <code>\blacktriangle</code></td>
+<td align="left">$\mathsterling$ <code>\mathsterling</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textless}$ <code>\text&#123;\textless&#125;</code></td>
+<td align="left">$\blacktriangledown$ <code>\blacktriangledown</code></td>
+<td align="left">$\text{\textsterling}$ <code>\text&#123;\textsterling&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textgreater}$ <code>\text&#123;\textgreater&#125;</code></td>
+<td align="left">$\blacktriangleleft$ <code>\blacktriangleleft</code></td>
+<td align="left">$\yen$ <code>\yen</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textbar}$ <code>\text&#123;\textbar&#125;</code></td>
+<td align="left">$\blacktriangleright$ <code>\blacktriangleright</code></td>
+<td align="left">$\surd$ <code>\surd</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textbardbl}$ <code>\text&#123;\textbardbl&#125;</code></td>
+<td align="left">$\diamond$ <code>\diamond</code></td>
+<td align="left">$\degree$ <code>\degree</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textbraceleft}$ <code>\text&#123;\textbraceleft&#125;</code></td>
+<td align="left">$\Diamond$ <code>\Diamond</code></td>
+<td align="left">$\text{\textdegree}$ <code>\text&#123;\textdegree&#125;</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textbraceright}$ <code>\text&#123;\textbraceright&#125;</code></td>
+<td align="left">$\lozenge$ <code>\lozenge</code></td>
+<td align="left">$\mho$ <code>\mho</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textbackslash}$ <code>\text&#123;\textbackslash&#125;</code></td>
+<td align="left">$\blacklozenge$ <code>\blacklozenge</code></td>
+<td align="left">$\diagdown$ <code>\diagdown</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\P}$ <code>\text&#123;\P&#125;</code></td>
+<td align="left">$\star$ <code>\star</code></td>
+<td align="left">$\diagup$ <code>\diagup</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\S}$ <code>\text&#123;\S&#125;</code></td>
+<td align="left">$\bigstar$ <code>\bigstar</code></td>
+<td align="left">$\flat$ <code>\flat</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\sect}$ <code>\text&#123;\sect&#125;</code></td>
+<td align="left">$\clubsuit$ <code>\clubsuit</code></td>
+<td align="left">$\natural$ <code>\natural</code></td>
+</tr>
+<tr>
+<td align="left">$\copyright$ <code>\copyright</code></td>
+<td align="left">$\clubs$ <code>\clubs</code></td>
+<td align="left">$\sharp$ <code>\sharp</code></td>
+</tr>
+<tr>
+<td align="left">$\circledR$ <code>\circledR</code></td>
+<td align="left">$\diamondsuit$ <code>\diamondsuit</code></td>
+<td align="left">$\heartsuit$ <code>\heartsuit</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textregistered}$ <code>\text&#123;\textregistered&#125;</code></td>
+<td align="left">$\diamonds$ <code>\diamonds</code></td>
+<td align="left">$\hearts$ <code>\hearts</code></td>
+</tr>
+<tr>
+<td align="left">$\circledS$ <code>\circledS</code></td>
+<td align="left">$\spadesuit$ <code>\spadesuit</code></td>
+<td align="left">$\spades$ <code>\spades</code></td>
+</tr>
+<tr>
+<td align="left">$\text{\textcircled a}$ <code>\text&#123;\textcircled a&#125;</code></td>
+<td align="left">$\maltese$ <code>\maltese</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>你也可以直接输入这些：$£ ¥ ∇ ∞ · ∠ ∡ ∢ ♠ ♡ ♢ ♣ ♭ ♮ ♯ ✓ … ⋮ ⋯ ⋱ ! $</p>
+<p>$[20]:$ 同样由于$\rm Markdown$制表问题，无法显示字符`。这里的显示效果就是$\lq$,同<code>\lq</code>。</p>
+<h2 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h2><p>在$\KaTeX$中，单位与在$\TeX$中一样按比例进行处理。</p>
+<p>但是很多地方，$\KaTeX$单位不同于$\rm CSS$单位。</p>
+<table>
+<thead>
+<tr>
+<th align="left">$\text{\KaTeX 单位}$</th>
+<th align="left">$\text{备注}$</th>
+<th align="left">$\text{\KaTeX 单位}$</th>
+<th align="left">$\text{备注}$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\text{em}$</td>
+<td align="left">$\text{CSS em}$</td>
+<td align="left">$\text{bp}$</td>
+<td align="left">$\text{1&#x2F;72​ inch × F × G}$</td>
+</tr>
+<tr>
+<td align="left">$\text{ex}$</td>
+<td align="left">$\text{CSS ex}$</td>
+<td align="left">$\text{pc}$</td>
+<td align="left">$\text{12 \KaTeX pt}$</td>
+</tr>
+<tr>
+<td align="left">$\text{mu}$</td>
+<td align="left">$\text{1&#x2F;18 CSS em}$</td>
+<td align="left">$\text{dd}$</td>
+<td align="left">$\text{1238&#x2F;1157​ \KaTeX pt}$</td>
+</tr>
+<tr>
+<td align="left">$\text{pt}$</td>
+<td align="left">$\text{1&#x2F;72.27 inch × F × G}$</td>
+<td align="left">$\text{cc}$</td>
+<td align="left">$\text{14856&#x2F;1157 \KaTeX pt}$</td>
+</tr>
+<tr>
+<td align="left">$\text{mm}$</td>
+<td align="left">$\text{1 mm × F × G}$</td>
+<td align="left">$\text{nd}$</td>
+<td align="left">$\text{685&#x2F;642 \KaTeX pt}$</td>
+</tr>
+<tr>
+<td align="left">$\text{cm}$</td>
+<td align="left">$\text{1 cm × F × G}$</td>
+<td align="left">$\text{nc}$</td>
+<td align="left">$\text{1370&#x2F;107​ \KaTeX pt}$</td>
+</tr>
+<tr>
+<td align="left">$\text{in}$</td>
+<td align="left">$\text{1 inch × F × G}$</td>
+<td align="left">$\text{sp}$</td>
+<td align="left">$\text{1&#x2F;65536 \KaTeX pt}$</td>
+</tr>
+</tbody></table>
+<p>其中，</p>
+<ul>
+<li><p>$F&#x3D;$(围绕着$\rm HTML$文字的字体大小)&#x2F;($\rm 10 pt$)</p>
+</li>
+<li><p>$G$默认情况下为$1.21$，因为$\KaTeX$字体大小通常为$1.21\times$周围字体大小。$\rm HTML$网页的$\rm CSS$可以覆盖此值。</p>
+</li>
+</ul>
+<p>样式和大小的影响范围：</p>
+<table>
+<thead>
+<tr>
+<th align="left">单位</th>
+<th align="left">文本模式</th>
+<th align="left">$\rm script$大小$^{[21]}$</th>
+<th align="left">$\rm huge$大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$\text{em 与 ex}$</td>
+<td align="left">$\rule{1em}{1em}$</td>
+<td align="left">$\scriptscriptstyle\rule{1em}{1em}$</td>
+<td align="left">$\huge\rule{1em}{1em}$</td>
+</tr>
+<tr>
+<td align="left">$\text{mu}$</td>
+<td align="left">$\rule{18mu}{18mu}$</td>
+<td align="left">$\scriptscriptstyle\rule{18mu}{18mu}$</td>
+<td align="left">$\huge\rule{18mu}{18mu}$</td>
+</tr>
+<tr>
+<td align="left">$\text{其他}$</td>
+<td align="left">$\rule{10pt}{10pt}$</td>
+<td align="left">$\scriptscriptstyle\rule{10pt}{10pt}$</td>
+<td align="left">$\huge\rule{10pt}{10pt}$</td>
+</tr>
+</tbody></table>
+<p>$[21]:$ 这里不确定如何翻译<code>scriptscript</code>和<code>huge</code>。</p>
+<hr>
+<p>本文全部译自<a target="_blank" rel="noopener" href="https://katex.org/docs/supported.html#math-operators">$\KaTeX$官网</a>。</p>
+<p>历时$1.5$天终于肝完了$\rm orz$。希望能为洛谷的$\LaTeX$发展做出一些贡献。可能有一些不足，希望能在博客的评论区提出来。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://frankwkd.pages.dev">FrankWkd</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://frankwkd.pages.dev/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/">https://frankwkd.pages.dev/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://www.gnu.org/licenses/gpl-3.0.zh-cn.html" target="_blank">GNU GPL 3.0</a> 许可协议。转载请注明来源 <a href="https://frankwkd.pages.dev" target="_blank">FrankWkd</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Luogu/">Luogu</a><a class="post-meta__tags" href="/tags/Latex/">Latex</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%BE%91/">编辑</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/07/26/How-to-look-forward/" title="How to look forward?"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">How to look forward?</div></div><div class="info-2"><div class="info-item-1">我完全理解你此刻的心情。那些过去的错误像顽固的阴影，总在不经意间笼罩心头，让你反复咀嚼痛苦，陷入自责的漩涡。这种感觉真的很沉重，仿佛被无形的锁链束缚着，每次回忆都像重新揭开还未愈合的伤口。但请相信，这种反复纠结的痛苦并非你应得的惩罚，而是你内心渴望和解的信号。我们无法抹去过去的错误，却可以选择不再让它们成为今天的枷锁。 释怀并不意味着忘记，而是学会与过去的自己和平共处，找到一种方式让那些记忆不再刺痛你。以下是一些经过验证的方法，希望能帮助你一步步走出纠结： 🧠 1.  承认与接纳，而非否认或对抗 允许自己有情绪： 感到后悔、羞愧、悲伤、甚至愤怒都是正常的。不要压抑这些情绪，告诉自己：“我现在感到痛苦，这是因为我当时犯了错误，这很正常。” 允许自己感受它，但不要被它完全吞噬。找一个安全的方式表达出来（写日记、向信任的人倾诉、哭泣、运动）。 接纳“错误是人生的一部分”： 没有人是完美的。犯错是人类体验中不可避免的一部分。正是通过这些错误，我们才得以学习和成长。把错误看作是成长路上的“学费”，而非人格的污点。 接纳“过去的自己”： 用现在的眼光和智慧去评判过去的自己是不公平的。当时的...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/07/25/Luogu-%E9%A2%98%E8%A7%A3%EF%BC%9AAT-colopl2018-final-b-%E7%95%B0%E4%B8%96%E7%95%8C%E6%95%B0%E5%BC%8F/" title="Luogu-题解：AT_colopl2018_final_b 異世界数式"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-25</div><div class="info-item-2">Luogu-题解：AT_colopl2018_final_b 異世界数式</div></div><div class="info-2"><div class="info-item-1">传送门Sol可以说是一个模拟。 对于这一题，我们使用栈（系统栈和手写栈均可）。运用栈存储运算符号：  当遇到运算符时，将其入栈； 当遇到逗号时，输出栈顶的符号； 当遇到右括号时，输出右括号并弹出栈顶的运算符。  根据字符类型进行相应处理后直接输出转换后的中缀表达式即可。 Code1234567891011121314151617#include&lt;bits/stdc++.h&gt;using namespace std;string s; stack&lt;char&gt; a;int main()&#123;	cin&gt;&gt;s;	for(char c:s)&#123;		if(c==&#x27;+&#x27;||c==&#x27;-&#x27;||c==&#x27;*&#x27;||c==&#x27;/&#x27;) a.push(c);		else if(c==&#x27;)&#x27;)&#123;			cout&lt;&lt;c;			a.pop();		&#125;		else if(c==&#x27;,&#x27;) cout&lt;&lt;a.top()...</div></div></div></a><a class="pagination-related" href="/2025/07/11/Luogu-%E9%A2%98%E8%A7%A3%EF%BC%9AB4290-%E8%93%9D%E6%A1%A5%E6%9D%AF%E9%9D%92%E5%B0%91%E5%B9%B4%E7%BB%84%E7%9C%81%E8%B5%9B-2022-%E7%BB%84%E5%90%88/" title="Luogu-题解：B4290 [蓝桥杯青少年组省赛 2022] 组合"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-11</div><div class="info-item-2">Luogu-题解：B4290 [蓝桥杯青少年组省赛 2022] 组合</div></div><div class="info-2"><div class="info-item-1">传送门关于无解的情况我们先计算一下这些数的最大公约数，如果他们的最大公约数不等于 $1$，因为这组数据下我们只能买到 $sum$ 及其倍数个的汤圆。所以遇到这种情况直接输出 $-1$。 DP与其说是动态规划，不如说是递推，我们设置 $f_{a_i}$ 为 $1$，代表能够凑出（$a_i$ 为所给出的规格），然后如果 $f_{i-a_j}$ 是 $1$，那么 $f_i$ 也应该是 $1$，因为可以转化为 $f_{i-a_j}$ 再加上一个 $i$ 号规格的汤圆。对于每一个数，我们判断它是否可以凑出来，最后没有被赋值为 $1$ 的就是答案。 1234567891011121314151617181920212223242526272829303132333435363738394041424344#include &lt;bits/stdc++.h&gt;const int N = 1e6 + 10;typedef long long ll;using namespace std;int num[30], n;int counter = 0, tp = 0, maxcounter =...</div></div></div></a><a class="pagination-related" href="/2025/07/11/Luogu-%E9%A2%98%E8%A7%A3%EF%BC%9AP10783-%E3%80%90MX-J1-T3%E3%80%91%E3%80%8EFLA-III%E3%80%8FAnxiety/" title="Luogu-题解：P10783 【MX-J1-T3】『FLA - III』Anxiety"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-11</div><div class="info-item-2">Luogu-题解：P10783 【MX-J1-T3】『FLA - III』Anxiety</div></div><div class="info-2"><div class="info-item-1">传送门思路我们先找 $ x,y $ 在树上路径的中点，如果路径上点数为奇数，那么就仅存在一个中点 $ n $；否则就会存在两个中点 $ n_1,n_2 $。 第一种情况：易得：到 $ x,y $ 距离均不超过 $ k $，相当于到 $ n $ 距离不超过 $ k - \frac{dis - 1}{2} $（其中 $ dis $ 为路径长度）我们可以先 DFS 预处理某个点 $ i $ 子树内到它距离不超过 $ j $ 的点的权值和 $ v_{i,j} $。先将答案加上 $ v_{n,k - \frac{dis - 1}{2}} $，然后向上跳，计算子树外的权值就可以啦。 第二种情况：若 $ n_1 $ 是 $ n_2 $ 的儿子，则到 $ x,y $ 距离均不超过 $ k $，等价于 $ n_1 $ 子树内到 $ n_1 $ 距离不超过 $ k - \frac{dis - 2}{2} $，$ n_1 $ 子树外到 $ n_2 $ 距离不超过 $ k - \frac{dis - 2}{2} $。同样统计就可以啦～ 1234567891011121314151617181920212...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">FrankWkd</div><div class="author-info-description">那时我们有梦，关于文学，关于爱情，关于穿越世界的旅行。如今我们深夜饮酒，杯子碰到一起，都是梦破碎的声音。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">45</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/FrankWkd-Pro"><i class="fab fa-github"></i><span>Follow Me on Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.luogu.com.cn/user/845400" target="_blank" title="洛谷@lwj54joy"><i class="icon"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Some feelings, only fit to be treasured in the heart.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%97%E6%94%AF%E6%8C%81%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">受支持的功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A3%B0%E8%B0%83%E8%AE%B0%E5%8F%B7"><span class="toc-number">3.</span> <span class="toc-text">声调记号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E7%95%8C%E7%AC%A6%EF%BC%88%E6%8B%AC%E5%8F%B7%E4%B9%8B%E7%B1%BB%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">定界符（括号之类）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%95%8C%E7%AC%A6%E5%A4%A7%E5%B0%8F-5"><span class="toc-number">4.1.</span> <span class="toc-text">定界符大小$^{[5]}$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83-6"><span class="toc-number">5.</span> <span class="toc-text">环境$^{[6]}$</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#text-Unicode-7-%E6%95%B0%E5%AD%A6%E5%AD%97%E6%AF%8D%E3%80%81%E7%AC%A6%E5%8F%B7"><span class="toc-number">5.1.</span> <span class="toc-text">$\text{Unicode}$$^{[7]}$数学字母、符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#text-Unicode"><span class="toc-number">5.2.</span> <span class="toc-text">$\text{Unicode}$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-number">6.</span> <span class="toc-text">布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3-%E6%A0%87%E8%AE%B0"><span class="toc-number">6.1.</span> <span class="toc-text">注解&#x2F;标记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%A2%E8%A1%8C%E6%8C%87%E4%BB%A4"><span class="toc-number">6.2.</span> <span class="toc-text">换行指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%82%E7%9B%B4%E5%B8%83%E5%B1%80"><span class="toc-number">6.3.</span> <span class="toc-text">垂直布局</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%8F%A0%E5%92%8C%E9%97%B4%E8%B7%9D"><span class="toc-number">7.</span> <span class="toc-text">重叠和间距</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%B4%E9%9A%94"><span class="toc-number">7.1.</span> <span class="toc-text">间隔</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA"><span class="toc-number">7.2.</span> <span class="toc-text">提示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E9%9B%86%E5%90%88%E7%AC%A6%E5%8F%B7"><span class="toc-number">8.</span> <span class="toc-text">逻辑与集合符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8F%E5%AE%9A%E4%B9%89"><span class="toc-number">9.</span> <span class="toc-text">宏定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">10.</span> <span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A8%E5%9E%8B%E8%BF%90%E7%AE%97%E7%AC%A6-14"><span class="toc-number">10.1.</span> <span class="toc-text">巨型运算符$^{[14]}$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">10.2.</span> <span class="toc-text">二元运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%95%B0%E5%92%8C%E4%BA%8C%E9%A1%B9%E5%BC%8F"><span class="toc-number">10.3.</span> <span class="toc-text">分数和二项式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">10.4.</span> <span class="toc-text">数学运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%A0%B9"><span class="toc-number">10.5.</span> <span class="toc-text">开根</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%8C%87%E4%BB%A4"><span class="toc-number">10.6.</span> <span class="toc-text">关系指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4"><span class="toc-number">10.7.</span> <span class="toc-text">箭头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E6%89%A9%E5%B1%95-16"><span class="toc-number">10.8.</span> <span class="toc-text">箭头扩展$^{[16]}$</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F%EF%BC%8C%E9%A2%9C%E8%89%B2%EF%BC%8C%E5%A4%A7%E5%B0%8F%E5%92%8C%E5%AD%97%E4%BD%93"><span class="toc-number">11.</span> <span class="toc-text">样式，颜色，大小和字体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%88%86%E9%85%8D-17"><span class="toc-number">11.1.</span> <span class="toc-text">类的分配$^{[17]}$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2"><span class="toc-number">11.2.</span> <span class="toc-text">颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%BD%93"><span class="toc-number">11.3.</span> <span class="toc-text">字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F"><span class="toc-number">11.4.</span> <span class="toc-text">大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F"><span class="toc-number">11.5.</span> <span class="toc-text">样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E5%92%8C%E6%A0%87%E7%82%B9"><span class="toc-number">12.</span> <span class="toc-text">符号和标点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D"><span class="toc-number">13.</span> <span class="toc-text">单位</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/" title="[转自洛谷]洛谷KateX公式大全【LateX】"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="[转自洛谷]洛谷KateX公式大全【LateX】"/></a><div class="content"><a class="title" href="/2025/07/26/%E8%BD%AC%E8%87%AA%E6%B4%9B%E8%B0%B7-%E6%B4%9B%E8%B0%B7KateX%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8%E3%80%90LateX%E3%80%91/" title="[转自洛谷]洛谷KateX公式大全【LateX】">[转自洛谷]洛谷KateX公式大全【LateX】</a><time datetime="2025-07-26T12:17:26.000Z" title="发表于 2025-07-26 20:17:26">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/26/How-to-look-forward/" title="How to look forward?"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="How to look forward?"/></a><div class="content"><a class="title" href="/2025/07/26/How-to-look-forward/" title="How to look forward?">How to look forward?</a><time datetime="2025-07-26T02:45:39.000Z" title="发表于 2025-07-26 10:45:39">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/26/%E4%B9%98%E9%A3%8E-%E5%B0%98%E5%B0%81/" title="乘风.尘封."><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="乘风.尘封."/></a><div class="content"><a class="title" href="/2025/07/26/%E4%B9%98%E9%A3%8E-%E5%B0%98%E5%B0%81/" title="乘风.尘封.">乘风.尘封.</a><time datetime="2025-07-26T02:10:35.000Z" title="发表于 2025-07-26 10:10:35">2025-07-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/About-ME/" title="About ME"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="About ME"/></a><div class="content"><a class="title" href="/2025/07/25/About-ME/" title="About ME">About ME</a><time datetime="2025-07-25T12:56:02.000Z" title="发表于 2025-07-25 20:56:02">2025-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/Codeforces-%E9%A2%98%E8%A7%A3%EF%BC%9ACF2060D-Subtract-Min-Sort/" title="Codeforces-题解：CF2060D Subtract Min Sort"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Codeforces-题解：CF2060D Subtract Min Sort"/></a><div class="content"><a class="title" href="/2025/07/25/Codeforces-%E9%A2%98%E8%A7%A3%EF%BC%9ACF2060D-Subtract-Min-Sort/" title="Codeforces-题解：CF2060D Subtract Min Sort">Codeforces-题解：CF2060D Subtract Min Sort</a><time datetime="2025-07-25T09:34:36.000Z" title="发表于 2025-07-25 17:34:36">2025-07-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/vfj185ab.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2019 - 2025 By FrankWkd</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = '/pluginsSrc/mathjax/es5/tex-mml-chtml.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="/pluginsSrc/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/pluginsSrc/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="/pluginsSrc/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/aplayer/dist/APlayer.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/metingjs/dist/Meting.min.js"></script></div></body></html>
