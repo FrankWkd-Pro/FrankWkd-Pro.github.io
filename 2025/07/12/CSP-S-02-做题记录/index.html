@@ -1,0 +1,477 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CSP-S 02 做题记录 | FrankWkd</title><meta name="author" content="FrankWkd"><meta name="copyright" content="FrankWkd"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Latest Updated: 2025.07.14 T1 扩容（Expend）题目描述小 $A$ 有一个云系统，初始容量为 $S$ 个单位。随着芯片技术的飞速发展，云系统会不定期的为小 $A$ 免费扩容。 具体的扩容方法为：枚举当前容量 $S$ 中每一位的数值。  如果当前数值为 $1$，扩容后当前这一位的值依然是 $1$。 如果当前数值为 $2$，扩容后当前这一位的值会扩展为 $22$。 如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSP-S 02 做题记录">
+<meta property="og:url" content="https://frankwkd.pages.dev/2025/07/12/CSP-S-02-%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="FrankWkd">
+<meta property="og:description" content="Latest Updated: 2025.07.14 T1 扩容（Expend）题目描述小 $A$ 有一个云系统，初始容量为 $S$ 个单位。随着芯片技术的飞速发展，云系统会不定期的为小 $A$ 免费扩容。 具体的扩容方法为：枚举当前容量 $S$ 中每一位的数值。  如果当前数值为 $1$，扩容后当前这一位的值依然是 $1$。 如果当前数值为 $2$，扩容后当前这一位的值会扩展为 $22$。 如">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png">
+<meta property="article:published_time" content="2025-07-11T22:42:14.000Z">
+<meta property="article:modified_time" content="2025-07-25T09:45:18.718Z">
+<meta property="article:author" content="FrankWkd">
+<meta property="article:tag" content="CSP">
+<meta property="article:tag" content="做题记录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CSP-S 02 做题记录",
+  "url": "https://frankwkd.pages.dev/2025/07/12/CSP-S-02-%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/",
+  "image": "https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png",
+  "datePublished": "2025-07-11T22:42:14.000Z",
+  "dateModified": "2025-07-25T09:45:18.718Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "FrankWkd",
+      "url": "https://frankwkd.pages.dev"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png"><link rel="canonical" href="https://frankwkd.pages.dev/2025/07/12/CSP-S-02-%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/index.html"><link rel="preconnect"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":1,"languages":{"author":"作者: FrankWkd","link":"链接: ","source":"来源: FrankWkd","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSP-S 02 做题记录',
+  isHighlightShrink: undefined,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="web_bg" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/puw9og8g.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" alt="Logo"><span class="site-name">FrankWkd</span></a><a class="nav-page-title" href="/"><span class="site-name">CSP-S 02 做题记录</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">CSP-S 02 做题记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-07-11T22:42:14.000Z" title="发表于 2025-07-12 06:42:14">2025-07-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-07-25T09:45:18.718Z" title="更新于 2025-07-25 17:45:18">2025-07-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<h6 id="Latest-Updated-2025-07-14"><a href="#Latest-Updated-2025-07-14" class="headerlink" title="Latest Updated: 2025.07.14"></a>Latest Updated: 2025.07.14</h6></blockquote>
+<h1 id="T1-扩容（Expend）"><a href="#T1-扩容（Expend）" class="headerlink" title="T1 扩容（Expend）"></a>T1 扩容（Expend）</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>小 $A$ 有一个云系统，初始容量为 $S$ 个单位。随着芯片技术的飞速发展，云系统会不定期的为小 $A$ 免费扩容。</p>
+<p>具体的扩容方法为：枚举当前容量 $S$ 中每一位的数值。</p>
+<ul>
+<li>如果当前数值为 $1$，扩容后当前这一位的值依然是 $1$。</li>
+<li>如果当前数值为 $2$，扩容后当前这一位的值会扩展为 $22$。</li>
+<li>如果当前数值为 $3$，扩容后当前这一位的值会扩展为 $333$。</li>
+<li>$\dots$</li>
+<li>如果当前数值为 $i$，扩容后当前这一位的值会扩展为 $i$ 个 $i$。</li>
+</ul>
+<p>例如：假设云系统的初始容量为 $S &#x3D; 123$，那么接下来 $3$ 次扩容，系统容量的变化分别为。</p>
+<ul>
+<li>第 $1$ 次扩容后，容量变为 $122333$。</li>
+<li>第 $2$ 次扩容后，容量变为 $1222233333333$。</li>
+<li>第 $3$ 次扩容后，容量变为 $122222222333333333333333333333333333$。</li>
+</ul>
+<p>经过多年的扩容，云系统的容量将变得非常大。请你编程计算出，在经过 $10^{15}$ 次扩容之后，云系统容量从左向右数第 $C$ 位的数值是多少？</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>第一行输入一个数字串 $S$，由数字 $1$ 到 $9$ 组成，表示初始容量。<br>第 $2$ 行输入整数 $C$，表示答案要求的最终容量从左向右数的位数。  </p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>输出一个整数，表示经过 $10^{15}$ 次扩容之后，云系统容量从左向右数第 $C$ 位的数值。  </p>
+<h3 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h3><h4 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+<h4 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">180</span><br></pre></td></tr></table></figure>
+<h4 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入-3"><a href="#输入-3" class="headerlink" title="输入"></a>输入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">179692458</span><br><span class="line">9460730472580800</span><br></pre></td></tr></table></figure>
+<h4 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7</span><br></pre></td></tr></table></figure>
+
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><h4 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h4><h5 id="样例-1-解释"><a href="#样例-1-解释" class="headerlink" title="样例 1 解释"></a>样例 1 解释</h5><p>请参考题目描述中的解释。  </p>
+<h5 id="样例-2-解释"><a href="#样例-2-解释" class="headerlink" title="样例 2 解释"></a>样例 2 解释</h5><p>初始容量为 $5$，无论怎样扩容，容量数值的每一位都将是 $5$。  </p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于所有的测试数据，保证：数字串 $S$ 的长度在 $[1, 100]$ 范围内，且仅由数字 $1$ 到 $9$ 组成。$1 \leq C \leq 10^{18}$。经过 $10^{15}$ 次扩容后，数字串的长度至少为 $C$。  </p>
+<h3 id="测试点"><a href="#测试点" class="headerlink" title="测试点"></a>测试点</h3><table>
+<thead>
+<tr>
+<th>测试点</th>
+<th>特殊性质</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$1 \sim 4$</td>
+<td>特殊性质 $A$</td>
+</tr>
+<tr>
+<td>$6 \sim 8$</td>
+<td>特殊性质 $B$</td>
+</tr>
+<tr>
+<td>$9 \sim 20$</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<h4 id="特殊性质-A-：满足-C-1-。"><a href="#特殊性质-A-：满足-C-1-。" class="headerlink" title="特殊性质 $A$：满足 $C &#x3D; 1$。"></a>特殊性质 $A$：满足 $C &#x3D; 1$。</h4><h4 id="特殊性质-B-：满足-S-0-neq-1-。"><a href="#特殊性质-B-：满足-S-0-neq-1-。" class="headerlink" title="特殊性质 $B$：满足 $S[0] \neq 1$。"></a>特殊性质 $B$：满足 $S[0] \neq 1$。</h4><h2 id="T1-Sol"><a href="#T1-Sol" class="headerlink" title="T1 Sol"></a>T1 Sol</h2><p>考虑到扩容次数非常巨大，即使是 $2$ 扩容 $10^{15}$ 之后也有 $2^{10^{15}}$ 位。这远远超出了可存储范围。</p>
+<p>我们从前往后遍历。遇到 $1$ 就认为它扩容后不会变，遇到其他的就直接输出。如果直到第 $c$ 位还是 $1$ ，就直接输出 $1$。</p>
+<h3 id="warning-警告！"><a href="#warning-警告！" class="headerlink" title="warning 警告！"></a>warning 警告！</h3><p>请开 $long\ long$.<br>$string$ 类型的字符数组要注意 $c &gt; string.size()$ 时的越界问题。<br>还要注意 $string$ 从 $0$ 开始计数。</p>
+<h2 id="T1-Code-40pts"><a href="#T1-Code-40pts" class="headerlink" title="T1 Code [40pts]"></a>T1 Code <strong>[40pts]</strong></h2><blockquote>
+<p>根据特性 <code>A</code> &amp; <code>B</code> 骗分</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * &gt; CPP Code Snippet &lt;</span></span><br><span class="line"><span class="comment"> * &gt; Powered by Microsoft Visual Studio Code &lt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @Author    FrankWKD (wangkedi01)</span></span><br><span class="line"><span class="comment"> * @Date      2025-07-14</span></span><br><span class="line"><span class="comment"> * @Network   &quot;https://oj.czos.cn/contest/problem?id=25573&amp;pid=0&quot;</span></span><br><span class="line"><span class="comment"> * @License   GNU General Public License 2.0</span></span><br><span class="line"><span class="comment"> * @Platform  [Frank]iMac Ubuntu Pro 24.04 LTS</span></span><br><span class="line"><span class="comment"> * @FileName  T1[40pts].cpp</span></span><br><span class="line"><span class="comment"> * @FilePath  /media/frank/FrankW/_default/_Mine!/Working/code-spaces/czos/CSP-S_Practise/Lesson2/T1[40pts].cpp</span></span><br><span class="line"><span class="comment"> * @Solution  针对特殊性质拿分，40pts极简代码。实际拿分65pts。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #pragma GCC optimize(3)</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;sample.in&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line">    <span class="comment">// freopen(&quot;sample.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">    <span class="comment">// ios::sync_with_stdio(false);</span></span><br><span class="line">    <span class="comment">// cin.tie(0); cout.tie(0);</span></span><br><span class="line">    string s;</span><br><span class="line">    <span class="type">int</span> c;</span><br><span class="line">    cin &gt;&gt; s &gt;&gt; c;</span><br><span class="line">    cout &lt;&lt; s[<span class="number">0</span>] &lt;&lt; endl;</span><br><span class="line">    <span class="comment">// fclose(stdin);</span></span><br><span class="line">    <span class="comment">// fclose(stdout);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="T1-Code-100pts"><a href="#T1-Code-100pts" class="headerlink" title="T1 Code [100pts]"></a>T1 Code <strong>[100pts]</strong></h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * &gt; CPP Code Snippet &lt;</span></span><br><span class="line"><span class="comment"> * &gt; Powered by Microsoft Visual Studio Code &lt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @Author    FrankWKD (wangkedi01)</span></span><br><span class="line"><span class="comment"> * @Date      2025-07-14</span></span><br><span class="line"><span class="comment"> * @Network   &quot;https://oj.czos.cn/contest/problem?id=25573&amp;pid=0&amp;_pjax=%23p0&quot;</span></span><br><span class="line"><span class="comment"> * @License   GNU General Public License 2.0</span></span><br><span class="line"><span class="comment"> * @Platform  [Frank]iMac Ubuntu Pro 24.04 LTS</span></span><br><span class="line"><span class="comment"> * @FileName  T1[100pts].cpp</span></span><br><span class="line"><span class="comment"> * @FilePath  /media/frank/FrankW/_default/_Mine!/Working/code-spaces/czos/CSP-S_Practise/Lesson2/T1[100pts].cpp</span></span><br><span class="line"><span class="comment"> * @Solution  --</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #pragma GCC optimize(3)</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;sample.in&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line">    <span class="comment">// freopen(&quot;sample.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">    <span class="comment">// ios::sync_with_stdio(false);</span></span><br><span class="line">    <span class="comment">// cin.tie(0); cout.tie(0);</span></span><br><span class="line">    string s;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> c;</span><br><span class="line">    cin &gt;&gt; s &gt;&gt; c;</span><br><span class="line">    <span class="keyword">if</span> (c == <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; s[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="type">long</span> i = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; <span class="built_in">min</span>(c - <span class="number">1</span>, (<span class="type">long</span> <span class="type">long</span>)(s.<span class="built_in">size</span>() - <span class="number">1</span>)) <span class="keyword">and</span> s[i] == <span class="string">&#x27;1&#x27;</span>) i++;</span><br><span class="line">            cout &lt;&lt; s[i];</span><br><span class="line">        &#125; <span class="keyword">else</span></span><br><span class="line">            cout &lt;&lt; s[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// fclose(stdin);</span></span><br><span class="line">    <span class="comment">// fclose(stdout);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="T2-解密游戏"><a href="#T2-解密游戏" class="headerlink" title="T2 解密游戏"></a>T2 解密游戏</h1><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>在一堂趣味盎然的数学课上，老师设计了一个名为 “解密纸条” 的游戏。班上有 $N$ 个同学，每位同学在一张纸条上秘密写下一个数字，要么是 $1$，要么是 $2$。</p>
+<p>设第 $i$ 位同学纸条上写的数字为 $P_i$（$P_i$ 的值为 $1$ 或 $2$）。</p>
+<p>你的任务是破解所有同学的纸条内容，即确定 $P_1, P_2, \ldots, P_N$ 的值。</p>
+<p>老师提供了 $M$ 条解密线索，每条线索描述为：第 $X_i$ 位同学和第 $Y_i$ 位同学纸条上的数字之和加上一个值 $Z_i$ 总和为偶数（即 $P_{X_i} + P_{Y_i} + Z_i$ 是偶数）。</p>
+<p>作为游戏的破解者，你可以执行以下操作任意次：选择一位同学，查看他&#x2F;她纸条上的数字，每次查看需要消耗 $1$ 个单位的时间。</p>
+<p>请计算确定所有同学纸条内容的最少总时间。</p>
+<h3 id="输入-4"><a href="#输入-4" class="headerlink" title="输入"></a>输入</h3><p>第一行包含两个整数 $N$ 和 $M$，分别表示同学人数和线索数量。</p>
+<p>接下来 $M$ 行，每行包含三个整数 $X_i, Y_i, Z_i$，表示一条线索：第 $X_i$ 位同学和第 $Y_i$ 位同学纸条上的数字之和加上 $Z_i$ 为偶数。</p>
+<h3 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h3><p>输出一个整数，表示确定所有同学纸条内容的最少总时间。</p>
+<h3 id="样例-1"><a href="#样例-1" class="headerlink" title="样例"></a>样例</h3><h4 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 1"></a>样例输入 1</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2 1</span><br><span class="line">1 2 1</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 1"></a>样例输出 1</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入 2"></a>样例输入 2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">6 3</span><br><span class="line">1 2 1</span><br><span class="line">2 3 2</span><br><span class="line">4 5 4</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出 2"></a>样例输出 2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入 3"></a>样例输入 3</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">8 6</span><br><span class="line">1 2 3</span><br><span class="line">2 3 5</span><br><span class="line">2 4 6</span><br><span class="line">5 7 8</span><br><span class="line">6 8 2</span><br><span class="line">5 8 3</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出 3"></a>样例输出 3</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h3 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h3><h4 id="样例-1-说明"><a href="#样例-1-说明" class="headerlink" title="样例 1 说明"></a>样例 1 说明</h4><p>有 $2$ 个人，$1$ 个线索，线索指示 $P_1 + P_2 + 1$ 为偶数，因此只需要查看第 $1$ 位同学的纸条或者第 $2$ 位同学的纸条，就可以确定两位同学纸条上的数字了。</p>
+<h3 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于 $100%$ 的数据，满足 $2 \leq N \leq 10^5$，$1 \leq M \leq 10^5$，$1 \leq X_i &lt; Y_i \leq N$，$1 \leq Z_i \leq 100$。</p>
+<p>且满足：所有 $(X_i, Y_i)$ 互不相同，输入线索无矛盾，即一定可以解出一组 $P_1, P_2, \ldots, P_N$ 满足所有线索条件。</p>
+<h4 id="测试点-特殊性质"><a href="#测试点-特殊性质" class="headerlink" title="测试点 特殊性质"></a>测试点 特殊性质</h4><table>
+<thead>
+<tr>
+<th>测试点</th>
+<th>特殊性质</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$1 \sim 4$</td>
+<td>$M &#x3D; 1$</td>
+</tr>
+<tr>
+<td>$5 \sim 20$</td>
+<td>无</td>
+</tr>
+</tbody></table>
+<h2 id="T2-Sol"><a href="#T2-Sol" class="headerlink" title="T2 Sol"></a>T2 Sol</h2><p>1．对于 $3$ 个数：$P_1 + P_2 + Z_i$，如果他们的和是偶数，且知道 $Z_i$ 的奇偶性，说明就能知道 $P_1 + P_2$ 的奇偶性，此时 $P_1$ 和 $P_2$ 只要知道 $1$ 个数，就能知道另一个数。  </p>
+<p>2．考虑更复杂的情况：<br>$P_1 + P_2 + Z_1$<br>$P_2 + P_3 + Z_2$<br>$P_3 + P_4 + Z_3$  </p>
+<p>三组数中，看上去每组只要知道一个数就能知道另一个数。  </p>
+<p>但其实第 $1$ 组数，如果知道了 $P_1$，$P_2$ 就知道了，这样第 $2$ 组的 $P_3$ 也能推导出来，第 $3$ 组的 $P_4$ 也能推导。  </p>
+<p>因此：对于每一组中的 $P_i$ $P_j$，我们可以认为其是一个集合元素，对于一个集合中的元素只要知道一个就能推导出其余数，因此问题转换为求集合的数量。  </p>
+<h2 id="T2-Code"><a href="#T2-Code" class="headerlink" title="T2 Code"></a>T2 Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * &gt; CPP Code Snippet &lt;</span></span><br><span class="line"><span class="comment"> * &gt; Powered by Microsoft Visual Studio Code &lt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @Author    FrankWKD (wangkedi01)</span></span><br><span class="line"><span class="comment"> * @Date      2025-07-15</span></span><br><span class="line"><span class="comment"> * @Network   &quot;https://oj.czos.cn/contest/problem?id=25573&amp;pid=1&quot;</span></span><br><span class="line"><span class="comment"> * @License   GNU General Public License 2.0</span></span><br><span class="line"><span class="comment"> * @Platform  [Frank]iMac Ubuntu Pro 24.04 LTS</span></span><br><span class="line"><span class="comment"> * @FileName  T2.cpp</span></span><br><span class="line"><span class="comment"> * @FilePath  /media/frank/FrankW/_default/_Mine!/Working/code-spaces/czos/CSP-S_Practise/Lesson2/T2.cpp</span></span><br><span class="line"><span class="comment"> * @Solution  --</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #pragma GCC optimize(3)</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> xi, yi, ans, n, m;</span><br><span class="line"><span class="type">int</span> f[<span class="number">1010100</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f[x] == x ? x : f[x] = <span class="built_in">find</span>(f[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    f[<span class="built_in">find</span>(x)] = f[<span class="built_in">find</span>(y)];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;sample.in&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line">    <span class="comment">// freopen(&quot;sample.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">    <span class="comment">// ios::sync_with_stdio(false);</span></span><br><span class="line">    <span class="comment">// cin.tie(0); cout.tie(0);</span></span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        f[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="type">int</span> mi;</span><br><span class="line">        cin &gt;&gt; xi &gt;&gt; yi &gt;&gt; mi;</span><br><span class="line">        <span class="built_in">merge</span>(xi, yi);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">find</span>(f[i]) == i)</span><br><span class="line">            ans++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// fclose(stdin);</span></span><br><span class="line">    <span class="comment">// fclose(stdout);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="T3-CSP-S-2024-染色"><a href="#T3-CSP-S-2024-染色" class="headerlink" title="T3 [CSP-S 2024] 染色"></a>T3 [CSP-S 2024] 染色</h1><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个长度为 $n$ 的正整数数组 $A$，其中所有数从左至右排成一排。</p>
+<p>你需要将 $A$ 中的每个数染成红色或蓝色之一，然后按如下方式计算最终得分：</p>
+<p>设 $C$ 为长度为 $n$ 的整数数组，对于 $A$ 中的每个数 $A_i$（$1 \leq i \leq n$）：</p>
+<ul>
+<li>如果 $A_i$ 左侧没有与其同色的数，则令 $C_i &#x3D; 0$。</li>
+<li>否则，记其左侧<strong>与其最靠近的同色数</strong>为 $A_j$，若 $A_i &#x3D; A_j$，则令 $C_i &#x3D; A_i$，否则令 $C_i &#x3D; 0$。</li>
+</ul>
+<p>你的最终得分为 $C$ 中所有整数的和，即 $\sum \limits_{i&#x3D;1}^n C_i$。你需要最大化最终得分，请求出最终得分的最大值。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p><strong>本题有多组测试数据。</strong></p>
+<p>输入的第一行包含一个正整数 $T$，表示数据组数。</p>
+<p>接下来包含 $T$ 组数据，每组数据的格式如下：</p>
+<p>第一行包含一个正整数 $n$，表示数组长度。</p>
+<p>第二行包含 $n$ 个正整数 $A_1, A_2, \dots, A_n$，表示数组 $A$ 中的元素。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>对于每组数据：输出一行包含一个非负整数，表示最终得分的最大可能值。</p>
+<h3 id="输入输出样例-1"><a href="#输入输出样例-1" class="headerlink" title="输入输出样例 #1"></a>输入输出样例 #1</h3><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3</span><br><span class="line">1 2 1</span><br><span class="line">4</span><br><span class="line">1 2 3 4</span><br><span class="line">8</span><br><span class="line">3 5 2 5 1 2 1 4</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">0</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+
+<h3 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h3><p><strong>【样例 1 解释】</strong></p>
+<p>对于第一组数据，以下为三种可能的染色方案：</p>
+<ol>
+<li>将 $A_1, A_2$ 染成红色，将 $A_3$ 染成蓝色（$\red{1}\red{2}\blue{1}$），其得分计算方式如下：</li>
+</ol>
+<ul>
+<li>对于 $A_1$，由于其左侧没有红色的数，所以 $C_1 &#x3D; 0$。</li>
+<li>对于 $A_2$，其左侧与其最靠近的红色数为 $A_1$。由于 $A_1 \neq A_2$，所以 $C_2 &#x3D; 0$。</li>
+<li>对于 $A_3$，由于其左侧没有蓝色的数，所以 $C_3 &#x3D; 0$。<br>该方案最终得分为 $C_1 + C_2 + C_3 &#x3D; 0$。</li>
+</ul>
+<ol start="2">
+<li>将 $A_1, A_2, A_3$ 全部染成红色（$\red{121}$），其得分计算方式如下：</li>
+</ol>
+<ul>
+<li>对于 $A_1$，由于其左侧没有红色的数，所以 $C_1 &#x3D; 0$。</li>
+<li>对于 $A_2$，其左侧与其最靠近的红色数为 $A_1$。由于 $A_1 \neq A_2$，所以 $C_2 &#x3D; 0$。</li>
+<li>对于 $A_3$，其左侧与其最靠近的红色数为 $A_2$。由于 $A_2 \neq A_3$，所以 $C_3 &#x3D; 0$。<br>该方案最终得分为 $C_1 + C_2 + C_3 &#x3D; 0$。</li>
+</ul>
+<ol start="3">
+<li>将 $A_1, A_3$ 染成红色，将 $A_2$ 染成蓝色（$\red{1}\blue{2}\red{1}$），其得分计算方式如下：</li>
+</ol>
+<ul>
+<li>对于 $A_1$，由于其左侧没有红色的数，所以 $C_1 &#x3D; 0$。</li>
+<li>对于 $A_2$，由于其左侧没有蓝色的数，所以 $C_2 &#x3D; 0$。</li>
+<li>对于 $A_3$，其左侧与其最靠近的红色数为 $A_1$。由于 $A_1 &#x3D; A_3$，所以 $C_3 &#x3D; A_3 &#x3D; 1$。<br>该方案最终得分为 $C_1 + C_2 + C_3 &#x3D; 1$。</li>
+</ul>
+<p>可以证明，没有染色方案使得最终得分大于 $1$。</p>
+<p>对于第二组数据，可以证明，任何染色方案的最终得分都是 $0$。</p>
+<p>对于第三组数据，一种最优的染色方案为将 $A_1, A_2, A_4, A_5, A_7$ 染为红色，将 $A_3, A_6, A_8$ 染为蓝色（$\red{35}\blue{2}\red{51}\blue{2}\red{1}\blue{4}$），其对应 $C &#x3D; [0, 0, 0, 5, 0, 1, 2, 0]$，最终得分为 $8$。</p>
+<p><strong>【样例 2】</strong></p>
+<p>见选手目录下的 color&#x2F;color2.in 与 color&#x2F;color2.ans。</p>
+<p><strong>【数据范围】</strong></p>
+<p>对于所有测试数据，保证：$1\leq T\leq 10$，$2\leq n\leq 2\times 10^5$，$1\leq A_i\leq 10^6$。</p>
+<table>
+<thead>
+<tr>
+<th align="center">测试点</th>
+<th align="center">$n$</th>
+<th align="center">$A_i$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$1\sim 4$</td>
+<td align="center">$\leq 15$</td>
+<td align="center">$\leq 15$</td>
+</tr>
+<tr>
+<td align="center">$5\sim 7$</td>
+<td align="center">$\leq 10^2$</td>
+<td align="center">$\leq 10^2$</td>
+</tr>
+<tr>
+<td align="center">$8\sim 10$</td>
+<td align="center">$\leq 2000$</td>
+<td align="center">$\leq 2000$</td>
+</tr>
+<tr>
+<td align="center">$11,12$</td>
+<td align="center">$\leq 2\times 10^4$</td>
+<td align="center">$\leq 10^6$</td>
+</tr>
+<tr>
+<td align="center">$13\sim 15$</td>
+<td align="center">$\leq 2\times 10^5$</td>
+<td align="center">$\leq 10$</td>
+</tr>
+<tr>
+<td align="center">$16\sim 20$</td>
+<td align="center">$\leq 2\times 10^5$</td>
+<td align="center">$\leq 10^6$</td>
+</tr>
+</tbody></table>
+<h2 id="Sol"><a href="#Sol" class="headerlink" title="Sol"></a>Sol</h2><p>题意：有 $N$ 个数，每个数设置为红或者蓝。  </p>
+<p>1．如果 $A_i$ 左侧没有同色的数，$C_i&#x3D;0$。<br>2．如果有，找最近的同色的数 $A_j$，如：$A_i&#x3D;A_j$，$C_i&#x3D;A_i$，否则 $C_i&#x3D;0$。  </p>
+<p>最终得分 $&#x3D; C_i$ 的和，求最大得分。  </p>
+<p><strong>20pts：</strong> 枚举每个数颜色取 $1$，和取 $2$ 这两种情况的所有的组合，求每种组合下，分数的最大值。  </p>
+<h3 id="1．状态定义"><a href="#1．状态定义" class="headerlink" title="1．状态定义"></a>1．状态定义</h3><p>$f[i][0]$：前 $i$ 个数，如果第 $i$ 个数对于答案没有贡献，最大得分。<br>$f[i][1]$：前 $i$ 个数，如果第 $i$ 个数对于答案有贡献，最大得分。  </p>
+<p>要注意：并不是第 $i$ 个数可以对答案有贡献时（即：左侧有等值的数），产生贡献一定最优。  </p>
+<p>比如：$1\ 2\ 3\ 3\ 3\ 2\ 1$，对于第 $6$ 个数，如果要对答案有贡献，那么 $2\ 3\ 3\ 3\ 2$ 必须同色，此时得分 $&#x3D; 0 + 0 + 0 + 3 + 0 + 1 &#x3D; 4$ 分。  </p>
+<p>而让第 $6$ 个数不产生贡献，答案反而更大，即：染色方案为 $1\ 2\ 3\ 3\ 3\ 2\ 1$，此时得分 $&#x3D; 0 + 0 + 0 + 3 + 2 + 0 &#x3D; 5$ 分。  </p>
+<h3 id="2．状态转移"><a href="#2．状态转移" class="headerlink" title="2．状态转移"></a>2．状态转移</h3><p>(1) 如果第 $i$ 个数对于得分无贡献。  </p>
+<ul>
+<li>等价于第 $i$ 个数不存在：$f[i][0] &#x3D; \max(f[i - 1][0], f[i - 1][1]);$</li>
+</ul>
+<p>(2) 如果第 $i$ 个数对于得分有贡献。  </p>
+<ul>
+<li><p>此时需满足 $a[i]$ 左侧有和其值相等的数，假设 $a[i]$ 左侧和其值相等的最近的数的位置是 $p$。  </p>
+</li>
+<li><p><img src="https://img2024.cnblogs.com/blog/3594125/202507/3594125-20250716173300658-1875576247.png" alt="img">  </p>
+</li>
+<li><p>则有：$p$ 和 $i$ 必然同色，且 $p+1 \sim i-1$，必然和 $p&#x2F;i$ 异色。  </p>
+</li>
+<li><p>则到 $i$ 为止的最大得分可以分为 3 部分讨论。  </p>
+<ul>
+<li><p>第一部分：第 $i$ 个数的贡献，就是 $a[i]$。  </p>
+</li>
+<li><p>第二部分：$p+2 \sim i-1$ 的贡献，这部分只能是每个数 $&#x3D;&#x3D;$ 其左侧的数，才有贡献，可以通过前缀和求区间和维护出来。  </p>
+</li>
+<li><p>第三部分：$1 \sim p+1$ 的贡献 $&#x3D; \max(f[p + 1][0], f[p + 1][1]);$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="为什么有贡献时，一定是从最近的等值的数转移过来最优？"><a href="#为什么有贡献时，一定是从最近的等值的数转移过来最优？" class="headerlink" title="为什么有贡献时，一定是从最近的等值的数转移过来最优？"></a>为什么有贡献时，一定是从最近的等值的数转移过来最优？</h3><p><img src="https://img2024.cnblogs.com/blog/3594125/202507/3594125-20250716173355764-1011999790.png" alt="img"></p>
+<p>设 $i$ 的左侧有多个和其值相等的点，比如有 $p$ 和 $p’$，如果从 $p’$ 转移过来，导致从 $p’+1 \sim p+1$ 这段必须只能是同色，而同色只是所有颜色排列的情况之一，讨论了更少的情况不可能产生更优解。</p>
+<p>:::danger </p>
+<ul>
+<li>多测问题：  <ul>
+<li>1．每组数据计算前：将需要清空的变量清空。$☆☆☆☆☆$  </li>
+<li>2．输出格式一定不能错!!!每个输出都要检查!!!  </li>
+<li>使用桶排序等需要使用 $a_i$ 的取值范围!例如 <code>T3 Code</code> 里面的 <code>last</code> 数组。必须考虑到 $a_i$ 的取值范围，否则会爆下标 RE.</li>
+</ul>
+</li>
+</ul>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>在 <code>windows</code> 下和 <code>linux</code> 下比较两个文件的不同：  </p>
+<p><code>Windows</code>:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fc 1.out t1.out  </span><br><span class="line">fc 1.out t1.out &gt; result.txt  </span><br><span class="line">fc /N file1.txt file2.txt &gt; differences.txt  显示行号  </span><br></pre></td></tr></table></figure>
+
+<p><code>Linux</code>: <code>diff</code> 指令  </p>
+<h3 id="warning"><a href="#warning" class="headerlink" title="warning"></a>warning</h3><p>特别注意：<code>fc</code> 指令比较时，要求严格一致，如果我们输出的内容每一行结尾多了空格，也认为是不同的。另外，如果题目给的测评数据 <code>ans</code> 文件是 <code>linux</code> 下创造的，但我们是在 <code>windows</code> 下生成的 <code>.out</code>，换行符是不一样，<code>fc</code> 也会比较出来!!!</p>
+<h2 id="T3-Code"><a href="#T3-Code" class="headerlink" title="T3 Code"></a>T3 Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * &gt; CPP Code Snippet &lt;</span></span><br><span class="line"><span class="comment"> * &gt; Powered by Microsoft Visual Studio Code &lt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @Author    FrankWKD (wangkedi01)</span></span><br><span class="line"><span class="comment"> * @Date      2025-07-16</span></span><br><span class="line"><span class="comment"> * @Network   &quot;https://oj.czos.cn/contest/problem?id=25573&amp;pid=2&quot;</span></span><br><span class="line"><span class="comment"> * @License   GNU General Public License 2.0</span></span><br><span class="line"><span class="comment"> * @Platform  [Frank]iMac Ubuntu Pro 24.04 LTS</span></span><br><span class="line"><span class="comment"> * @FileName  T3.cpp</span></span><br><span class="line"><span class="comment"> * @FilePath  /media/frank/FrankW/_default/_Mine!/Working/code-spaces/czos/CSP-S_Practise/Lesson2/T3.cpp</span></span><br><span class="line"><span class="comment"> * @Solution  --</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// #pragma GCC optimize(3)</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> int long long</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> a[N], b[N], f[N][<span class="number">2</span>], n, t, last[<span class="number">1000010</span>];  <span class="comment">// warning: last</span></span><br><span class="line"><span class="function"><span class="type">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// freopen(&quot;sample.in&quot;,&quot;r&quot;,stdin);</span></span><br><span class="line">    <span class="comment">// freopen(&quot;sample.out&quot;,&quot;w&quot;,stdout);</span></span><br><span class="line">    <span class="comment">// ios::sync_with_stdio(false);</span></span><br><span class="line">    <span class="comment">// cin.tie(0); cout.tie(0);</span></span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(last, <span class="number">0</span>, <span class="keyword">sizeof</span> last);</span><br><span class="line">        <span class="built_in">memset</span>(b, <span class="number">0</span>, <span class="keyword">sizeof</span> b);</span><br><span class="line">        <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span> f);</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            cin &gt;&gt; a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i] == a[i - <span class="number">1</span>])</span><br><span class="line">                b[i] = a[i] + b[i - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                b[i] = b[i - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            f[i][<span class="number">0</span>] = <span class="built_in">max</span>(f[i - <span class="number">1</span>][<span class="number">1</span>], f[i - <span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">if</span> (last[a[i]] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                f[i][<span class="number">1</span>] = a[i] + <span class="built_in">max</span>(f[last[a[i]] + <span class="number">1</span>][<span class="number">0</span>], f[last[a[i]] + <span class="number">1</span>][<span class="number">1</span>]) + ((last[a[i]] + <span class="number">1</span> &lt; i - <span class="number">1</span>) ? (b[i - <span class="number">1</span>] - b[last[a[i]] + <span class="number">1</span>]) : <span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            last[a[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="built_in">max</span>(f[n][<span class="number">0</span>], f[n][<span class="number">1</span>]) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// fclose(stdin);</span></span><br><span class="line">    <span class="comment">// fclose(stdout);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://frankwkd.pages.dev">FrankWkd</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://frankwkd.pages.dev/2025/07/12/CSP-S-02-%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/">https://frankwkd.pages.dev/2025/07/12/CSP-S-02-%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://www.gnu.org/licenses/gpl-3.0.zh-cn.html" target="_blank">GNU GPL 3.0</a> 许可协议。转载请注明来源 <a href="https://frankwkd.pages.dev" target="_blank">FrankWkd</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSP/">CSP</a><a class="post-meta__tags" href="/tags/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/">做题记录</a></div><div class="post-share"><div class="social-share" data-image="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="/pluginsSrc/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/07/13/%E5%A6%82%E4%BD%95%E9%87%8A%E6%80%80%E8%A2%AB%E5%91%BD%E8%BF%90%E5%88%86%E5%BC%80%E7%9A%84%E7%88%B1%E6%83%85%EF%BC%9F/" title="如何释怀被命运分开的爱情？"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">如何释怀被命运分开的爱情？</div></div><div class="info-2"><div class="info-item-1">Q：如何释怀被命运分开的爱情？ Powered By Doubao  被命运分开的爱情，就像握不住的风、留不住的晚霞，释怀确实需要时间，但也藏着慢慢与自己和解的过程。或许可以试试这样做： 1. 允许自己“没放下”，先接纳情绪的存在不必强迫自己立刻“释怀”，难过、遗憾、甚至偶尔的不甘，都是这段感情真实存在过的证明。就像伤口需要结痂期，情绪也需要被看见——可以写写日记、和信任的人聊聊，或者大哭一场，把积压的情绪轻轻放出来。承认“我真的很难过”，反而会让心轻松一点。 2. 重新看待“分开”：不是失败，是缘分的另一种形态命运的分开，可能是现实的阻碍、时机的错位，或是彼此成长节奏的不同步。这不是谁的错，更不是爱情的失败。就像两棵曾并肩生长的树，后来因为风向、土壤走向了不同的方向，但曾经共享过的阳光雨露，那些温暖的瞬间，已经成为彼此生命里的养分。试着把“失去”看作“曾经拥有过”，遗憾会少一点，感恩会多一点。 3. 把注意力放回自己身上，让生活慢慢填满空隙刚分开时，心里会空出一块，别让它一直空着。可以捡起曾经因为爱情搁置的爱好，比如学一门技能、去想去的地方旅行，或者只是认真做好一顿饭、规律作息...</div></div></div></a><a class="pagination-related" href="/2025/07/12/CSP-S-01-%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" title="CSP-S 01 做题记录"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">CSP-S 01 做题记录</div></div><div class="info-2"><div class="info-item-1"> Latest Updated: 2025.07.14 T1 禁卫军题目描述数字王国正在挑选最强壮，最独一无二的勇士作为国王的禁卫军。   有 $n$ 个数字士兵参与了这次选拔，分别为 $w_1, w_2, \dots, w_n$。其中可能存在多个相同的数字士兵，选拔的条件是：如果这个数不能被剩下的 $n - 1$ 个数整除，就可以成为禁卫军。   请问，其中会有多少个士兵能顺利加入禁卫军。   输入第一行读入一个整数 $n$。   第二行读入 $n$ 个整数表示所有数字士兵 $w_i$，用空格隔开。   输出输出一个整数，表示有多少个士兵能顺利加入禁卫军。   样例样例 1    输入：  125  3 7 9 16 17    输出：   14    样例 2输入：   125  1 2 3 4 5   输出：   11    样例 3输入：   125  2 2 3 3 5   输出：   11     说明 样例 1 解释：数列中 $3, 7, 16, 17$ 不能被数列中其它整数整除，$9$ 会被 $3$ 整除，所以有 $4$ 个。    数据规模：    $1 \le...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/07/12/CSP-S-01-%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/" title="CSP-S 01 做题记录"><img class="cover" src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-12</div><div class="info-item-2">CSP-S 01 做题记录</div></div><div class="info-2"><div class="info-item-1"> Latest Updated: 2025.07.14 T1 禁卫军题目描述数字王国正在挑选最强壮，最独一无二的勇士作为国王的禁卫军。   有 $n$ 个数字士兵参与了这次选拔，分别为 $w_1, w_2, \dots, w_n$。其中可能存在多个相同的数字士兵，选拔的条件是：如果这个数不能被剩下的 $n - 1$ 个数整除，就可以成为禁卫军。   请问，其中会有多少个士兵能顺利加入禁卫军。   输入第一行读入一个整数 $n$。   第二行读入 $n$ 个整数表示所有数字士兵 $w_i$，用空格隔开。   输出输出一个整数，表示有多少个士兵能顺利加入禁卫军。   样例样例 1    输入：  125  3 7 9 16 17    输出：   14    样例 2输入：   125  1 2 3 4 5   输出：   11    样例 3输入：   125  2 2 3 3 5   输出：   11     说明 样例 1 解释：数列中 $3, 7, 16, 17$ 不能被数列中其它整数整除，$9$ 会被 $3$ 整除，所以有 $4$ 个。    数据规模：    $1 \le...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.luogu.com.cn/upload/image_hosting/ofl7t46i.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">FrankWkd</div><div class="author-info-description">那时我们有梦，关于文学，关于爱情，关于穿越世界的旅行。如今我们深夜饮酒，杯子碰到一起，都是梦破碎的声音。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/FrankWkd-Pro"><i class="fab fa-github"></i><span>Follow Me on Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://www.luogu.com.cn/user/845400" target="_blank" title="洛谷@lwj54joy"><i class="icon"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Some feelings, only fit to be treasured in the heart.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#Latest-Updated-2025-07-14"><span class="toc-number">1.</span> <span class="toc-text">Latest Updated: 2025.07.14</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#T1-%E6%89%A9%E5%AE%B9%EF%BC%88Expend%EF%BC%89"><span class="toc-number"></span> <span class="toc-text">T1 扩容（Expend）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number"></span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5"><span class="toc-number"></span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA"><span class="toc-number"></span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B"><span class="toc-number"></span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-1"><span class="toc-number"></span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="toc-number"></span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-2"><span class="toc-number"></span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-2"><span class="toc-number"></span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-3"><span class="toc-number"></span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-3"><span class="toc-number"></span> <span class="toc-text">输出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number"></span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="toc-number"></span> <span class="toc-text">样例解释</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B-1-%E8%A7%A3%E9%87%8A"><span class="toc-number"></span> <span class="toc-text">样例 1 解释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B-2-%E8%A7%A3%E9%87%8A"><span class="toc-number"></span> <span class="toc-text">样例 2 解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="toc-number"></span> <span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%82%B9"><span class="toc-number"></span> <span class="toc-text">测试点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%80%A7%E8%B4%A8-A-%EF%BC%9A%E6%BB%A1%E8%B6%B3-C-1-%E3%80%82"><span class="toc-number"></span> <span class="toc-text">特殊性质 $A$：满足 $C &#x3D; 1$。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%80%A7%E8%B4%A8-B-%EF%BC%9A%E6%BB%A1%E8%B6%B3-S-0-neq-1-%E3%80%82"><span class="toc-number"></span> <span class="toc-text">特殊性质 $B$：满足 $S[0] \neq 1$。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-Sol"><span class="toc-number"></span> <span class="toc-text">T1 Sol</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#warning-%E8%AD%A6%E5%91%8A%EF%BC%81"><span class="toc-number"></span> <span class="toc-text">warning 警告！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-Code-40pts"><span class="toc-number"></span> <span class="toc-text">T1 Code [40pts]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T1-Code-100pts"><span class="toc-number"></span> <span class="toc-text">T1 Code [100pts]</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#T2-%E8%A7%A3%E5%AF%86%E6%B8%B8%E6%88%8F"><span class="toc-number"></span> <span class="toc-text">T2 解密游戏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-number"></span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-4"><span class="toc-number"></span> <span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-4"><span class="toc-number"></span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B-1"><span class="toc-number"></span> <span class="toc-text">样例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5-1"><span class="toc-number"></span> <span class="toc-text">样例输入 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA-1"><span class="toc-number"></span> <span class="toc-text">样例输出 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5-2"><span class="toc-number"></span> <span class="toc-text">样例输入 2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA-2"><span class="toc-number"></span> <span class="toc-text">样例输出 2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5-3"><span class="toc-number"></span> <span class="toc-text">样例输入 3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA-3"><span class="toc-number"></span> <span class="toc-text">样例输出 3</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E-1"><span class="toc-number"></span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B-1-%E8%AF%B4%E6%98%8E"><span class="toc-number"></span> <span class="toc-text">样例 1 说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4-1"><span class="toc-number"></span> <span class="toc-text">数据范围</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%82%B9-%E7%89%B9%E6%AE%8A%E6%80%A7%E8%B4%A8"><span class="toc-number"></span> <span class="toc-text">测试点 特殊性质</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-Sol"><span class="toc-number"></span> <span class="toc-text">T2 Sol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2-Code"><span class="toc-number"></span> <span class="toc-text">T2 Code</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#T3-CSP-S-2024-%E6%9F%93%E8%89%B2"><span class="toc-number"></span> <span class="toc-text">T3 [CSP-S 2024] 染色</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="toc-number"></span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number"></span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B-1"><span class="toc-number"></span> <span class="toc-text">输入输出样例 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5-1"><span class="toc-number"></span> <span class="toc-text">输入 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA-1"><span class="toc-number"></span> <span class="toc-text">输出 #1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E-%E6%8F%90%E7%A4%BA"><span class="toc-number"></span> <span class="toc-text">说明&#x2F;提示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sol"><span class="toc-number"></span> <span class="toc-text">Sol</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%BC%8E%E7%8A%B6%E6%80%81%E5%AE%9A%E4%B9%89"><span class="toc-number"></span> <span class="toc-text">1．状态定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%BC%8E%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB"><span class="toc-number"></span> <span class="toc-text">2．状态转移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E8%B4%A1%E7%8C%AE%E6%97%B6%EF%BC%8C%E4%B8%80%E5%AE%9A%E6%98%AF%E4%BB%8E%E6%9C%80%E8%BF%91%E7%9A%84%E7%AD%89%E5%80%BC%E7%9A%84%E6%95%B0%E8%BD%AC%E7%A7%BB%E8%BF%87%E6%9D%A5%E6%9C%80%E4%BC%98%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">为什么有贡献时，一定是从最近的等值的数转移过来最优？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tip"><span class="toc-number"></span> <span class="toc-text">tip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#warning"><span class="toc-number"></span> <span class="toc-text">warning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T3-Code"><span class="toc-number"></span> <span class="toc-text">T3 Code</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/About-ME/" title="About ME"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="About ME"/></a><div class="content"><a class="title" href="/2025/07/25/About-ME/" title="About ME">About ME</a><time datetime="2025-07-25T12:56:02.000Z" title="发表于 2025-07-25 20:56:02">2025-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/Codeforces-%E9%A2%98%E8%A7%A3%EF%BC%9ACF2060D-Subtract-Min-Sort/" title="Codeforces-题解：CF2060D Subtract Min Sort"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Codeforces-题解：CF2060D Subtract Min Sort"/></a><div class="content"><a class="title" href="/2025/07/25/Codeforces-%E9%A2%98%E8%A7%A3%EF%BC%9ACF2060D-Subtract-Min-Sort/" title="Codeforces-题解：CF2060D Subtract Min Sort">Codeforces-题解：CF2060D Subtract Min Sort</a><time datetime="2025-07-25T09:34:36.000Z" title="发表于 2025-07-25 17:34:36">2025-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/Luogu-%E9%A2%98%E8%A7%A3%EF%BC%9AAT-colopl2018-final-b-%E7%95%B0%E4%B8%96%E7%95%8C%E6%95%B0%E5%BC%8F/" title="Luogu-题解：AT_colopl2018_final_b 異世界数式"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Luogu-题解：AT_colopl2018_final_b 異世界数式"/></a><div class="content"><a class="title" href="/2025/07/25/Luogu-%E9%A2%98%E8%A7%A3%EF%BC%9AAT-colopl2018-final-b-%E7%95%B0%E4%B8%96%E7%95%8C%E6%95%B0%E5%BC%8F/" title="Luogu-题解：AT_colopl2018_final_b 異世界数式">Luogu-题解：AT_colopl2018_final_b 異世界数式</a><time datetime="2025-07-25T09:34:27.000Z" title="发表于 2025-07-25 17:34:27">2025-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/Luogu-%E9%A2%98%E8%A7%A3%EF%BC%9AP13091-FJCPC-2025-%E4%B8%AD%E4%BD%8D%E6%95%B0-1/" title="Luogu-题解：P13091 [FJCPC 2025] 中位数"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Luogu-题解：P13091 [FJCPC 2025] 中位数"/></a><div class="content"><a class="title" href="/2025/07/25/Luogu-%E9%A2%98%E8%A7%A3%EF%BC%9AP13091-FJCPC-2025-%E4%B8%AD%E4%BD%8D%E6%95%B0-1/" title="Luogu-题解：P13091 [FJCPC 2025] 中位数">Luogu-题解：P13091 [FJCPC 2025] 中位数</a><time datetime="2025-07-25T09:34:14.000Z" title="发表于 2025-07-25 17:34:14">2025-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/25/hello-world/" title="Hello World"><img src="https://cdn.luogu.com.cn/upload/image_hosting/alndael1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2025/07/25/hello-world/" title="Hello World">Hello World</a><time datetime="2025-07-25T02:44:51.387Z" title="发表于 2025-07-25 10:44:51">2025-07-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.luogu.com.cn/upload/image_hosting/vfj185ab.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2019 - 2025 By FrankWkd</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = '/pluginsSrc/mathjax/es5/tex-mml-chtml.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="/pluginsSrc/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="/pluginsSrc/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="/pluginsSrc/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/pluginsSrc/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="/pluginsSrc/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="/pluginsSrc/aplayer/dist/APlayer.min.js"></script><script src="/pluginsSrc/butterfly-extsrc/metingjs/dist/Meting.min.js"></script></div></body></html>
