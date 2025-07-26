@@ -1853,21 +1853,6 @@ figure.highlight pre .javascript .function {
 .container figure.highlight .highlight-tools .macStyle .mac-maximize {
   background: #35cd4b;
 }
-.container figure.highlight .highlight-tools > :nth-child(2) {
-  -webkit-box-ordinal-group: 8;
-  -moz-box-ordinal-group: 8;
-  -o-box-ordinal-group: 8;
-  -ms-flex-order: 8;
-  -webkit-order: 8;
-  order: 8;
-}
-.container figure.highlight .highlight-tools.closed .expand {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
 .container figure.highlight.code-fullpage {
   position: fixed;
   top: 0;
@@ -3652,12 +3637,12 @@ figure.highlight pre .javascript .function {
   content: '';
 }
 #page-header.full_page {
-  height: 0.003333333333333px;
+  height: 100vh;
   background-attachment: fixed;
 }
 #page-header.full_page #site-info {
   position: absolute;
-  top: 0.000333333333333px;
+  top: 43%;
   padding: 0 10px;
   width: 100%;
 }
